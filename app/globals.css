@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+@import "tailwindcss";
+
+/* ==========================================
+   TECHSAVVYS BRAND (catalog / platform pages)
+   ========================================== */
+@theme inline {
+  --color-teal: #00BFA5;
+  --color-teal-accent: #64FFDA;
+  --color-bg-dark: #060608;
+  --color-bg-mid: #0C0C12;
+  --color-bg-light: #111118;
+  --color-text: #EEEEF2;
+  --color-muted: #666672;
+  --color-card: #16161E;
+  --color-border: #1E1E28;
+
+  --font-syne: "Syne", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+}
+
+/* ==========================================
+   EMERALD GOLD THEME VARIABLES
+   ========================================== */
+.theme-emerald-gold {
+  --color-emerald: #0A3D2E;
+  --color-emerald-light: #145A43;
+  --color-emerald-dark: #062A1F;
+  --color-emerald-deep: #041E16;
+  --color-gold: #D4A853;
+  --color-gold-light: #EAD18F;
+  --color-gold-dark: #B08E3C;
+  --color-gold-muted: rgba(212,168,83,0.15);
+  --color-mint: #A8D5BA;
+  --color-mint-dark: #6BAF8D;
+  --color-cream: #F8F4EC;
+  --color-text-light: #B8C9BF;
+  --color-text-muted: #7A9488;
+  --color-text-dim: #4A6B5C;
+  --color-glass: rgba(255,255,255,0.06);
+  --color-glass-border: rgba(255,255,255,0.1);
+  --color-glass-strong: rgba(255,255,255,0.1);
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-script: "Great Vibes", cursive;
+  --font-body: "Montserrat", sans-serif;
+
+  background: var(--color-emerald-deep);
+  color: var(--color-text-light);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+.theme-emerald-gold body,
+.theme-emerald-gold * { box-sizing: border-box; }
+.theme-emerald-gold ::selection { background: var(--color-gold); color: var(--color-emerald-deep); }
+.theme-emerald-gold ::-webkit-scrollbar { width: 3px; }
+.theme-emerald-gold ::-webkit-scrollbar-track { background: var(--color-emerald-deep); }
+.theme-emerald-gold ::-webkit-scrollbar-thumb { background: var(--color-gold-dark); border-radius: 8px; }
+
+/* ==========================================
+   MIDNIGHT BLUE THEME VARIABLES
+   ========================================== */
+.theme-midnight-blue {
+  --color-navy: #0B1221;
+  --color-navy-light: #162035;
+  --color-navy-dark: #070D18;
+  --color-navy-deep: #040A13;
+  --color-silver: #C0C8D8;
+  --color-silver-light: #DDE3EE;
+  --color-silver-dark: #8A95AA;
+  --color-blue-accent: #4A9EE8;
+  --color-blue-glow: rgba(74,158,232,0.15);
+  --color-white-soft: #F0F4FF;
+  --color-text-mb: #A8B8CC;
+  --color-text-mb-muted: #5A6A80;
+  --color-text-mb-dim: #3A4A5C;
+  --color-glass-mb: rgba(255,255,255,0.04);
+  --color-glass-mb-border: rgba(255,255,255,0.08);
+  --font-display-mb: "Playfair Display", Georgia, serif;
+  --font-body-mb: "Inter", sans-serif;
+
+  background: var(--color-navy-deep);
+  color: var(--color-text-mb);
+  font-family: var(--font-body-mb);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+.theme-midnight-blue ::selection { background: var(--color-blue-accent); color: var(--color-navy-deep); }
+.theme-midnight-blue ::-webkit-scrollbar { width: 3px; }
+.theme-midnight-blue ::-webkit-scrollbar-track { background: var(--color-navy-deep); }
+.theme-midnight-blue ::-webkit-scrollbar-thumb { background: var(--color-silver-dark); border-radius: 8px; }
+
+/* ==========================================
+   GLOBAL BASE
+   ========================================== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font-outfit, "Outfit", sans-serif); background: var(--color-bg-dark, #060608); color: var(--color-text, #EEEEF2); line-height: 1.6; }
+h1, h2, h3, h4, h5 { font-family: var(--font-syne, "Syne", sans-serif); font-weight: 700; }
+a { color: var(--color-teal, #00BFA5); text-decoration: none; transition: 0.3s; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--color-bg-dark, #060608); }
+::-webkit-scrollbar-thumb { background: var(--color-teal, #00BFA5); border-radius: 8px; opacity: 0.4; }
+
+/* ==========================================
+   EMERALD GOLD — GRADIENTS
+   ========================================== */
+.theme-emerald-gold .grad-cover { background: linear-gradient(180deg, #031510 0%, #062A1F 40%, #0A3D2E 80%, #0D4A36 100%); }
+.theme-emerald-gold .grad-main  { background: linear-gradient(180deg, #0D4A36 0%, #0A3D2E 30%, #083526 60%, #062A1F 100%); }
+.theme-emerald-gold .grad-alt   { background: linear-gradient(180deg, #062A1F 0%, #083526 15%, #0A3D2E 30%, #0C4533 50%, #0A3D2E 70%, #062A1F 100%); }
+.theme-emerald-gold .grad-event { background: linear-gradient(180deg, #062A1F 0%, #083526 30%, #0A3D2E 60%, #0D4A36 100%); }
+.theme-emerald-gold .grad-gallery { background: linear-gradient(180deg, #0D4A36 0%, #0A3D2E 40%, #083526 70%, #062A1F 100%); }
+.theme-emerald-gold .grad-gift  { background: linear-gradient(180deg, #062A1F 0%, #0A3D2E 40%, #083526 70%, #062A1F 100%); }
+.theme-emerald-gold .grad-rsvp  { background: linear-gradient(180deg, #062A1F 0%, #0A3D2E 30%, #0D4A36 50%, #0A3D2E 70%, #062A1F 100%); }
+.theme-emerald-gold .grad-wishes { background: linear-gradient(180deg, #062A1F 0%, #083526 40%, #0A3D2E 70%, #062A1F 100%); }
+.theme-emerald-gold .grad-footer { background: linear-gradient(180deg, #062A1F 0%, #041E16 50%, #031510 100%); }
+
+/* ==========================================
+   MIDNIGHT BLUE — GRADIENTS
+   ========================================== */
+.theme-midnight-blue .grad-mb-cover  { background: linear-gradient(180deg, #020810 0%, #040A18 40%, #0B1221 80%, #0F1A2E 100%); }
+.theme-midnight-blue .grad-mb-main   { background: linear-gradient(180deg, #0F1A2E 0%, #0B1221 30%, #091018 60%, #070D18 100%); }
+.theme-midnight-blue .grad-mb-alt    { background: linear-gradient(180deg, #070D18 0%, #0B1221 30%, #0F1A2E 50%, #0B1221 70%, #070D18 100%); }
+.theme-midnight-blue .grad-mb-footer { background: linear-gradient(180deg, #070D18 0%, #040A13 50%, #020810 100%); }
+
+/* ==========================================
+   EMERALD GOLD — GLASS MORPHISM
+   ========================================== */
+.theme-emerald-gold .glass {
+  background: linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0.06) 100%);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.theme-emerald-gold .glass-strong {
+  background: var(--color-glass-strong);
+  backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 24px;
+}
+.theme-emerald-gold .glass-gold {
+  background: linear-gradient(145deg, rgba(212,168,83,0.1) 0%, rgba(212,168,83,0.05) 50%, rgba(212,168,83,0.1) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212,168,83,0.2);
+}
+
+/* ==========================================
+   MIDNIGHT BLUE — GLASS MORPHISM
+   ========================================== */
+.theme-midnight-blue .glass-mb {
+  background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0.04) 100%);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.theme-midnight-blue .glass-mb-blue {
+  background: linear-gradient(145deg, rgba(74,158,232,0.08) 0%, rgba(74,158,232,0.03) 50%, rgba(74,158,232,0.08) 100%);
+  border: 1px solid rgba(74,158,232,0.2);
+  border-radius: 16px;
+}
+
+/* ==========================================
+   EMERALD GOLD — BUTTONS
+   ========================================== */
+.theme-emerald-gold .btn-gold {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 36px; border-radius: 50px;
+  background: linear-gradient(135deg, var(--color-gold), var(--color-gold-dark));
+  color: var(--color-emerald-deep); font-family: var(--font-body);
+  font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+  text-transform: uppercase; border: none; cursor: pointer;
+  box-shadow: 0 4px 20px rgba(212,168,83,0.3);
+  transition: all 0.3s ease;
+}
+.theme-emerald-gold .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(212,168,83,0.45); }
+.theme-emerald-gold .btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 28px; border-radius: 50px;
+  border: 1px solid rgba(212,168,83,0.4); color: var(--color-gold-light);
+  font-family: var(--font-body); font-size: 10px; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase; background: transparent;
+  cursor: pointer; transition: all 0.3s ease; text-decoration: none;
+}
+.theme-emerald-gold .btn-outline:hover { background: rgba(212,168,83,0.1); border-color: var(--color-gold); }
+
+/* ==========================================
+   MIDNIGHT BLUE — BUTTONS
+   ========================================== */
+.theme-midnight-blue .btn-mb {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 36px; border-radius: 50px;
+  background: linear-gradient(135deg, var(--color-blue-accent), #2B7FD4);
+  color: #fff; font-family: var(--font-body-mb);
+  font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+  text-transform: uppercase; border: none; cursor: pointer;
+  box-shadow: 0 4px 20px rgba(74,158,232,0.3);
+  transition: all 0.3s ease;
+}
+.theme-midnight-blue .btn-mb:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(74,158,232,0.45); }
+.theme-midnight-blue .btn-mb-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 28px; border-radius: 50px;
+  border: 1px solid rgba(74,158,232,0.35); color: var(--color-silver-light);
+  font-family: var(--font-body-mb); font-size: 10px; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase; background: transparent;
+  cursor: pointer; transition: all 0.3s ease; text-decoration: none;
+}
+.theme-midnight-blue .btn-mb-outline:hover { background: rgba(74,158,232,0.08); border-color: var(--color-blue-accent); }
+
+/* ==========================================
+   EMERALD GOLD — FORM INPUTS
+   ========================================== */
+.theme-emerald-gold .input-field {
+  width: 100%; padding: 14px 18px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px; color: var(--color-text-light);
+  font-family: var(--font-body); font-size: 13px; font-weight: 300;
+  outline: none; transition: all 0.3s;
+}
+.theme-emerald-gold .input-field:focus { border-color: rgba(212,168,83,0.4); background: rgba(212,168,83,0.04); }
+.theme-emerald-gold .input-field::placeholder { color: var(--color-text-dim); }
+.theme-emerald-gold .input-field option { background: var(--color-emerald-dark); }
+
+/* ==========================================
+   MIDNIGHT BLUE — FORM INPUTS
+   ========================================== */
+.theme-midnight-blue .input-mb {
+  width: 100%; padding: 14px 18px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; color: var(--color-text-mb);
+  font-family: var(--font-body-mb); font-size: 13px; font-weight: 300;
+  outline: none; transition: all 0.3s;
+}
+.theme-midnight-blue .input-mb:focus { border-color: rgba(74,158,232,0.4); background: rgba(74,158,232,0.04); }
+.theme-midnight-blue .input-mb::placeholder { color: var(--color-text-mb-dim); }
+
+/* ==========================================
+   EMERALD GOLD — SHIMMER & EFFECTS
+   ========================================== */
+.theme-emerald-gold .shimmer-gold {
+  background: linear-gradient(135deg, var(--color-gold-dark) 0%, var(--color-gold-light) 30%, var(--color-gold) 50%, var(--color-gold-light) 70%, var(--color-gold-dark) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; animation: shimmer 4s linear infinite;
+}
+.theme-emerald-gold .pulse-glow { animation: pulse-ring 2s ease-out infinite; }
+.theme-emerald-gold .geo-pattern {
+  background-image: radial-gradient(circle at 25% 25%, rgba(212,168,83,0.025) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(168,213,186,0.015) 0%, transparent 50%);
+}
+
+/* ==========================================
+   MIDNIGHT BLUE — SHIMMER & EFFECTS
+   ========================================== */
+.theme-midnight-blue .shimmer-silver {
+  background: linear-gradient(135deg, var(--color-silver-dark) 0%, var(--color-silver-light) 30%, var(--color-silver) 50%, var(--color-silver-light) 70%, var(--color-silver-dark) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; animation: shimmer 4s linear infinite;
+}
+.theme-midnight-blue .shimmer-blue {
+  background: linear-gradient(135deg, #2B7FD4 0%, var(--color-blue-accent) 50%, var(--color-silver-light) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; animation: shimmer 4s linear infinite;
+}
+.theme-midnight-blue .geo-pattern-mb {
+  background-image: radial-gradient(circle at 25% 25%, rgba(74,158,232,0.03) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(74,158,232,0.015) 0%, transparent 50%);
+}
+
+/* ==========================================
+   REVEAL ANIMATIONS (shared)
+   ========================================== */
+.reveal-up    { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal-left  { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal-right { opacity: 0; transform: translateX(40px);  transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal-scale { opacity: 0; transform: scale(0.9);        transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal-up.visible, .reveal-left.visible, .reveal-right.visible, .reveal-scale.visible { opacity: 1; transform: none; }
+.delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; } .delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; } .delay-6 { transition-delay: 0.6s; }
+.delay-7 { transition-delay: 0.7s; } .delay-8 { transition-delay: 0.8s; }
+
+.section-inner { max-width: 640px; margin: 0 auto; padding: 140px 32px; }
+
+/* ==========================================
+   KEYFRAME ANIMATIONS
+   ========================================== */
+@keyframes shimmer { to { background-position: 200% center; } }
+@keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(212,168,83,0.4); } 70% { box-shadow: 0 0 0 12px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+@keyframes pulse-blue { 0% { box-shadow: 0 0 0 0 rgba(74,158,232,0.4); } 70% { box-shadow: 0 0 0 12px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+@keyframes float-leaf { 0% { top: 110%; opacity: 0; transform: rotate(0deg); } 5% { opacity: 0.12; } 90% { opacity: 0.1; } 100% { top: -10%; opacity: 0; transform: rotate(720deg); } }
+@keyframes orbit { from { transform: translate(-50%,-50%) rotate(0deg); } to { transform: translate(-50%,-50%) rotate(360deg); } }
+@keyframes orbit-reverse { from { transform: translate(-50%,-50%) rotate(360deg); } to { transform: translate(-50%,-50%) rotate(0deg); } }
+@keyframes glow-dot { 0%, 100% { opacity: 0; transform: scale(0.5); } 50% { opacity: 0.6; transform: scale(1); } }
+@keyframes drift-up { 0% { transform: translateY(0); opacity: 0.6; } 100% { transform: translateY(-80px); opacity: 0; } }
+@keyframes light-ray { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
+@keyframes disc-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slide-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+@keyframes photo-tilt-l { 0%, 100% { transform: rotate(-1deg); } 50% { transform: rotate(0.5deg); } }
+@keyframes photo-tilt-r { 0%, 100% { transform: rotate(1deg); } 50% { transform: rotate(-0.5deg); } }
+@keyframes float-star { 0%, 100% { transform: translateY(0); opacity: 0.3; } 50% { transform: translateY(-12px); opacity: 0.7; } }
+
+.disc-spin { animation: disc-spin 3s linear infinite; }
+.disc-paused { animation: none; }
+.photo-tilt-left { animation: photo-tilt-l 6s ease-in-out infinite; }
+.photo-tilt-right { animation: photo-tilt-r 6s ease-in-out infinite; }
