@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { InvitationProvider } from "./context";
 import type { InvitationData } from "@/lib/types";
 import Cover from "./components/Cover";
@@ -19,20 +20,25 @@ interface Props { data: InvitationData; guestName?: string; }
 
 function YlangYlangContent({ guestName }: { guestName?: string }) {
   useReveal();
+  const [opened, setOpened] = useState(false);
   return (
     <div className="theme-ylang-ylang" style={{ minHeight: "100vh", background: "var(--color-yy-cream)", color: "var(--color-yy-text)" }}>
-      <FloatingPetals />
-      <Cover guestName={guestName} />
-      <Hero />
-      <Couple />
-      <Countdown />
-      <EventDetails />
-      <Gallery />
-      <Gift />
-      <RSVP guestName={guestName} />
-      <Wishes />
-      <Footer />
-      <MusicPlayer />
+      {!opened && <FloatingPetals />}
+      <Cover onOpen={() => setOpened(true)} guestName={guestName} />
+      {opened && (
+        <>
+          <Hero />
+          <Couple />
+          <Countdown />
+          <EventDetails />
+          <Gallery />
+          <Gift />
+          <RSVP guestName={guestName} />
+          <Wishes />
+          <Footer />
+          <MusicPlayer />
+        </>
+      )}
     </div>
   );
 }
