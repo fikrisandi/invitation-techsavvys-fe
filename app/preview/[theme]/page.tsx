@@ -2,10 +2,14 @@ import { notFound } from "next/navigation";
 import { dummyData } from "@/lib/dummy";
 import EmeraldGoldTheme from "@/themes/emerald-gold";
 import MidnightBlueTheme from "@/themes/midnight-blue";
+import YlangYlangTheme from "@/themes/ylang-ylang";
+import RoseBlushTheme from "@/themes/rose-blush";
 
 const THEMES = {
   "emerald-gold": EmeraldGoldTheme,
   "midnight-blue": MidnightBlueTheme,
+  "ylang-ylang": YlangYlangTheme,
+  "rose-blush": RoseBlushTheme,
 };
 
 type Props = { params: Promise<{ theme: string }> };
@@ -18,7 +22,7 @@ export default async function PreviewPage({ params }: Props) {
   }
 
   const ThemeComponent = THEMES[theme as keyof typeof THEMES];
-  const previewData = { ...dummyData, theme: theme as "emerald-gold", slug: "preview" };
+  const previewData = { ...dummyData, theme: theme as keyof typeof THEMES, slug: "preview" };
 
   return (
     <>

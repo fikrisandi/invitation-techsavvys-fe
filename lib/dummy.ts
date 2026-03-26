@@ -63,13 +63,6 @@ export const themes = [
     available: true,
   },
   {
-    id: "rose-blush",
-    name: "Rose Blush",
-    description: "Romantis dengan warna pink lembut dan gold accent. Feminin dan hangat.",
-    tags: ["Pernikahan", "Romantis", "Feminin"],
-    available: false,
-  },
-  {
     id: "midnight-blue",
     name: "Midnight Blue",
     description: "Modern dan elegan dengan deep blue navy dan silver. Kesan mewah dan profesional.",
@@ -77,10 +70,17 @@ export const themes = [
     available: true,
   },
   {
-    id: "rustic-garden",
-    name: "Rustic Garden",
-    description: "Natural dengan earthy tones dan botanical ornament. Santai namun tetap indah.",
-    tags: ["Pernikahan", "Natural", "Garden"],
-    available: false,
+    id: "ylang-ylang",
+    name: "Ylang Ylang",
+    description: "Hangat dan botanical dengan krem gading, hijau hutan, dan emas. Sentuhan alam yang elegan.",
+    tags: ["Pernikahan", "Botanical", "Natural"],
+    available: true,
+  },
+  {
+    id: "rose-blush",
+    name: "Rose Blush",
+    description: "Romantis dengan warna pink lembut dan rosegold accent. Feminin dan hangat.",
+    tags: ["Pernikahan", "Romantis", "Feminin"],
+    available: true,
   },
 ];

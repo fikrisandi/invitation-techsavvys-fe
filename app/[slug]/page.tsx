@@ -2,12 +2,16 @@ import { notFound } from "next/navigation";
 import { getInvitation } from "@/lib/api";
 import EmeraldGoldTheme from "@/themes/emerald-gold";
 import MidnightBlueTheme from "@/themes/midnight-blue";
+import YlangYlangTheme from "@/themes/ylang-ylang";
+import RoseBlushTheme from "@/themes/rose-blush";
 import type { InvitationData } from "@/lib/types";
 import type { Metadata } from "next";
 
 const THEMES = {
   "emerald-gold": EmeraldGoldTheme,
   "midnight-blue": MidnightBlueTheme,
+  "ylang-ylang": YlangYlangTheme,
+  "rose-blush": RoseBlushTheme,
 };
 
 type Props = { params: Promise<{ slug: string }>; searchParams: Promise<{ to?: string }> };
