@@ -121,9 +121,10 @@ function ThemeCard({ theme }: { theme: (typeof themes)[0] }) {
 export default function CatalogPage() {
   const [activeFilter, setActiveFilter] = useState("Semua");
 
+  const visible = themes.filter((t) => !t.hidden);
   const filtered = activeFilter === "Semua"
-    ? themes
-    : themes.filter((t) => t.category === activeFilter);
+    ? visible
+    : visible.filter((t) => t.category === activeFilter);
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAF7F2", fontFamily: "'Lato', sans-serif" }}>
