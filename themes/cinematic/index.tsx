@@ -14,6 +14,7 @@ import RSVP from "./components/RSVP";
 import Wishes from "./components/Wishes";
 import Footer from "./components/Footer";
 import MusicPlayer from "./components/MusicPlayer";
+import ParallaxBg from "./components/ParallaxBg";
 import type { InvitationData } from "@/lib/types";
 
 /* Film grain overlay + scanline + light leak — always fixed on top */
@@ -63,6 +64,7 @@ function InvitationContent({ guestName }: { guestName?: string }) {
 
   return (
     <>
+      <ParallaxBg />
       <CinematicAmbient />
       <Cover />
       <main style={{ position: "relative", zIndex: 1 }}>

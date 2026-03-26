@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 function useScrollParallax(speed: number) {
   const ref = useRef<HTMLDivElement>(null);
@@ -16,44 +17,9 @@ function useScrollParallax(speed: number) {
   return ref;
 }
 
-/* A single watercolor-style rose built from Bezier petal paths */
-function RoseSVG({ size, color, opacity }: { size: number; color: string; opacity: number }) {
-  const s = size / 160; // scale factor relative to 160px design space
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 160 160"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{ overflow: "visible" }}
-    >
-      <g fill={color} fillOpacity={opacity} stroke="none">
-        {/* Outer ring – 6 large open petals */}
-        <path d="M 80 80 C 60 50, 30 45, 28 75 C 26 100, 55 105, 80 80 Z" />
-        <path d="M 80 80 C 55 65, 40 38, 65 28 C 85 20, 100 48, 80 80 Z" />
-        <path d="M 80 80 C 80 50, 100 30, 120 48 C 138 65, 120 90, 80 80 Z" />
-        <path d="M 80 80 C 108 70, 130 85, 125 108 C 120 130, 95 128, 80 80 Z" />
-        <path d="M 80 80 C 95 108, 85 135, 62 132 C 42 128, 40 105, 80 80 Z" />
-        <path d="M 80 80 C 55 105, 30 100, 32 78 C 34 58, 60 58, 80 80 Z" />
-        {/* Middle ring – 5 medium petals */}
-        <path d="M 80 80 C 65 62, 50 58, 52 74 C 54 88, 68 88, 80 80 Z" />
-        <path d="M 80 80 C 72 60, 82 46, 95 56 C 106 64, 100 76, 80 80 Z" />
-        <path d="M 80 80 C 98 72, 108 80, 104 93 C 100 106, 88 104, 80 80 Z" />
-        <path d="M 80 80 C 88 98, 82 112, 70 108 C 58 104, 58 92, 80 80 Z" />
-        <path d="M 80 80 C 62 90, 50 84, 52 72 C 54 60, 68 64, 80 80 Z" />
-        {/* Center tight spiral petals */}
-        <path d="M 80 80 C 74 72, 72 76, 76 82 C 78 86, 82 84, 80 80 Z" />
-        <path d="M 80 80 C 86 74, 88 78, 84 84 C 82 88, 78 86, 80 80 Z" />
-        <path d="M 80 80 C 80 72, 84 72, 86 76 C 88 80, 84 82, 80 80 Z" />
-        <path d="M 80 80 C 74 82, 72 86, 76 88 C 80 90, 82 86, 80 80 Z" />
-      </g>
-    </svg>
-  );
-}
-
-/* Layer 1 – Large rose silhouettes at corners (speed: 0.07) */
-function LargeRoses() {
-  const ref = useScrollParallax(0.07);
+/* Layer 1 - Large rose images at corners (slowest) */
+function RoseBackground() {
+  const ref = useScrollParallax(0.05);
   return (
     <div
       ref={ref}
@@ -66,25 +32,123 @@ function LargeRoses() {
         willChange: "transform",
       }}
     >
-      {/* Top-left rose, partially off screen */}
-      <div style={{ position: "absolute", top: -40, left: -40 }}>
-        <RoseSVG size={160} color="#C17A8F" opacity={0.12} />
+      {/* Top-left rose */}
+      <div
+        style={{
+          position: "absolute",
+          top: "-10%",
+          left: "-10%",
+          width: "50%",
+          height: "45%",
+          opacity: 0.5,
+        }}
+      >
+        <Image
+          src="/parallax/rose-1.jpg"
+          alt="Rose bouquet"
+          fill
+          style={{
+            objectFit: "cover",
+            objectPosition: "center",
+            filter: "saturate(1.2)",
+            maskImage: "radial-gradient(ellipse at 0% 0%, black 30%, transparent 70%)",
+            WebkitMaskImage: "radial-gradient(ellipse at 0% 0%, black 30%, transparent 70%)",
+          }}
+          priority
+        />
       </div>
-      {/* Bottom-right rose, partially off screen */}
-      <div style={{ position: "absolute", bottom: -40, right: -40 }}>
-        <RoseSVG size={160} color="#C17A8F" opacity={0.12} />
+
+      {/* Bottom-right rose */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "-10%",
+          right: "-10%",
+          width: "50%",
+          height: "45%",
+          opacity: 0.45,
+        }}
+      >
+        <Image
+          src="/parallax/rose-2.jpg"
+          alt="Rose bouquet"
+          fill
+          style={{
+            objectFit: "cover",
+            objectPosition: "center",
+            filter: "saturate(1.2)",
+            maskImage: "radial-gradient(ellipse at 100% 100%, black 30%, transparent 70%)",
+            WebkitMaskImage: "radial-gradient(ellipse at 100% 100%, black 30%, transparent 70%)",
+          }}
+        />
       </div>
     </div>
   );
 }
 
-/* Layer 2 – Scattered rose petals (speed: 0.2) */
-function ScatteredPetals() {
-  const ref = useScrollParallax(0.2);
+/* Layer 2 - Floating rose petals (medium speed) */
+function FloatingPetals() {
+  const ref = useScrollParallax(0.15);
+
   const petals = [
-    { left: "8%",  top: "20%", rotate: 0,   size: 28, opacity: 0.35 },
-    { left: "65%", top: "8%",  rotate: 45,  size: 24, opacity: 0.30 },
-    { left: "85%", top: "35%", rotate: 90,  size: 32, opacity: 0.28 },
+    { left: "15%", top: "25%", size: 70, rotate: 20, opacity: 0.6 },
+    { left: "75%", top: "20%", size: 55, rotate: -15, opacity: 0.5 },
+    { left: "25%", top: "55%", size: 65, rotate: 45, opacity: 0.55 },
+    { left: "80%", top: "50%", size: 50, rotate: -30, opacity: 0.45 },
+    { left: "10%", top: "75%", size: 60, rotate: 35, opacity: 0.5 },
+    { left: "65%", top: "80%", size: 70, rotate: -20, opacity: 0.6 },
+  ];
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 0,
+        pointerEvents: "none",
+        overflow: "hidden",
+        willChange: "transform",
+      }}
+    >
+      {petals.map((petal, i) => (
+        <div
+          key={i}
+          style={{
+            position: "absolute",
+            left: petal.left,
+            top: petal.top,
+            width: petal.size,
+            height: petal.size,
+            transform: `rotate(${petal.rotate}deg)`,
+            opacity: petal.opacity,
+            borderRadius: "50%",
+            overflow: "hidden",
+          }}
+        >
+          <Image
+            src="/parallax/rose-3.jpg"
+            alt="Rose petal"
+            fill
+            style={{
+              objectFit: "cover",
+              filter: "saturate(1.3) brightness(1.1)",
+            }}
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* Layer 3 - SVG rose petals for elegance */
+function SvgPetals() {
+  const ref = useScrollParallax(0.22);
+
+  const petals = [
+    { left: "8%", top: "20%", rotate: 0, size: 28, opacity: 0.35 },
+    { left: "65%", top: "8%", rotate: 45, size: 24, opacity: 0.30 },
+    { left: "85%", top: "35%", rotate: 90, size: 32, opacity: 0.28 },
     { left: "15%", top: "50%", rotate: 120, size: 26, opacity: 0.35 },
     { left: "75%", top: "55%", rotate: 200, size: 30, opacity: 0.30 },
     { left: "40%", top: "70%", rotate: 270, size: 22, opacity: 0.28 },
@@ -118,13 +182,7 @@ function ScatteredPetals() {
             width={p.size}
             height={p.size * 1.5}
             viewBox="0 0 20 30"
-            xmlns="http://www.w3.org/2000/svg"
           >
-            {/*
-              Teardrop petal shape:
-              Start at the bottom tip, curve up and out to the right,
-              across the top, back down the left side, close at tip.
-            */}
             <path
               d="M 10 28 C 2 20, 0 10, 10 2 C 20 10, 18 20, 10 28 Z"
               fill="#DCB0BA"
@@ -138,25 +196,14 @@ function ScatteredPetals() {
   );
 }
 
-/* Layer 3 – Tiny floating petals + rosebud shapes (speed: 0.35) */
-function TinyPetalsAndBuds() {
-  const ref = useScrollParallax(0.35);
+/* Layer 4 - SVG rose buds */
+function RoseBuds() {
+  const ref = useScrollParallax(0.32);
 
-  // 6 tiny petals scattered
-  const tinyPetals = [
-    { left: "12%", top: "15%", rotate: 30  },
-    { left: "55%", top: "25%", rotate: 80  },
-    { left: "78%", top: "18%", rotate: 150 },
-    { left: "35%", top: "60%", rotate: 220 },
-    { left: "62%", top: "72%", rotate: 300 },
-    { left: "88%", top: "60%", rotate: 10  },
-  ];
-
-  // 4 rosebud shapes scattered
   const buds = [
-    { left: "22%", top: "38%", rotate: 15  },
+    { left: "22%", top: "38%", rotate: 15 },
     { left: "48%", top: "45%", rotate: -20 },
-    { left: "72%", top: "40%", rotate: 40  },
+    { left: "72%", top: "40%", rotate: 40 },
     { left: "30%", top: "78%", rotate: -10 },
   ];
 
@@ -172,30 +219,9 @@ function TinyPetalsAndBuds() {
         willChange: "transform",
       }}
     >
-      {tinyPetals.map((p, i) => (
-        <div
-          key={`tp-${i}`}
-          style={{
-            position: "absolute",
-            left: p.left,
-            top: p.top,
-            transform: `translate(-50%, -50%) rotate(${p.rotate}deg)`,
-          }}
-        >
-          <svg width="10" height="14" viewBox="0 0 20 28" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M 10 26 C 3 18, 0 10, 10 2 C 20 10, 17 18, 10 26 Z"
-              fill="#C17A8F"
-              fillOpacity="0.30"
-              stroke="none"
-            />
-          </svg>
-        </div>
-      ))}
-
       {buds.map((b, i) => (
         <div
-          key={`bud-${i}`}
+          key={i}
           style={{
             position: "absolute",
             left: b.left,
@@ -203,8 +229,7 @@ function TinyPetalsAndBuds() {
             transform: `translate(-50%, -50%) rotate(${b.rotate}deg)`,
           }}
         >
-          {/* Rosebud: 3 tight overlapping petals forming a closed bud */}
-          <svg width="15" height="18" viewBox="0 0 30 36" xmlns="http://www.w3.org/2000/svg">
+          <svg width="15" height="18" viewBox="0 0 30 36">
             {/* Left petal */}
             <path
               d="M 15 32 C 4 24, 2 12, 10 6 C 14 14, 14 24, 15 32 Z"
@@ -233,12 +258,60 @@ function TinyPetalsAndBuds() {
   );
 }
 
+/* Layer 5 - Full rose SVG shapes */
+function RoseSvgLayer() {
+  const ref = useScrollParallax(0.08);
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 0,
+        pointerEvents: "none",
+        overflow: "hidden",
+        willChange: "transform",
+      }}
+    >
+      {/* Top-left rose SVG */}
+      <div style={{ position: "absolute", top: -40, left: -40 }}>
+        <svg width={160} height={160} viewBox="0 0 160 160">
+          <g fill="#C17A8F" fillOpacity={0.12} stroke="none">
+            <path d="M 80 80 C 60 50, 30 45, 28 75 C 26 100, 55 105, 80 80 Z" />
+            <path d="M 80 80 C 55 65, 40 38, 65 28 C 85 20, 100 48, 80 80 Z" />
+            <path d="M 80 80 C 80 50, 100 30, 120 48 C 138 65, 120 90, 80 80 Z" />
+            <path d="M 80 80 C 108 70, 130 85, 125 108 C 120 130, 95 128, 80 80 Z" />
+            <path d="M 80 80 C 95 108, 85 135, 62 132 C 42 128, 40 105, 80 80 Z" />
+            <path d="M 80 80 C 55 105, 30 100, 32 78 C 34 58, 60 58, 80 80 Z" />
+          </g>
+        </svg>
+      </div>
+      {/* Bottom-right rose SVG */}
+      <div style={{ position: "absolute", bottom: -40, right: -40 }}>
+        <svg width={160} height={160} viewBox="0 0 160 160">
+          <g fill="#C17A8F" fillOpacity={0.12} stroke="none">
+            <path d="M 80 80 C 60 50, 30 45, 28 75 C 26 100, 55 105, 80 80 Z" />
+            <path d="M 80 80 C 55 65, 40 38, 65 28 C 85 20, 100 48, 80 80 Z" />
+            <path d="M 80 80 C 80 50, 100 30, 120 48 C 138 65, 120 90, 80 80 Z" />
+            <path d="M 80 80 C 108 70, 130 85, 125 108 C 120 130, 95 128, 80 80 Z" />
+            <path d="M 80 80 C 95 108, 85 135, 62 132 C 42 128, 40 105, 80 80 Z" />
+            <path d="M 80 80 C 55 105, 30 100, 32 78 C 34 58, 60 58, 80 80 Z" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
 export default function ParallaxBg() {
   return (
     <>
-      <LargeRoses />
-      <ScatteredPetals />
-      <TinyPetalsAndBuds />
+      <RoseBackground />
+      <RoseSvgLayer />
+      <FloatingPetals />
+      <SvgPetals />
+      <RoseBuds />
     </>
   );
 }
