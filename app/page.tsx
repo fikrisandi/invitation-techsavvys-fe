@@ -165,6 +165,7 @@ function ThemeCard({ theme }: { theme: (typeof themes)[0] }) {
 
 export default function CatalogPage() {
   const [activeFilter, setActiveFilter] = useState("Semua");
+  const [menuOpen, setMenuOpen] = useState(false);
   const visible = themes.filter((t) => !t.hidden);
   const filtered = activeFilter === "Semua" ? visible : visible.filter((t) => t.category === activeFilter);
 
@@ -172,24 +173,45 @@ export default function CatalogPage() {
     <div style={{ minHeight: "100vh", background: "#FAF7F2", fontFamily: "'Lato', sans-serif" }}>
 
       {/* ── Navbar ── */}
-      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: "rgba(250,247,242,0.93)", backdropFilter: "blur(20px)", borderBottom: "1px solid rgba(180,150,120,0.15)", padding: "14px 0" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 28px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <Image src="/logo-savvys.png" alt="Techsavvys" width={36} height={44} style={{ objectFit: "contain" }} />
+      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: "rgba(250,247,242,0.97)", backdropFilter: "blur(20px)", borderBottom: "1px solid rgba(180,150,120,0.15)" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px", display: "flex", alignItems: "center", justifyContent: "space-between", height: "64px" }}>
+          {/* Brand */}
+          <a href="/" style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}>
+            <Image src="/logo-savvys.png" alt="Techsavvys" width={30} height={37} style={{ objectFit: "contain", filter: "brightness(0) sepia(1) saturate(4) brightness(0.72)" }} />
             <div>
-              <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 700, fontSize: "17px", color: "#2C1F14", lineHeight: 1.1 }}>Invitation Savvys</div>
-              <div style={{ fontSize: "10px", color: "#9A7A5A" }}>by <a href={MAIN_URL} target="_blank" rel="noopener noreferrer" style={{ color: "#C4975A", textDecoration: "none", fontWeight: 600 }}>Techsavvys</a></div>
+              <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 700, fontSize: "16px", color: "#2C1F14", lineHeight: 1.1 }}>Invitation Savvys</div>
+              <div style={{ fontSize: "9px", color: "#9A7A5A" }}>by <span style={{ color: "#C4975A", fontWeight: 600 }}>Techsavvys</span></div>
             </div>
+          </a>
+
+          {/* Desktop links */}
+          <div className="nav-desktop">
+            <a href="#themes" className="nav-link">Tema</a>
+            <a href="#pricing" className="nav-link">Harga</a>
+            <a href="#features" className="nav-link">Fitur</a>
+            <a href={`${MAIN_URL}/kontak`} target="_blank" rel="noopener noreferrer" className="nav-cta">Pesan Sekarang</a>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "28px" }}>
-            <a href="#themes" style={{ color: "#7A6A5A", fontSize: "14px", fontWeight: 600, textDecoration: "none" }}>Tema</a>
-            <a href="#pricing" style={{ color: "#7A6A5A", fontSize: "14px", fontWeight: 600, textDecoration: "none" }}>Harga</a>
-            <a href="#features" style={{ color: "#7A6A5A", fontSize: "14px", fontWeight: 600, textDecoration: "none" }}>Fitur</a>
-            <a href={`${MAIN_URL}/kontak`} target="_blank" rel="noopener noreferrer" style={{ background: "#2C1F14", color: "#F5EDD8", padding: "10px 24px", borderRadius: "10px", fontWeight: 700, fontSize: "13px", textDecoration: "none", letterSpacing: "0.04em" }}>
-              Pesan Sekarang
-            </a>
+
+          {/* Mobile: CTA + hamburger */}
+          <div className="nav-mobile">
+            <a href={`${MAIN_URL}/kontak`} target="_blank" rel="noopener noreferrer" className="nav-cta-sm">Pesan</a>
+            <button onClick={() => setMenuOpen(!menuOpen)} className="nav-burger" aria-label="Menu">
+              <span className={`burger-line ${menuOpen ? "open-1" : ""}`} />
+              <span className={`burger-line ${menuOpen ? "open-2" : ""}`} />
+              <span className={`burger-line ${menuOpen ? "open-3" : ""}`} />
+            </button>
           </div>
         </div>
+
+        {/* Mobile dropdown menu */}
+        {menuOpen && (
+          <div className="nav-dropdown">
+            <a href="#themes"  className="nav-dd-link" onClick={() => setMenuOpen(false)}>Tema</a>
+            <a href="#pricing" className="nav-dd-link" onClick={() => setMenuOpen(false)}>Harga</a>
+            <a href="#features" className="nav-dd-link" onClick={() => setMenuOpen(false)}>Fitur</a>
+            <a href={`${MAIN_URL}/kontak`} target="_blank" rel="noopener noreferrer" className="nav-dd-cta" onClick={() => setMenuOpen(false)}>Pesan Sekarang →</a>
+          </div>
+        )}
       </nav>
 
       {/* ── Hero ── */}
@@ -334,6 +356,30 @@ export default function CatalogPage() {
 
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Lato:wght@400;600;700&display=swap');
+
+        /* ── Navbar ── */
+        .nav-desktop { display: flex; align-items: center; gap: 24px; }
+        .nav-link { color: #7A6A5A; font-size: 14px; font-weight: 600; text-decoration: none; transition: color 0.2s; }
+        .nav-link:hover { color: #2C1F14; }
+        .nav-cta { background: #2C1F14; color: #F5EDD8; padding: 10px 22px; border-radius: 10px; font-weight: 700; font-size: 13px; text-decoration: none; letter-spacing: 0.04em; white-space: nowrap; transition: background 0.2s; }
+        .nav-cta:hover { background: #3D2A1A; }
+        .nav-mobile { display: none; align-items: center; gap: 10px; }
+        .nav-cta-sm { background: #2C1F14; color: #F5EDD8; padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 12px; text-decoration: none; white-space: nowrap; }
+        .nav-burger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+        .burger-line { display: block; width: 22px; height: 2px; background: #2C1F14; border-radius: 2px; transition: transform 0.25s, opacity 0.25s; }
+        .open-1 { transform: translateY(7px) rotate(45deg); }
+        .open-2 { opacity: 0; }
+        .open-3 { transform: translateY(-7px) rotate(-45deg); }
+        .nav-dropdown { background: rgba(250,247,242,0.98); border-top: 1px solid rgba(180,150,120,0.15); padding: 12px 20px 16px; display: flex; flex-direction: column; gap: 4px; }
+        .nav-dd-link { color: #5A4A3A; font-size: 15px; font-weight: 600; text-decoration: none; padding: 10px 0; border-bottom: 1px solid rgba(180,150,120,0.1); }
+        .nav-dd-cta { display: block; margin-top: 10px; background: #2C1F14; color: #F5EDD8; padding: 13px 20px; border-radius: 10px; font-weight: 700; font-size: 14px; text-decoration: none; text-align: center; }
+
+        @media (max-width: 680px) {
+          .nav-desktop { display: none; }
+          .nav-mobile { display: flex; }
+        }
+
+        /* ── Cards & Buttons ── */
         .inv-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(60,30,10,0.13) !important; border-color: rgba(196,151,90,0.3) !important; }
         .inv-btn-preview { margin-top: 4px; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 18px; border-radius: 10px; text-decoration: none; background: #FAF0E4; border: 1.5px solid rgba(196,151,90,0.35); color: #8C5A20; font-size: 12px; font-weight: 700; font-family: 'Lato', sans-serif; letter-spacing: 0.04em; transition: all 0.25s; }
         .inv-btn-preview:hover { background: #2C1F14; color: #F5EDD8; border-color: #2C1F14; }

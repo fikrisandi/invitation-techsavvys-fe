@@ -36,6 +36,8 @@ function SakuraBloomContent({ guestName }: { guestName?: string }) {
     >
       {/* Global styles for this theme */}
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Lato:wght@300;400;700&display=swap');
+
         /* ===== SAKURA BLOOM THEME CSS VARIABLES ===== */
         .theme-sakura-bloom {
           --sakura-bg:            #FDF8F9;
@@ -82,9 +84,6 @@ function SakuraBloomContent({ guestName }: { guestName?: string }) {
         .delay-3 { transition-delay: 0.3s; }
         .delay-4 { transition-delay: 0.4s; }
         .delay-5 { transition-delay: 0.5s; }
-
-        /* ===== FONT IMPORTS ===== */
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Lato:wght@300;400;700&display=swap');
 
         /* ===== SCROLLBAR ===== */
         .theme-sakura-bloom ::-webkit-scrollbar { width: 4px; }
