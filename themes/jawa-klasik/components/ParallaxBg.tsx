@@ -51,7 +51,7 @@ function CandiBackground() {
           left: "0",
           width: "100%",
           height: "45%",
-          opacity: 0.3,
+          opacity: 0.6,
         }}
       >
         <Image
@@ -61,7 +61,7 @@ function CandiBackground() {
           style={{
             objectFit: "cover",
             objectPosition: "center",
-            filter: "sepia(0.5) saturate(1.1) brightness(0.85) hue-rotate(-10deg)",
+            filter: "sepia(0.3) saturate(1.2) brightness(1.0)",
             maskImage: "linear-gradient(to bottom, black 40%, transparent 95%)",
             WebkitMaskImage: "linear-gradient(to bottom, black 40%, transparent 95%)",
           }}
@@ -77,7 +77,7 @@ function CandiBackground() {
           left: "0",
           width: "100%",
           height: "35%",
-          opacity: 0.2,
+          opacity: 0.5,
         }}
       >
         <Image
@@ -87,8 +87,8 @@ function CandiBackground() {
           style={{
             objectFit: "cover",
             objectPosition: "center top",
-            filter: "sepia(0.4) saturate(1.2) brightness(0.9)",
-            maskImage: "linear-gradient(to top, black 30%, transparent 90%)",
+            filter: "sepia(0.3) saturate(1.2) brightness(1.0)",
+            maskImage: "linear-gradient(to top, black 40%, transparent 85%)",
             WebkitMaskImage: "linear-gradient(to top, black 30%, transparent 90%)",
           }}
         />
@@ -426,8 +426,8 @@ function FloatingLandscapes() {
   const ref = useScrollParallax(0.15);
 
   const landscapes = [
-    { left: "12%", top: "40%", size: 75, opacity: 0.35 },
-    { left: "82%", top: "48%", size: 65, opacity: 0.3 },
+    { left: "12%", top: "40%", size: 90, opacity: 0.7 },
+    { left: "82%", top: "48%", size: 80, opacity: 0.65 },
   ];
 
   return (
