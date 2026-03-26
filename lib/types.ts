@@ -24,7 +24,7 @@ export type Person = {
 
 export type InvitationData = {
   slug: string;
-  theme: "emerald-gold" | "midnight-blue" | "ylang-ylang" | "rose-blush";
+  theme: "emerald-gold" | "midnight-blue" | "ylang-ylang" | "rose-blush" | "jawa-klasik" | "sunda-klasik" | "cinematic" | "sakura-bloom" | "galaxy";
   expiredAt: string; // ISO date string
 
   // Opening

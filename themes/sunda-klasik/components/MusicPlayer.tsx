@@ -1,0 +1,108 @@
+"use client";
+
+import { useState, useRef, useCallback } from "react";
+import type { CSSProperties } from "react";
+import { useInvitation } from "../context";
+
+export default function MusicPlayer({ autoPlay = false }: { autoPlay?: boolean }) {
+  const { musicUrl } = useInvitation();
+  const [playing, setPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const started = useRef(false);
+
+  const play = useCallback(() => {
+    audioRef.current?.play().then(() => setPlaying(true)).catch(() => {});
+  }, []);
+
+  const toggle = () => {
+    if (!audioRef.current) return;
+    if (playing) {
+      audioRef.current.pause();
+      setPlaying(false);
+    } else {
+      play();
+    }
+  };
+
+  if (autoPlay && !started.current) {
+    started.current = true;
+    setTimeout(play, 600);
+  }
+
+  if (!musicUrl) return null;
+
+  const spinKeyframes = `
+    @keyframes sunda-disc-spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes sunda-pulse-ring {
+      0%   { transform: scale(1); opacity: 0.6; }
+      100% { transform: scale(1.55); opacity: 0; }
+    }
+  `;
+
+  const btnStyle: CSSProperties = {
+    position: "fixed",
+    bottom: "20px",
+    left: "20px",
+    zIndex: 90,
+    width: "52px",
+    height: "52px",
+    borderRadius: "50%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    cursor: "pointer",
+    background: "var(--sunda-terra)",
+    border: "1px solid rgba(200,144,32,0.4)",
+    boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
+  };
+
+  return (
+    <>
+      <style>{spinKeyframes}</style>
+      <audio ref={audioRef} loop preload="auto">
+        <source src={musicUrl} type="audio/mpeg" />
+      </audio>
+      <button
+        onClick={toggle}
+        aria-label={playing ? "Pause musik" : "Play musik"}
+        style={btnStyle}
+      >
+        {/* Spinning ring */}
+        <div style={{
+          position: "absolute",
+          inset: "3px",
+          borderRadius: "50%",
+          border: "1px solid rgba(200,144,32,0.3)",
+          borderTopColor: "var(--sunda-gold)",
+          animation: playing ? "sunda-disc-spin 3s linear infinite" : "none",
+        }} />
+        {/* Icon */}
+        <div style={{ position: "relative", zIndex: 1 }}>
+          {playing ? (
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#F5E8D0">
+              <rect x="6" y="4" width="4" height="16" rx="1" />
+              <rect x="14" y="4" width="4" height="16" rx="1" />
+            </svg>
+          ) : (
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#F5E8D0">
+              <polygon points="7,3 21,12 7,21" />
+            </svg>
+          )}
+        </div>
+        {/* Pulse ring when playing */}
+        {playing && (
+          <div style={{
+            position: "absolute",
+            inset: 0,
+            borderRadius: "50%",
+            border: "1px solid var(--sunda-gold)",
+            animation: "sunda-pulse-ring 2s ease-out infinite",
+          }} />
+        )}
+      </button>
+    </>
+  );
+}

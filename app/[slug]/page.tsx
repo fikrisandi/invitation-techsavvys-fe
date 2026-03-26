@@ -7,6 +7,11 @@ import EmeraldGoldTheme from "@/themes/emerald-gold";
 import MidnightBlueTheme from "@/themes/midnight-blue";
 import YlangYlangTheme from "@/themes/ylang-ylang";
 import RoseBlushTheme from "@/themes/rose-blush";
+import JawaKlasikTheme from "@/themes/jawa-klasik";
+import SundaKlasikTheme from "@/themes/sunda-klasik";
+import CinematicTheme from "@/themes/cinematic";
+import GalaxyTheme from "@/themes/galaxy";
+import SakuraBloomTheme from "@/themes/sakura-bloom";
 import type { InvitationData } from "@/lib/types";
 import type { Metadata } from "next";
 
@@ -15,6 +20,11 @@ const THEMES = {
   "midnight-blue": MidnightBlueTheme,
   "ylang-ylang": YlangYlangTheme,
   "rose-blush": RoseBlushTheme,
+  "jawa-klasik": JawaKlasikTheme,
+  "sunda-klasik": SundaKlasikTheme,
+  "cinematic": CinematicTheme,
+  "galaxy": GalaxyTheme,
+  "sakura-bloom": SakuraBloomTheme,
 };
 
 type Props = { params: Promise<{ slug: string }>; searchParams: Promise<{ to?: string }> };
