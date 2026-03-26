@@ -1,8 +1,9 @@
 "use client";
+import type { CSSProperties } from "react";
 
-export function BotanicalTop({ className = "" }: { className?: string }) {
+export function BotanicalTop({ className = "", style }: { className?: string; style?: CSSProperties }) {
   return (
-    <svg viewBox="0 0 300 100" className={className} style={{ display: "block", margin: "0 auto", width: "220px", opacity: 0.55 }} fill="none">
+    <svg viewBox="0 0 300 100" className={className} style={{ display: "block", margin: "0 auto", width: "220px", opacity: 0.55, ...style }} fill="none">
       <g stroke="currentColor" strokeWidth="0.8">
         {/* Left branch */}
         <path d="M150 90 Q120 65 90 70 Q108 52 150 60" />
