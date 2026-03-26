@@ -15,6 +15,7 @@ import RSVP from "./components/RSVP";
 import Wishes from "./components/Wishes";
 import Footer from "./components/Footer";
 import MusicPlayer from "./components/MusicPlayer";
+import ParallaxBg from "./components/ParallaxBg";
 import type { InvitationData } from "@/lib/types";
 
 /* Animated nebula orbs + shooting stars layered above StarField */
@@ -64,6 +65,7 @@ function InvitationContent({ guestName }: { guestName?: string }) {
 
   return (
     <>
+      <ParallaxBg />
       {/* Star field is fixed, rendered once at the top level */}
       <GalaxyNebula />
       <StarField />

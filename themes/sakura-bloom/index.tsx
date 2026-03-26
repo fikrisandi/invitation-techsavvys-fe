@@ -14,6 +14,7 @@ import Footer from "./components/Footer";
 import MusicPlayer from "./components/MusicPlayer";
 import { SakuraPetals3D } from "./components/SakuraEffect";
 import { useReveal } from "./components/useReveal";
+import ParallaxBg from "./components/ParallaxBg";
 
 interface Props {
   data: InvitationData;
@@ -124,6 +125,9 @@ function SakuraBloomContent({ guestName }: { guestName?: string }) {
           opacity: 1;
         }
       `}</style>
+
+      {/* Multi-layer parallax background */}
+      <ParallaxBg />
 
       {/* 3D Petal effect - always floating above everything except cover */}
       <SakuraPetals3D />

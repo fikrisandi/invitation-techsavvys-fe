@@ -14,6 +14,7 @@ import Footer from "./components/Footer";
 import MusicPlayer from "./components/MusicPlayer";
 import { FloatingPetals } from "./components/FloralOrnament";
 import { useReveal } from "./components/useReveal";
+import ParallaxBg from "./components/ParallaxBg";
 
 interface Props { data: InvitationData; guestName?: string; }
 
@@ -21,6 +22,7 @@ function RoseBlushContent({ guestName }: { guestName?: string }) {
   useReveal();
   return (
     <div className="theme-rose-blush" style={{ minHeight: "100vh", background: "var(--color-rb-bg)", color: "var(--color-rb-text)" }}>
+      <ParallaxBg />
       <FloatingPetals />
       <Cover guestName={guestName} />
       <Hero />

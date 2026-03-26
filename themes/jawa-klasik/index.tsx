@@ -14,6 +14,7 @@ import RSVP from "./components/RSVP";
 import Wishes from "./components/Wishes";
 import Footer from "./components/Footer";
 import MusicPlayer from "./components/MusicPlayer";
+import ParallaxBg from "./components/ParallaxBg";
 import type { InvitationData } from "@/lib/types";
 
 const cssVars = `
@@ -126,6 +127,7 @@ function InvitationContent({ guestName }: { guestName?: string }) {
   useReveal();
   return (
     <>
+      <ParallaxBg />
       <JawaAmbient />
       <Cover guestName={guestName} />
       <main style={{ position: "relative", zIndex: 1 }}>

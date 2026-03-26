@@ -15,6 +15,7 @@ import Footer from "./components/Footer";
 import MusicPlayer from "./components/MusicPlayer";
 import { FloatingPetals } from "./components/BotanicalOrnament";
 import { useReveal } from "./components/useReveal";
+import ParallaxBg from "./components/ParallaxBg";
 
 interface Props { data: InvitationData; guestName?: string; }
 
@@ -23,6 +24,8 @@ function YlangYlangContent({ guestName }: { guestName?: string }) {
   const [opened, setOpened] = useState(false);
   return (
     <div className="theme-ylang-ylang" style={{ minHeight: "100vh", background: "var(--color-yy-cream)", color: "var(--color-yy-text)" }}>
+      {/* Multi-layer parallax botanical background */}
+      <ParallaxBg />
       {!opened && <FloatingPetals />}
       <Cover onOpen={() => setOpened(true)} guestName={guestName} />
       {opened && (
