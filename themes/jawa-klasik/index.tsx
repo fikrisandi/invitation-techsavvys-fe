@@ -36,9 +36,9 @@ const cssVars = `
     --font-jawa-script: "Great Vibes", cursive;
     --font-jawa-body: "Lato", sans-serif;
 
-    background: var(--jawa-bg);
     color: var(--jawa-text);
     font-family: var(--font-jawa-body);
+    min-height: 100vh;
   }
 
   .theme-jawa-klasik .reveal-up,

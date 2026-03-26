@@ -516,9 +516,24 @@ function GoldDust() {
   );
 }
 
+/* Base dark background - z-index -1 */
+function BaseBackground() {
+  return (
+    <div
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: -1,
+        background: "#0E0600",
+      }}
+    />
+  );
+}
+
 export default function ParallaxBg() {
   return (
     <>
+      <BaseBackground />
       <CandiBackground />
       <JanurLayer />
       <BatikParangLayer />
