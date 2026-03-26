@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { themes } from "@/lib/dummy";
 
 const MAIN_URL = process.env.NEXT_PUBLIC_MAIN_URL ?? "https://techsavvys.com";
@@ -174,10 +175,7 @@ export default function CatalogPage() {
       <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: "rgba(250,247,242,0.93)", backdropFilter: "blur(20px)", borderBottom: "1px solid rgba(180,150,120,0.15)", padding: "14px 0" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 28px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-              <rect width="36" height="36" rx="10" fill="#2C1F14"/>
-              <text x="18" y="24" textAnchor="middle" fontFamily="Georgia, serif" fontSize="14" fontWeight="700" fill="#C4975A" fontStyle="italic">TS</text>
-            </svg>
+            <Image src="/logo-savvys.png" alt="Techsavvys" width={36} height={44} style={{ objectFit: "contain" }} />
             <div>
               <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 700, fontSize: "17px", color: "#2C1F14", lineHeight: 1.1 }}>Invitation Savvys</div>
               <div style={{ fontSize: "10px", color: "#9A7A5A" }}>by <a href={MAIN_URL} target="_blank" rel="noopener noreferrer" style={{ color: "#C4975A", textDecoration: "none", fontWeight: 600 }}>Techsavvys</a></div>
