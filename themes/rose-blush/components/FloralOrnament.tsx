@@ -1,4 +1,5 @@
 "use client";
+import type { CSSProperties } from "react";
 
 export function RoseDivider() {
   return (
@@ -15,7 +16,7 @@ export function RoseDivider() {
 }
 
 export function FloralCorner({ position }: { position: "tl" | "tr" | "bl" | "br" }) {
-  const style: React.CSSProperties = {
+  const style: CSSProperties = {
     position: "absolute",
     width: "120px",
     height: "120px",

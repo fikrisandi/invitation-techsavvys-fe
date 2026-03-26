@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { getInvitation } from "@/lib/api";
 import EmeraldGoldTheme from "@/themes/emerald-gold";
 import MidnightBlueTheme from "@/themes/midnight-blue";
@@ -52,9 +53,9 @@ function ExpiredPage({ data }: { data: InvitationData }) {
         <p style={{ color: "#666672", fontSize: "14px", lineHeight: 1.8, marginBottom: "32px" }}>
           Undangan pernikahan <strong style={{ color: "#EEEEF2" }}>{data.groom.nickname} &amp; {data.bride.nickname}</strong> sudah tidak aktif.
         </p>
-        <a href="/" style={{ display: "inline-block", background: "rgba(0,191,165,0.1)", border: "1px solid rgba(0,191,165,0.25)", color: "#00BFA5", padding: "12px 24px", borderRadius: "8px", fontSize: "13px", fontWeight: 500, textDecoration: "none" }}>
+        <Link href="/" style={{ display: "inline-block", background: "rgba(0,191,165,0.1)", border: "1px solid rgba(0,191,165,0.25)", color: "#00BFA5", padding: "12px 24px", borderRadius: "8px", fontSize: "13px", fontWeight: 500, textDecoration: "none" }}>
           Kembali ke Beranda
-        </a>
+        </Link>
       </div>
     </div>
   );
