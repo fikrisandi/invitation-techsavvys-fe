@@ -19,17 +19,14 @@ function useScrollParallax(speed: number) {
 
 /* Layer 1 - Cinematic background images (slowest) */
 function CinematicBackground() {
-  const ref = useScrollParallax(0.03);
   return (
     <div
-      ref={ref}
       style={{
         position: "fixed",
         inset: 0,
         zIndex: 0,
         pointerEvents: "none",
         overflow: "hidden",
-        willChange: "transform",
       }}
     >
       {/* Top cinematic image */}

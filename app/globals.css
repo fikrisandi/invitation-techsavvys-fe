@@ -3,6 +3,13 @@
 @import "tailwindcss";
 
 /* ==========================================
+   GLOBAL SCROLL LOCK (Cover overlay)
+   ========================================== */
+body.no-scroll {
+  overflow: hidden !important;
+}
+
+/* ==========================================
    TECHSAVVYS BRAND (catalog / platform pages)
    ========================================== */
 @theme inline {

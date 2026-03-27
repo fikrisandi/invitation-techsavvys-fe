@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FloralCorner } from "./FloralOrnament";
 import { useInvitation } from "../context";
 
@@ -7,6 +7,15 @@ export default function Cover({ guestName }: { guestName?: string }) {
   const { groom, bride, events } = useInvitation();
   const [opened, setOpened] = useState(false);
   const mainEvent = events[0];
+
+  useEffect(() => {
+    document.body.classList.add("no-scroll");
+  }, []);
+
+  const handleOpen = () => {
+    document.body.classList.remove("no-scroll");
+    setOpened(true);
+  };
 
   if (opened) return null;
 
@@ -55,7 +64,7 @@ export default function Cover({ guestName }: { guestName?: string }) {
 
       {/* Open button */}
       <button
-        onClick={() => setOpened(true)}
+        onClick={handleOpen}
         style={{
           padding: "14px 40px", borderRadius: "40px",
           background: "var(--color-rb-dusty)",

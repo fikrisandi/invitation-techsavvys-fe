@@ -7,7 +7,10 @@ export default function Cover({ onOpen, guestName }: { onOpen: () => void; guest
   const { groom, bride, events, openingText } = useInvitation();
   const [ready, setReady] = useState(false);
   const [exiting, setExiting] = useState(false);
-  useEffect(() => { setTimeout(() => setReady(true), 250); }, []);
+  useEffect(() => {
+    document.body.classList.add("no-scroll");
+    setTimeout(() => setReady(true), 250);
+  }, []);
 
   const handleOpen = () => { setExiting(true); document.body.classList.remove("no-scroll"); setTimeout(onOpen, 900); };
   const firstEvent = events[0];

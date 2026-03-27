@@ -19,17 +19,14 @@ export function useScrollParallax(speed: number) {
 
 /* Layer 1 - Tropical flower background (slowest) */
 function FlowerBackground() {
-  const ref = useScrollParallax(0.05);
   return (
     <div
-      ref={ref}
       style={{
         position: "fixed",
         inset: 0,
         zIndex: 0,
         pointerEvents: "none",
         overflow: "hidden",
-        willChange: "transform",
       }}
     >
       {/* Top-left flower arrangement */}

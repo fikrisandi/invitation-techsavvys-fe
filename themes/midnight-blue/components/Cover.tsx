@@ -18,7 +18,10 @@ export default function Cover({ onOpen, guestName }: { onOpen: () => void; guest
   const [ready, setReady] = useState(false);
   const [exiting, setExiting] = useState(false);
 
-  useEffect(() => { setTimeout(() => setReady(true), 200); }, []);
+  useEffect(() => {
+    document.body.classList.add("no-scroll");
+    setTimeout(() => setReady(true), 200);
+  }, []);
 
   const handleOpen = () => {
     setExiting(true);

@@ -64,7 +64,7 @@ export const themes = [
     palette: ["#0A3D2E", "#D4A853", "#EAD18F"],
     available: true,
     hidden: true,
-    price: 150000,
+    price: 130000,
     tier: "Premium",
   },
   {
@@ -76,7 +76,7 @@ export const themes = [
     palette: ["#FAF7F2", "#3D5A45", "#C4975A"],
     available: true,
     price: 60000,
-    tier: "Dasar",
+    tier: "Basic",
   },
   {
     id: "rose-blush",
@@ -87,7 +87,7 @@ export const themes = [
     palette: ["#FDF6F6", "#C17A8F", "#C99070"],
     available: true,
     price: 60000,
-    tier: "Dasar",
+    tier: "Basic",
   },
   {
     id: "midnight-blue",
@@ -97,8 +97,8 @@ export const themes = [
     category: "Modern",
     palette: ["#0B1221", "#4A9EE8", "#DDE3EE"],
     available: true,
-    price: 80000,
-    tier: "Standar",
+    price: 95000,
+    tier: "Elegant",
   },
   {
     id: "galaxy",
@@ -108,8 +108,8 @@ export const themes = [
     category: "Modern",
     palette: ["#04040E", "#8B5CF6", "#E879A0"],
     available: true,
-    price: 100000,
-    tier: "Modern",
+    price: 95000,
+    tier: "Elegant",
   },
   {
     id: "jawa-klasik",
@@ -141,8 +141,8 @@ export const themes = [
     category: "Romantis",
     palette: ["#FDF8F9", "#D4708A", "#C89050"],
     available: true,
-    price: 100000,
-    tier: "Modern",
+    price: 95000,
+    tier: "Elegant",
   },
   {
     id: "cinematic",

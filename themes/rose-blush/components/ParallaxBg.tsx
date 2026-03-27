@@ -19,17 +19,14 @@ function useScrollParallax(speed: number) {
 
 /* Layer 1 - Large rose images at corners (slowest) */
 function RoseBackground() {
-  const ref = useScrollParallax(0.05);
   return (
     <div
-      ref={ref}
       style={{
         position: "fixed",
         inset: 0,
         zIndex: 0,
         pointerEvents: "none",
         overflow: "hidden",
-        willChange: "transform",
       }}
     >
       {/* Top-left rose */}

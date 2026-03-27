@@ -68,8 +68,6 @@ const cssVars = `
   .theme-sunda-klasik .delay-7 { transition-delay: 0.68s; }
   .theme-sunda-klasik .delay-8 { transition-delay: 0.80s; }
 
-  .theme-sunda-klasik .no-scroll { overflow: hidden; }
-
   @keyframes sunda-cloud-drift {
     0%   { transform: translateX(-20px) scaleX(1); opacity: 0.12; }
     50%  { transform: translateX(20px) scaleX(1.04); opacity: 0.22; }

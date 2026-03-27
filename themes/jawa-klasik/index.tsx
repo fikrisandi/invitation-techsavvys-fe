@@ -69,8 +69,6 @@ const cssVars = `
   .theme-jawa-klasik .delay-7 { transition-delay: 0.68s; }
   .theme-jawa-klasik .delay-8 { transition-delay: 0.80s; }
 
-  .theme-jawa-klasik .no-scroll { overflow: hidden; }
-
   @keyframes jawa-float-up {
     0%   { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.8); }
     15%  { opacity: 0.7; }

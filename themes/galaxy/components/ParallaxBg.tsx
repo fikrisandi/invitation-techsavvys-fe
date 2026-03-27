@@ -19,17 +19,14 @@ function useScrollParallax(speed: number) {
 
 /* Layer 1 - Deep space nebula background (slowest) */
 function NebulaBackground() {
-  const ref = useScrollParallax(0.03);
   return (
     <div
-      ref={ref}
       style={{
         position: "fixed",
         inset: 0,
         zIndex: 0,
         pointerEvents: "none",
         overflow: "hidden",
-        willChange: "transform",
       }}
     >
       {/* Full background nebula */}
