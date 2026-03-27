@@ -35,9 +35,9 @@ export default function Couple() {
           <h2 style={{ fontFamily: "var(--font-rb-script)", fontSize: "clamp(2.2rem, 7vw, 3rem)", color: "var(--color-rb-dusty)", marginBottom: "8px" }}>Mempelai</h2>
           <RoseDivider />
         </div>
-        <div style={{ display: "flex", gap: "24px", justifyContent: "center", flexWrap: "wrap", alignItems: "flex-start" }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "24px" }}>
           <PersonCard person={groom} role="Mempelai Pria" />
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "20px 0", minWidth: "40px" }}>
+          <div style={{ textAlign: "center" }}>
             <span style={{ fontFamily: "var(--font-rb-script)", fontSize: "2.5rem", color: "var(--color-rb-rosegold)", opacity: 0.6 }}>&amp;</span>
           </div>
           <PersonCard person={bride} role="Mempelai Wanita" />

@@ -8,7 +8,9 @@ function useScrollParallax(speed: number) {
     const el = ref.current;
     if (!el) return;
     const onScroll = () => {
-      el.style.transform = `translate3d(0, ${window.scrollY * speed}px, 0)`;
+      const vh = window.innerHeight;
+      const y = (window.scrollY * speed) % vh;
+      el.style.transform = `translate3d(0, ${y}px, 0)`;
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();

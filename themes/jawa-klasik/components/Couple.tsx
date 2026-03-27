@@ -167,22 +167,20 @@ export default function Couple({ guestName }: { guestName?: string }) {
         {/* Couple cards */}
         <div style={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "column",
           alignItems: "center",
           gap: "24px",
-          flexWrap: "wrap",
-          justifyContent: "center",
         }}>
-          <div className="reveal-left delay-2" style={{ flex: "1 1 280px", maxWidth: "340px" }}>
+          <div className="reveal-left delay-2" style={{ width: "100%", maxWidth: "340px" }}>
             <PersonCard person={groom} photoLabel={`Foto ${groom.nickname}`} />
           </div>
 
           {/* Gunungan divider */}
-          <div className="reveal-scale delay-3" style={{ textAlign: "center", flexShrink: 0, padding: "0 8px" }}>
+          <div className="reveal-scale delay-3" style={{ textAlign: "center" }}>
             <GununganDivider />
           </div>
 
-          <div className="reveal-right delay-4" style={{ flex: "1 1 280px", maxWidth: "340px" }}>
+          <div className="reveal-right delay-4" style={{ width: "100%", maxWidth: "340px" }}>
             <PersonCard person={bride} photoLabel={`Foto ${bride.nickname}`} />
           </div>
         </div>

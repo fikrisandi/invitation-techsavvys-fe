@@ -15,8 +15,8 @@ function PersonHalf({
     <div
       className={side === "left" ? "reveal-left" : "reveal-right"}
       style={{
-        flex: "1 1 50%",
-        minWidth: "280px",
+        width: "100%",
+        maxWidth: "500px",
         background: side === "left" ? "var(--cine-bg)" : "var(--cine-bg-mid)",
         display: "flex",
         flexDirection: "column",
@@ -161,29 +161,26 @@ export default function Couple() {
         <CineRule />
       </div>
 
-      {/* True split screen */}
+      {/* Couple cards */}
       <div
         style={{
           display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "0",
           position: "relative",
         }}
       >
         <PersonHalf person={groom} side="left" />
 
-        {/* Gold vertical divider */}
+        {/* Gold horizontal divider */}
         <div
           style={{
-            position: "absolute",
-            left: "50%",
-            top: 0,
-            bottom: 0,
-            width: "1px",
-            background: "linear-gradient(to bottom, transparent, var(--cine-gold), transparent)",
+            width: "60%",
+            maxWidth: "200px",
+            height: "1px",
+            background: "linear-gradient(to right, transparent, var(--cine-gold), transparent)",
             opacity: 0.5,
-            transform: "translateX(-50%)",
-            pointerEvents: "none",
           }}
         />
 

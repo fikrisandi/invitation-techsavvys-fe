@@ -198,10 +198,9 @@ export default function Couple() {
         <div
           style={{
             display: "flex",
-            flexWrap: "wrap",
+            flexDirection: "column",
+            alignItems: "center",
             gap: "32px",
-            justifyContent: "center",
-            alignItems: "stretch",
           }}
         >
           <PersonCard person={groom} role="Mempelai Pria" />

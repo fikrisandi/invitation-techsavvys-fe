@@ -44,14 +44,14 @@ export default function Couple({ guestName }: { guestName?: string }) {
             untuk menghadiri pernikahan kami:
           </p>
         </div>
-        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "24px", flexWrap: "wrap", justifyContent: "center" }}>
-          <div className="reveal-left delay-2" style={{ flex: "1 1 280px", maxWidth: "340px" }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "24px" }}>
+          <div className="reveal-left delay-2" style={{ width: "100%", maxWidth: "340px" }}>
             <PersonCard person={groom} photoLabel={`Foto ${groom.nickname}`} />
           </div>
-          <div className="reveal-scale delay-3" style={{ textAlign: "center", padding: "0 8px", flexShrink: 0 }}>
+          <div className="reveal-scale delay-3" style={{ textAlign: "center" }}>
             <span style={{ fontFamily: "var(--font-script)", fontSize: "3rem", opacity: 0.5, color: "var(--color-gold)" }}>&amp;</span>
           </div>
-          <div className="reveal-right delay-4" style={{ flex: "1 1 280px", maxWidth: "340px" }}>
+          <div className="reveal-right delay-4" style={{ width: "100%", maxWidth: "340px" }}>
             <PersonCard person={bride} photoLabel={`Foto ${bride.nickname}`} />
           </div>
         </div>

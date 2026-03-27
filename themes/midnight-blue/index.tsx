@@ -14,6 +14,8 @@ import RSVP from "./components/RSVP";
 import Wishes from "./components/Wishes";
 import Footer from "./components/Footer";
 import MusicPlayer from "./components/MusicPlayer";
+import ParallaxBg from "./components/ParallaxBg";
+import MidnightAmbient from "./components/MidnightAmbient";
 import type { InvitationData } from "@/lib/types";
 
 function InvitationContent({ guestName }: { guestName?: string }) {
@@ -22,8 +24,10 @@ function InvitationContent({ guestName }: { guestName?: string }) {
 
   return (
     <>
+      <ParallaxBg />
+      <MidnightAmbient />
       {!isOpen && <Cover onOpen={() => setIsOpen(true)} guestName={guestName} />}
-      <main>
+      <main style={{ position: "relative", zIndex: 1 }}>
         <Hero />
         <Couple guestName={guestName} />
         <Countdown />

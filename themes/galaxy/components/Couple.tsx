@@ -179,11 +179,9 @@ export default function Couple() {
         <div
           style={{
             display: "flex",
-            flexDirection: "row",
-            flexWrap: "wrap",
+            flexDirection: "column",
+            alignItems: "center",
             gap: "32px",
-            justifyContent: "center",
-            alignItems: "stretch",
           }}
         >
           <div className="reveal-left delay-2">
@@ -192,13 +190,7 @@ export default function Couple() {
 
           <div
             className="reveal-scale delay-3"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "0 8px",
-              flexShrink: 0,
-            }}
+            style={{ textAlign: "center" }}
           >
             <span
               style={{

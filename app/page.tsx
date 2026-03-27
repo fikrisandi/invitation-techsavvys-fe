@@ -235,7 +235,7 @@ export default function CatalogPage() {
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" as const }}>
             <a href="#themes" style={{ background: "#2C1F14", color: "#F5EDD8", padding: "14px 34px", borderRadius: "10px", fontWeight: 700, fontSize: "14px", textDecoration: "none" }}>Lihat Tema</a>
-            <a href="#pricing" style={{ background: "transparent", color: "#2C1F14", padding: "14px 34px", borderRadius: "10px", fontWeight: 600, fontSize: "14px", textDecoration: "none", border: "1.5px solid rgba(60,40,20,0.2)" }}>Lihat Harga</a>
+            <a href="#pricing" style={{ background: "transparent", color: "#2C1F14", padding: "14px 34px", borderRadius: "10px", fontWeight: 600, fontSize: "14px", textDecoration: "none", border: "1.5px solid rgba(60,40,20,0.2)" }}>Lihat Benefit</a>
           </div>
         </div>
       </section>
