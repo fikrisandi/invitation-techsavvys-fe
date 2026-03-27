@@ -190,7 +190,7 @@ export default function CatalogPage() {
           {/* Desktop links */}
           <div className="nav-desktop">
             <a href="#themes" className="nav-link">Tema</a>
-            <a href="#pricing" className="nav-link">Harga</a>
+            <a href="#pricing" className="nav-link">Benefit</a>
             <a href="#features" className="nav-link">Fitur</a>
             <a href={waLink("Halo min, saya tertarik membuat undangan digital di Invitation Savvys. Bisa info lebih lanjut?")} target="_blank" rel="noopener noreferrer" className="nav-cta">Pesan Sekarang</a>
           </div>
@@ -210,7 +210,7 @@ export default function CatalogPage() {
         {menuOpen && (
           <div className="nav-dropdown">
             <a href="#themes"  className="nav-dd-link" onClick={() => setMenuOpen(false)}>Tema</a>
-            <a href="#pricing" className="nav-dd-link" onClick={() => setMenuOpen(false)}>Harga</a>
+            <a href="#pricing" className="nav-dd-link" onClick={() => setMenuOpen(false)}>Benefit</a>
             <a href="#features" className="nav-dd-link" onClick={() => setMenuOpen(false)}>Fitur</a>
             <a href={waLink("Halo min, saya tertarik membuat undangan digital di Invitation Savvys. Bisa info lebih lanjut?")} target="_blank" rel="noopener noreferrer" className="nav-dd-cta" onClick={() => setMenuOpen(false)}>Pesan Sekarang →</a>
           </div>
