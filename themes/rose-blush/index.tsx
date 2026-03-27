@@ -12,7 +12,6 @@ import RSVP from "./components/RSVP";
 import Wishes from "./components/Wishes";
 import Footer from "./components/Footer";
 import MusicPlayer from "./components/MusicPlayer";
-import { FloatingPetals } from "./components/FloralOrnament";
 import { useReveal } from "./components/useReveal";
 import ParallaxBg from "./components/ParallaxBg";
 
@@ -23,17 +22,18 @@ function RoseBlushContent({ guestName }: { guestName?: string }) {
   return (
     <div className="theme-rose-blush" style={{ minHeight: "100vh", background: "var(--color-rb-bg)", color: "var(--color-rb-text)" }}>
       <ParallaxBg />
-      <FloatingPetals />
       <Cover guestName={guestName} />
-      <Hero />
-      <Couple />
-      <Countdown />
-      <EventDetails />
-      <Gallery />
-      <Gift />
-      <RSVP guestName={guestName} />
-      <Wishes />
-      <Footer />
+      <main style={{ position: "relative", zIndex: 1 }}>
+        <Hero />
+        <Couple />
+        <Countdown />
+        <EventDetails />
+        <Gallery />
+        <Gift />
+        <RSVP guestName={guestName} />
+        <Wishes />
+        <Footer />
+      </main>
       <MusicPlayer />
     </div>
   );

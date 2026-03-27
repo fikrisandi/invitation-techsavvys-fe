@@ -173,61 +173,7 @@ function TropicalLeafLayer() {
   );
 }
 
-/* Layer 3 - Floating flower circles */
-function FloatingFlowers() {
-  const ref = useScrollParallax(0.18);
-
-  const flowers = [
-    { left: "15%", top: "25%", size: 70, rotate: 15, opacity: 0.5 },
-    { left: "78%", top: "20%", size: 55, rotate: -20, opacity: 0.45 },
-    { left: "25%", top: "60%", size: 65, rotate: 35, opacity: 0.5 },
-    { left: "80%", top: "55%", size: 50, rotate: -10, opacity: 0.4 },
-    { left: "45%", top: "75%", size: 60, rotate: 25, opacity: 0.45 },
-  ];
-
-  return (
-    <div
-      ref={ref}
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 0,
-        pointerEvents: "none",
-        overflow: "hidden",
-        willChange: "transform",
-      }}
-    >
-      {flowers.map((f, i) => (
-        <div
-          key={i}
-          style={{
-            position: "absolute",
-            left: f.left,
-            top: f.top,
-            width: f.size,
-            height: f.size,
-            transform: `rotate(${f.rotate}deg)`,
-            opacity: f.opacity,
-            borderRadius: "50%",
-            overflow: "hidden",
-          }}
-        >
-          <Image
-            src="/parallax/ylang-1.jpg"
-            alt="Ylang flower"
-            fill
-            style={{
-              objectFit: "cover",
-              filter: "saturate(1.3) brightness(1.1)",
-            }}
-          />
-        </div>
-      ))}
-    </div>
-  );
-}
-
-/* Layer 4 - Ylang-ylang flower SVG shapes */
+/* Layer 3 - Ylang-ylang flower SVG shapes */
 function YlangFlowerSvg() {
   const ref = useScrollParallax(0.25);
 
@@ -431,7 +377,6 @@ export default function ParallaxBg() {
       <FlowerBackground />
       <TropicalLeafLayer />
       <BotanicalSprigs />
-      <FloatingFlowers />
       <YlangFlowerSvg />
       <GoldAccents />
     </>

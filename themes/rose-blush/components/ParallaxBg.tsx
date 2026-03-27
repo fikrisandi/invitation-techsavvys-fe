@@ -85,62 +85,7 @@ function RoseBackground() {
   );
 }
 
-/* Layer 2 - Floating rose petals (medium speed) */
-function FloatingPetals() {
-  const ref = useScrollParallax(0.15);
-
-  const petals = [
-    { left: "15%", top: "25%", size: 70, rotate: 20, opacity: 0.6 },
-    { left: "75%", top: "20%", size: 55, rotate: -15, opacity: 0.5 },
-    { left: "25%", top: "55%", size: 65, rotate: 45, opacity: 0.55 },
-    { left: "80%", top: "50%", size: 50, rotate: -30, opacity: 0.45 },
-    { left: "10%", top: "75%", size: 60, rotate: 35, opacity: 0.5 },
-    { left: "65%", top: "80%", size: 70, rotate: -20, opacity: 0.6 },
-  ];
-
-  return (
-    <div
-      ref={ref}
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 0,
-        pointerEvents: "none",
-        overflow: "hidden",
-        willChange: "transform",
-      }}
-    >
-      {petals.map((petal, i) => (
-        <div
-          key={i}
-          style={{
-            position: "absolute",
-            left: petal.left,
-            top: petal.top,
-            width: petal.size,
-            height: petal.size,
-            transform: `rotate(${petal.rotate}deg)`,
-            opacity: petal.opacity,
-            borderRadius: "50%",
-            overflow: "hidden",
-          }}
-        >
-          <Image
-            src="/parallax/rose-3.jpg"
-            alt="Rose petal"
-            fill
-            style={{
-              objectFit: "cover",
-              filter: "saturate(1.3) brightness(1.1)",
-            }}
-          />
-        </div>
-      ))}
-    </div>
-  );
-}
-
-/* Layer 3 - SVG rose petals for elegance */
+/* Layer 2 - SVG rose petals for elegance */
 function SvgPetals() {
   const ref = useScrollParallax(0.22);
 
@@ -308,7 +253,6 @@ export default function ParallaxBg() {
     <>
       <RoseBackground />
       <RoseSvgLayer />
-      <FloatingPetals />
       <SvgPetals />
       <RoseBuds />
     </>

@@ -23,7 +23,7 @@ function InvitationContent({ guestName }: { guestName?: string }) {
   return (
     <>
       {!isOpen && <Cover onOpen={() => setIsOpen(true)} guestName={guestName} />}
-      <main>
+      <main style={{ position: "relative", zIndex: 1 }}>
         <Hero />
         <Couple guestName={guestName} />
         <Countdown />

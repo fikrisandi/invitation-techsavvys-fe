@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 function useScrollParallax(speed: number) {
   const ref = useRef<HTMLDivElement>(null);
@@ -31,6 +32,25 @@ function DeepSpaceBg() {
         background: "radial-gradient(ellipse at 30% 20%, rgba(74,158,232,0.08) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(74,158,232,0.06) 0%, transparent 50%), var(--color-navy-dark, #0B1221)",
       }}
     >
+      {/* Galaxy image as fixed background with blue tint */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          opacity: 0.25,
+        }}
+      >
+        <Image
+          src="/parallax/galaxy-1.jpg"
+          alt="Deep space"
+          fill
+          style={{
+            objectFit: "cover",
+            filter: "hue-rotate(20deg) saturate(1.5) brightness(0.6)",
+          }}
+          priority
+        />
+      </div>
       {/* Nebula glow top-right */}
       <div
         style={{
@@ -40,7 +60,7 @@ function DeepSpaceBg() {
           width: "60%",
           height: "50%",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(74,158,232,0.1) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(74,158,232,0.15) 0%, transparent 70%)",
           filter: "blur(60px)",
         }}
       />
@@ -53,7 +73,7 @@ function DeepSpaceBg() {
           width: "50%",
           height: "40%",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(100,130,220,0.08) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(100,130,220,0.12) 0%, transparent 70%)",
           filter: "blur(50px)",
         }}
       />

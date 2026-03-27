@@ -30,15 +30,17 @@ function YlangYlangContent({ guestName }: { guestName?: string }) {
       <Cover onOpen={() => setOpened(true)} guestName={guestName} />
       {opened && (
         <>
-          <Hero />
-          <Couple />
-          <Countdown />
-          <EventDetails />
-          <Gallery />
-          <Gift />
-          <RSVP guestName={guestName} />
-          <Wishes />
-          <Footer />
+          <main style={{ position: "relative", zIndex: 1 }}>
+            <Hero />
+            <Couple />
+            <Countdown />
+            <EventDetails />
+            <Gallery />
+            <Gift />
+            <RSVP guestName={guestName} />
+            <Wishes />
+            <Footer />
+          </main>
           <MusicPlayer />
         </>
       )}

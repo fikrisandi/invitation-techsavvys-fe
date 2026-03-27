@@ -36,7 +36,7 @@ function NebulaBackground() {
         style={{
           position: "absolute",
           inset: 0,
-          opacity: 0.4,
+          opacity: 0.55,
         }}
       >
         <Image
