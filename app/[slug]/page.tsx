@@ -3,6 +3,7 @@ export const dynamic = "force-dynamic";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getInvitation } from "@/lib/api";
+import { generateColorOverrideCSS } from "@/lib/color-overrides";
 import EmeraldGoldTheme from "@/themes/emerald-gold";
 import MidnightBlueTheme from "@/themes/midnight-blue";
 import YlangYlangTheme from "@/themes/ylang-ylang";
@@ -32,9 +33,9 @@ type Props = { params: Promise<{ slug: string }>; searchParams: Promise<{ to?: s
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   const { slug } = await params;
   const { to } = await searchParams;
-  const data = await getInvitation(slug);
-  if (!data) return { title: "Undangan tidak ditemukan" };
   const guestName = to ? decodeURIComponent(to.replace(/\+/g, " ")) : undefined;
+  const data = await getInvitation(slug, guestName);
+  if (!data) return { title: "Undangan tidak ditemukan" };
   return {
     title: `Undangan ${data.groom.nickname} & ${data.bride.nickname}`,
     description: guestName
@@ -77,15 +78,22 @@ export default async function InvitationPage({ params, searchParams }: Props) {
   const { slug } = await params;
   const { to } = await searchParams;
 
-  const data = await getInvitation(slug);
+  const guestName = to ? decodeURIComponent(to.replace(/\+/g, " ")) : undefined;
+
+  const data = await getInvitation(slug, guestName);
   if (!data) notFound();
 
   if (isExpired(data)) {
     return <ExpiredPage data={data} />;
   }
 
-  const guestName = to ? decodeURIComponent(to.replace(/\+/g, " ")) : undefined;
   const ThemeComponent = THEMES[data.theme] ?? EmeraldGoldTheme;
+  const colorCSS = data.customColors ? generateColorOverrideCSS(data.theme, data.customColors) : "";
 
-  return <ThemeComponent data={data} guestName={guestName} />;
+  return (
+    <>
+      {colorCSS && <style dangerouslySetInnerHTML={{ __html: colorCSS }} />}
+      <ThemeComponent data={data} guestName={guestName} />
+    </>
+  );
 }

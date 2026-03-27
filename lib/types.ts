@@ -7,6 +7,8 @@ export type EventItem = {
   mapsUrl?: string;
   mapsEmbedSrc?: string;
   icon?: "akad" | "reception" | "reception-morning" | "reception-evening" | "home" | "heart";
+  type?: "akad" | "reception";
+  code?: string;
 };
 
 export type BankAccount = {
@@ -22,6 +24,13 @@ export type Person = {
   photo?: string;
 };
 
+export type CustomColors = {
+  primary?: string;
+  accent?: string;
+  text?: string;
+  secondary?: string;
+};
+
 export type InvitationData = {
   slug: string;
   theme: "emerald-gold" | "midnight-blue" | "ylang-ylang" | "rose-blush" | "jawa-klasik" | "sunda-klasik" | "cinematic" | "sakura-bloom" | "galaxy";
@@ -29,6 +38,9 @@ export type InvitationData = {
 
   // Opening
   openingText?: string;
+
+  // Custom colors (override theme defaults)
+  customColors?: CustomColors;
 
   // Couple
   groom: Person;
