@@ -42,7 +42,7 @@ export default function Countdown() {
   return (
     <section
       style={{
-        background: "var(--sakura-bg)",
+        background: "var(--sakura-bg-t)",
         padding: "120px 32px",
         textAlign: "center",
       }}
@@ -92,7 +92,7 @@ export default function Countdown() {
                 padding: "32px 20px",
                 minWidth: "110px",
                 textAlign: "center",
-                background: "var(--sakura-bg)",
+                background: "var(--sakura-bg-t)",
                 border: "1px solid var(--sakura-border)",
                 borderRadius: "4px",
                 overflow: "hidden",

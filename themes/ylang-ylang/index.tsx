@@ -41,7 +41,7 @@ function YlangYlangContent({ guestName }: { guestName?: string }) {
             <Wishes />
             <Footer />
           </main>
-          <MusicPlayer />
+          <MusicPlayer autoPlay />
         </>
       )}
     </div>

@@ -18,7 +18,7 @@ function BankCard({ bank }: { bank: BankAccount }) {
   return (
     <div
       style={{
-        background: "var(--sakura-bg)",
+        background: "var(--sakura-bg-t)",
         border: "1px solid var(--sakura-border)",
         borderRadius: "4px",
         padding: "28px",
@@ -141,7 +141,7 @@ export default function Gift() {
     <section
       id="gift"
       style={{
-        background: "var(--sakura-bg-alt)",
+        background: "var(--sakura-bg-alt-t)",
         padding: "120px 32px",
       }}
     >

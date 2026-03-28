@@ -67,7 +67,7 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: "var(--sakura-bg)",
+        background: "var(--sakura-bg-t)",
         padding: "100px 32px 60px",
         textAlign: "center",
         position: "relative",

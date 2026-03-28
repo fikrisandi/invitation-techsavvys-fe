@@ -39,7 +39,6 @@ function NebulaBackground() {
           right: "-10%",
           width: "65%",
           height: "55%",
-          opacity: 0.6,
         }}
       >
         <Image
@@ -49,9 +48,9 @@ function NebulaBackground() {
           style={{
             objectFit: "cover",
             objectPosition: "center",
-            filter: "saturate(1.4) brightness(0.7)",
-            maskImage: "radial-gradient(ellipse at 100% 0%, black 25%, transparent 70%)",
-            WebkitMaskImage: "radial-gradient(ellipse at 100% 0%, black 25%, transparent 70%)",
+            filter: "saturate(1.3) brightness(0.6)",
+            maskImage: "radial-gradient(ellipse at 100% 0%, black 30%, transparent 75%)",
+            WebkitMaskImage: "radial-gradient(ellipse at 100% 0%, black 30%, transparent 75%)",
           }}
           priority
         />
@@ -64,7 +63,6 @@ function NebulaBackground() {
           left: "-10%",
           width: "65%",
           height: "55%",
-          opacity: 0.55,
         }}
       >
         <Image
@@ -74,9 +72,9 @@ function NebulaBackground() {
           style={{
             objectFit: "cover",
             objectPosition: "center",
-            filter: "saturate(1.4) brightness(0.7)",
-            maskImage: "radial-gradient(ellipse at 0% 100%, black 25%, transparent 70%)",
-            WebkitMaskImage: "radial-gradient(ellipse at 0% 100%, black 25%, transparent 70%)",
+            filter: "saturate(1.3) brightness(0.6)",
+            maskImage: "radial-gradient(ellipse at 0% 100%, black 30%, transparent 75%)",
+            WebkitMaskImage: "radial-gradient(ellipse at 0% 100%, black 30%, transparent 75%)",
           }}
         />
       </div>

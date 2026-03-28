@@ -35,7 +35,7 @@ export default function Countdown() {
   return (
     <section
       style={{
-        background: "var(--galaxy-bg)",
+        background: "var(--galaxy-bg-t)",
         padding: "120px 32px",
         textAlign: "center",
         position: "relative",

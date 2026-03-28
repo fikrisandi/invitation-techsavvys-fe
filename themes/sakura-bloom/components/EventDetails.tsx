@@ -8,7 +8,7 @@ function EventCard({ event, index }: { event: EventItem; index: number }) {
     <div
       className="reveal-up"
       style={{
-        background: "var(--sakura-bg)",
+        background: "var(--sakura-bg-t)",
         border: "1px solid var(--sakura-border)",
         borderRadius: "4px",
         overflow: "hidden",
@@ -34,7 +34,7 @@ function EventCard({ event, index }: { event: EventItem; index: number }) {
             width: "32px",
             height: "32px",
             borderRadius: "50%",
-            background: "var(--sakura-bg-alt)",
+            background: "var(--sakura-bg-alt-t)",
             border: "1px solid var(--sakura-border)",
             display: "flex",
             alignItems: "center",
@@ -93,7 +93,7 @@ function EventCard({ event, index }: { event: EventItem; index: number }) {
                 width: "32px",
                 height: "32px",
                 borderRadius: "50%",
-                background: "var(--sakura-bg-alt)",
+                background: "var(--sakura-bg-alt-t)",
                 border: "1px solid var(--sakura-border)",
                 display: "flex",
                 alignItems: "center",
@@ -119,7 +119,7 @@ function EventCard({ event, index }: { event: EventItem; index: number }) {
                 width: "32px",
                 height: "32px",
                 borderRadius: "50%",
-                background: "var(--sakura-bg-alt)",
+                background: "var(--sakura-bg-alt-t)",
                 border: "1px solid var(--sakura-border)",
                 display: "flex",
                 alignItems: "center",
@@ -145,7 +145,7 @@ function EventCard({ event, index }: { event: EventItem; index: number }) {
                 width: "32px",
                 height: "32px",
                 borderRadius: "50%",
-                background: "var(--sakura-bg-alt)",
+                background: "var(--sakura-bg-alt-t)",
                 border: "1px solid var(--sakura-border)",
                 display: "flex",
                 alignItems: "center",
@@ -231,7 +231,7 @@ export default function EventDetails() {
     <section
       id="events"
       style={{
-        background: "var(--sakura-bg-alt)",
+        background: "var(--sakura-bg-alt-t)",
         padding: "120px 32px",
       }}
     >

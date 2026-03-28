@@ -6,7 +6,7 @@ export default function Hero() {
   const { groom, bride, openingText, events } = useInvitation();
   const mainEvent = events[0];
   return (
-    <section style={{ position: "relative", minHeight: "100svh", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", background: "var(--color-rb-bg)", padding: "80px 24px" }}>
+    <section style={{ position: "relative", minHeight: "100svh", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", background: "var(--color-rb-bg-t)", padding: "80px 24px" }}>
       <FloralCorner position="tl" />
       <FloralCorner position="tr" />
       <FloralCorner position="bl" />

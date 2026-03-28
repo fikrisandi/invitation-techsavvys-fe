@@ -58,7 +58,7 @@ export default function RSVP({ guestName }: { guestName?: string }) {
   return (
     <section
       style={{
-        background: "var(--galaxy-bg)",
+        background: "var(--galaxy-bg-t)",
         padding: "120px 32px",
         position: "relative",
         overflow: "hidden",

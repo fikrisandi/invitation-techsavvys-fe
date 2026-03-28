@@ -28,7 +28,7 @@ function PersonCard({ person, role }: { person: Person; role: string }) {
 export default function Couple() {
   const { groom, bride } = useInvitation();
   return (
-    <section id="couple" style={{ background: "var(--color-rb-bg-alt)", padding: "120px 32px" }}>
+    <section id="couple" style={{ background: "var(--color-rb-bg-alt-t)", padding: "120px 32px" }}>
       <div style={{ maxWidth: "760px", margin: "0 auto" }}>
         <div className="reveal-up" style={{ textAlign: "center", marginBottom: "56px" }}>
           <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.5em", textTransform: "uppercase" as const, color: "var(--color-rb-text-soft)", marginBottom: "20px", fontFamily: "var(--font-rb-body)" }}>The Couple</p>

@@ -10,7 +10,7 @@ export default function Hero() {
     <section
       id="hero"
       style={{
-        background: "var(--sakura-bg)",
+        background: "var(--sakura-bg-t)",
         padding: "120px 32px 80px",
         textAlign: "center",
         position: "relative",

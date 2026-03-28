@@ -13,7 +13,7 @@ export default function Gallery() {
     <section
       id="gallery"
       style={{
-        background: "var(--sakura-bg)",
+        background: "var(--sakura-bg-t)",
         padding: "120px 32px",
       }}
     >
@@ -64,7 +64,7 @@ export default function Gallery() {
                 overflow: "hidden",
                 aspectRatio: i % 3 === 0 ? "3/4" : "1/1",
                 cursor: "pointer",
-                background: "var(--sakura-bg-deep)",
+                background: "var(--sakura-bg-deep-t)",
                 border: "1px solid var(--sakura-border)",
               }}
             >

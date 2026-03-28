@@ -10,7 +10,7 @@ function PersonCard({ person, role }: { person: Person; role: string }) {
       style={{
         flex: "1 1 280px",
         maxWidth: "340px",
-        background: "var(--sakura-bg)",
+        background: "var(--sakura-bg-t)",
         border: "1px solid var(--sakura-border)",
         borderRadius: "4px",
         padding: "40px 28px",
@@ -61,7 +61,7 @@ function PersonCard({ person, role }: { person: Person; role: string }) {
             height: "100%",
             borderRadius: "50%",
             overflow: "hidden",
-            background: "var(--sakura-bg-deep)",
+            background: "var(--sakura-bg-deep-t)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -163,7 +163,7 @@ export default function Couple() {
     <section
       id="couple"
       style={{
-        background: "var(--sakura-bg-alt)",
+        background: "var(--sakura-bg-alt-t)",
         padding: "120px 32px",
       }}
     >

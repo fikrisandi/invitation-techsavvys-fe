@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: "var(--galaxy-bg)",
+        background: "var(--galaxy-bg-t)",
         padding: "120px 32px 60px",
         textAlign: "center",
         position: "relative",

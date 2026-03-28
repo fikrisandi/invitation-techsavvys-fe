@@ -9,7 +9,7 @@ const inputStyle: React.CSSProperties = {
   padding: "12px 16px",
   borderRadius: "4px",
   border: "1px solid var(--sakura-border)",
-  background: "var(--sakura-bg)",
+  background: "var(--sakura-bg-t)",
   color: "var(--sakura-text)",
   fontFamily: "var(--font-sakura-body)",
   fontSize: "13px",
@@ -58,7 +58,7 @@ export default function RSVP({ guestName }: { guestName?: string }) {
     <section
       id="rsvp"
       style={{
-        background: "var(--sakura-bg)",
+        background: "var(--sakura-bg-t)",
         padding: "120px 32px",
       }}
     >
@@ -95,7 +95,7 @@ export default function RSVP({ guestName }: { guestName?: string }) {
           style={{
             maxWidth: "480px",
             margin: "0 auto",
-            background: "var(--sakura-bg)",
+            background: "var(--sakura-bg-t)",
             border: "1px solid var(--sakura-border)",
             borderRadius: "4px",
             padding: "44px 36px",

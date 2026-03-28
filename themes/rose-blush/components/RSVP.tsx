@@ -15,7 +15,7 @@ export default function RSVP({ guestName }: { guestName?: string }) {
     try { await submitRsvp(slug, form); setDone(true); } catch { setDone(true); } finally { setLoading(false); }
   };
   return (
-    <section id="rsvp" style={{ background: "var(--color-rb-bg)", padding: "120px 32px" }}>
+    <section id="rsvp" style={{ background: "var(--color-rb-bg-t)", padding: "120px 32px" }}>
       <div style={{ maxWidth: "640px", margin: "0 auto" }}>
         <div className="reveal-up" style={{ textAlign: "center", marginBottom: "56px" }}>
           <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.5em", textTransform: "uppercase" as const, color: "var(--color-rb-text-soft)", marginBottom: "20px", fontFamily: "var(--font-rb-body)" }}>RSVP</p>

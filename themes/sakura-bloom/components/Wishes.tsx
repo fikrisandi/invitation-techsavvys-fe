@@ -51,7 +51,7 @@ export default function Wishes() {
     <section
       id="wishes"
       style={{
-        background: "var(--sakura-bg-alt)",
+        background: "var(--sakura-bg-alt-t)",
         padding: "120px 32px",
       }}
     >
@@ -125,7 +125,7 @@ export default function Wishes() {
             <div
               key={`${w.name}-${i}`}
               style={{
-                background: "var(--sakura-bg)",
+                background: "var(--sakura-bg-t)",
                 border: "1px solid var(--sakura-border)",
                 borderRadius: "4px",
                 padding: "20px 24px",

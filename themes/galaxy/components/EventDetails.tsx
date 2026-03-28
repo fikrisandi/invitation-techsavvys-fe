@@ -120,7 +120,7 @@ export default function EventDetails() {
   return (
     <section
       style={{
-        background: "var(--galaxy-bg-mid)",
+        background: "var(--galaxy-bg-mid-t)",
         padding: "120px 32px",
         position: "relative",
         overflow: "hidden",

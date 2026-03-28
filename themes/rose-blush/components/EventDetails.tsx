@@ -33,7 +33,7 @@ export default function EventDetails() {
   const mapGroups = getMapGroups(events);
 
   return (
-    <section id="event" style={{ background: "var(--color-rb-bg-alt)", padding: "120px 32px" }}>
+    <section id="event" style={{ background: "var(--color-rb-bg-alt-t)", padding: "120px 32px" }}>
       <div style={{ maxWidth: "640px", margin: "0 auto" }}>
         <div className="reveal-up" style={{ textAlign: "center", marginBottom: "56px" }}>
           <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.5em", textTransform: "uppercase" as const, color: "var(--color-rb-text-soft)", marginBottom: "20px", fontFamily: "var(--font-rb-body)" }}>When &amp; Where</p>

@@ -34,7 +34,7 @@ function RoseBlushContent({ guestName }: { guestName?: string }) {
         <Wishes />
         <Footer />
       </main>
-      <MusicPlayer />
+      <MusicPlayer autoPlay />
     </div>
   );
 }
