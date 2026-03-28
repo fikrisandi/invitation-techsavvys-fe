@@ -60,8 +60,8 @@ export default function GalaxyTheme({
         .theme-galaxy {
           --galaxy-bg: #04040E;
           --galaxy-bg-mid: #080818;
-          --galaxy-bg-t: rgba(4,4,14,0.82);
-          --galaxy-bg-mid-t: rgba(8,8,24,0.78);
+          --galaxy-bg-t: rgba(4,4,14,0.5);
+          --galaxy-bg-mid-t: rgba(8,8,24,0.5);
           --galaxy-border: rgba(139,92,246,0.2);
           --galaxy-purple: #8B5CF6;
           --galaxy-pink: #E879A0;

@@ -31,54 +31,53 @@ function BatikBackground() {
         overflow: "hidden",
       }}
     >
-      {/* Top batik pattern */}
+      {/* Top-right image */}
       <div
         style={{
           position: "absolute",
           top: "-5%",
-          left: "0",
-          width: "100%",
-          height: "35%",
+          right: "-5%",
+          width: "55%",
+          height: "50%",
           opacity: 0.5,
         }}
       >
         <Image
-          src="/parallax/batik-1.jpg"
-          alt="Batik Sunda pattern"
+          src="/parallax/candi-3.jpg"
+          alt="Traditional pattern"
           fill
           style={{
             objectFit: "cover",
             objectPosition: "center",
-            filter: "sepia(0.3) hue-rotate(20deg) saturate(1.2)",
-            maskImage: "linear-gradient(to bottom, black 30%, transparent 90%)",
-            WebkitMaskImage: "linear-gradient(to bottom, black 30%, transparent 90%)",
+            filter: "sepia(0.4) hue-rotate(10deg) saturate(1.2) brightness(0.5)",
+            maskImage: "radial-gradient(ellipse at 100% 0%, black 20%, transparent 65%)",
+            WebkitMaskImage: "radial-gradient(ellipse at 100% 0%, black 20%, transparent 65%)",
           }}
           priority
         />
       </div>
 
-      {/* Bottom batik pattern */}
+      {/* Bottom-left image */}
       <div
         style={{
           position: "absolute",
           bottom: "-5%",
-          left: "0",
-          width: "100%",
-          height: "30%",
+          left: "-5%",
+          width: "55%",
+          height: "50%",
           opacity: 0.45,
-          transform: "rotate(180deg)",
         }}
       >
         <Image
-          src="/parallax/batik-1.jpg"
-          alt="Batik Sunda pattern"
+          src="/parallax/candi-1.jpg"
+          alt="Traditional pattern"
           fill
           style={{
             objectFit: "cover",
             objectPosition: "center",
-            filter: "sepia(0.3) hue-rotate(20deg) saturate(1.2)",
-            maskImage: "linear-gradient(to bottom, black 30%, transparent 90%)",
-            WebkitMaskImage: "linear-gradient(to bottom, black 30%, transparent 90%)",
+            filter: "sepia(0.4) hue-rotate(10deg) saturate(1.2) brightness(0.5)",
+            maskImage: "radial-gradient(ellipse at 0% 100%, black 20%, transparent 65%)",
+            WebkitMaskImage: "radial-gradient(ellipse at 0% 100%, black 20%, transparent 65%)",
           }}
         />
       </div>

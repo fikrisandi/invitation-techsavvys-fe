@@ -44,9 +44,9 @@ function SakuraBloomContent({ guestName }: { guestName?: string }) {
           --sakura-bg:            #FDF8F9;
           --sakura-bg-alt:        #F8F0F2;
           --sakura-bg-deep:       #F0E4E8;
-          --sakura-bg-t:          rgba(253,248,249,0.85);
-          --sakura-bg-alt-t:      rgba(248,240,242,0.82);
-          --sakura-bg-deep-t:     rgba(240,228,232,0.85);
+          --sakura-bg-t:          rgba(253,248,249,0.5);
+          --sakura-bg-alt-t:      rgba(248,240,242,0.5);
+          --sakura-bg-deep-t:     rgba(240,228,232,0.5);
           --sakura-pink:          #D4708A;
           --sakura-pink-light:    #E890A8;
           --sakura-pink-dark:     #A84868;
