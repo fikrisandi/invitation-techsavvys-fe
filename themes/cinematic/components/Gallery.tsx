@@ -19,7 +19,7 @@ export default function Gallery() {
   return (
     <section
       style={{
-        background: "var(--cine-bg-mid)",
+        background: "var(--cine-bg-mid-t)",
         padding: "120px 0",
         position: "relative",
         overflow: "hidden",

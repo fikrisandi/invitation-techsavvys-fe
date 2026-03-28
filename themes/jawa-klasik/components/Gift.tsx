@@ -109,7 +109,7 @@ export default function Gift() {
   if (!banks || banks.length === 0) return null;
 
   return (
-    <section style={{ background: "var(--jawa-bg-mid)", position: "relative", overflow: "hidden" }}>
+    <section style={{ background: "var(--jawa-bg-mid-t)", position: "relative", overflow: "hidden" }}>
       <BatikBorder />
 
       <div style={{ maxWidth: "800px", margin: "0 auto", padding: "100px 32px" }}>

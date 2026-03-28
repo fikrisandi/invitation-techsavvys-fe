@@ -39,7 +39,7 @@ function FlowerBackground() {
           left: "-10%",
           width: "50%",
           height: "45%",
-          opacity: 0.45,
+          opacity: 0.65,
         }}
       >
         <Image
@@ -65,7 +65,7 @@ function FlowerBackground() {
           right: "-10%",
           width: "50%",
           height: "45%",
-          opacity: 0.4,
+          opacity: 0.6,
         }}
       >
         <Image
@@ -147,28 +147,6 @@ function TropicalLeafLayer() {
         <path d="M80,60 C110,80 155,100 185,140" stroke="#FAF7F2" strokeWidth="2.5" strokeLinecap="round" fill="none" opacity="0.6" />
       </svg>
 
-      {/* Mid-left monstera */}
-      <svg
-        width="180"
-        height="180"
-        viewBox="0 0 220 220"
-        fill="none"
-        style={{
-          position: "absolute",
-          top: "40%",
-          left: -40,
-          opacity: 0.08,
-          transform: "rotate(30deg)",
-        }}
-      >
-        <path d="M30,210 C40,160 55,100 80,60" stroke="#2D4A35" strokeWidth="6" strokeLinecap="round" fill="none" />
-        <path
-          d="M80,60 C95,20 150,10 185,40 C215,65 220,110 200,145 C180,178 140,195 105,185 C70,175 55,140 60,110 C65,85 75,68 80,60 Z"
-          fill="#2D4A35"
-        />
-        <path d="M95,55 C90,40 78,38 72,48 C66,58 70,72 82,75 Z" fill="#FAF7F2" />
-        <path d="M130,30 C125,18 112,18 108,28 C104,38 110,50 122,50 Z" fill="#FAF7F2" />
-      </svg>
     </div>
   );
 }
@@ -178,11 +156,8 @@ function YlangFlowerSvg() {
   const ref = useScrollParallax(0.25);
 
   const positions = [
-    { left: "20%", top: "20%", scale: 1, opacity: 0.18 },
-    { left: "70%", top: "12%", scale: 0.8, opacity: 0.15 },
-    { left: "48%", top: "45%", scale: 1.2, opacity: 0.2 },
-    { left: "75%", top: "60%", scale: 0.9, opacity: 0.16 },
-    { left: "30%", top: "78%", scale: 1, opacity: 0.18 },
+    { left: "70%", top: "12%", scale: 0.8, opacity: 0.12 },
+    { left: "30%", top: "78%", scale: 1, opacity: 0.14 },
   ];
 
   return (
@@ -307,14 +282,9 @@ function GoldAccents() {
   const ref = useScrollParallax(0.32);
 
   const accents = [
-    { x: "5%", y: "8%", size: 14, rot: 0, opacity: 0.30 },
-    { x: "25%", y: "3%", size: 12, rot: 40, opacity: 0.25 },
-    { x: "55%", y: "12%", size: 16, rot: -20, opacity: 0.32 },
-    { x: "78%", y: "6%", size: 13, rot: 60, opacity: 0.28 },
-    { x: "92%", y: "28%", size: 12, rot: -45, opacity: 0.22 },
-    { x: "12%", y: "48%", size: 14, rot: 15, opacity: 0.30 },
-    { x: "68%", y: "45%", size: 15, rot: 50, opacity: 0.34 },
-    { x: "35%", y: "85%", size: 13, rot: -30, opacity: 0.26 },
+    { x: "5%", y: "8%", size: 14, rot: 0, opacity: 0.22 },
+    { x: "78%", y: "6%", size: 13, rot: 60, opacity: 0.20 },
+    { x: "12%", y: "48%", size: 14, rot: 15, opacity: 0.22 },
   ];
 
   return (
@@ -376,7 +346,6 @@ export default function ParallaxBg() {
     <>
       <FlowerBackground />
       <TropicalLeafLayer />
-      <BotanicalSprigs />
       <YlangFlowerSvg />
       <GoldAccents />
     </>

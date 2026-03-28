@@ -34,7 +34,7 @@ export default function MidnightAmbient() {
       `}</style>
 
       {/* Twinkling stars */}
-      {Array.from({ length: 35 }, (_, i) => (
+      {Array.from({ length: 15 }, (_, i) => (
         <div
           key={`star-${i}`}
           style={{
@@ -52,7 +52,7 @@ export default function MidnightAmbient() {
       ))}
 
       {/* Floating particles drifting upward */}
-      {Array.from({ length: 8 }, (_, i) => (
+      {Array.from({ length: 4 }, (_, i) => (
         <div
           key={`drift-${i}`}
           style={{

@@ -43,7 +43,7 @@ export default function Wishes() {
   return (
     <section
       style={{
-        background: "var(--cine-bg)",
+        background: "var(--cine-bg-t)",
         padding: "120px 32px",
         position: "relative",
         overflow: "hidden",
@@ -127,7 +127,7 @@ export default function Wishes() {
                     alignItems: "center",
                     justifyContent: "center",
                     background: "var(--cine-gold)",
-                    color: "var(--cine-bg)",
+                    color: "var(--cine-bg-t)",
                     fontFamily: "var(--font-cine-display)",
                     fontStyle: "italic",
                     fontSize: "15px",

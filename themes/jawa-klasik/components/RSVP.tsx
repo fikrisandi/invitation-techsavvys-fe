@@ -57,7 +57,7 @@ export default function RSVP({ guestName }: { guestName?: string }) {
   };
 
   return (
-    <section style={{ background: "var(--jawa-bg)", position: "relative", overflow: "hidden" }}>
+    <section style={{ background: "var(--jawa-bg-t)", position: "relative", overflow: "hidden" }}>
       <BatikBorder />
 
       <div style={{ maxWidth: "640px", margin: "0 auto", padding: "100px 32px", position: "relative", zIndex: 10 }}>

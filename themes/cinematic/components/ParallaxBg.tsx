@@ -39,7 +39,7 @@ function CinematicBackground() {
           left: "0",
           width: "100%",
           height: "50%",
-          opacity: 0.3,
+          opacity: 0.5,
         }}
       >
         <Image
@@ -65,7 +65,7 @@ function CinematicBackground() {
           left: "0",
           width: "100%",
           height: "45%",
-          opacity: 0.25,
+          opacity: 0.45,
         }}
       >
         <Image
@@ -349,26 +349,14 @@ function GoldDust() {
   const ref = useScrollParallax(0.3);
 
   const particles = [
-    { left: "5%", top: "10%", size: 3, opacity: 0.4 },
-    { left: "15%", top: "25%", size: 2, opacity: 0.3 },
-    { left: "25%", top: "15%", size: 4, opacity: 0.35 },
-    { left: "35%", top: "30%", size: 2, opacity: 0.25 },
-    { left: "45%", top: "20%", size: 3, opacity: 0.4 },
-    { left: "55%", top: "35%", size: 2, opacity: 0.3 },
-    { left: "65%", top: "18%", size: 4, opacity: 0.35 },
-    { left: "75%", top: "28%", size: 2, opacity: 0.25 },
-    { left: "85%", top: "15%", size: 3, opacity: 0.4 },
-    { left: "10%", top: "45%", size: 2, opacity: 0.3 },
-    { left: "30%", top: "55%", size: 3, opacity: 0.35 },
-    { left: "50%", top: "50%", size: 2, opacity: 0.25 },
-    { left: "70%", top: "48%", size: 4, opacity: 0.4 },
-    { left: "90%", top: "55%", size: 2, opacity: 0.3 },
-    { left: "20%", top: "70%", size: 3, opacity: 0.35 },
-    { left: "40%", top: "75%", size: 2, opacity: 0.25 },
-    { left: "60%", top: "68%", size: 4, opacity: 0.4 },
-    { left: "80%", top: "78%", size: 2, opacity: 0.3 },
-    { left: "15%", top: "85%", size: 3, opacity: 0.35 },
-    { left: "55%", top: "90%", size: 2, opacity: 0.25 },
+    { left: "15%", top: "25%", size: 2, opacity: 0.25 },
+    { left: "45%", top: "20%", size: 3, opacity: 0.3 },
+    { left: "75%", top: "28%", size: 2, opacity: 0.2 },
+    { left: "30%", top: "55%", size: 3, opacity: 0.28 },
+    { left: "70%", top: "48%", size: 4, opacity: 0.3 },
+    { left: "20%", top: "70%", size: 3, opacity: 0.25 },
+    { left: "60%", top: "68%", size: 4, opacity: 0.3 },
+    { left: "55%", top: "90%", size: 2, opacity: 0.2 },
   ];
 
   return (
@@ -408,7 +396,6 @@ export default function ParallaxBg() {
       <CinematicBackground />
       <FilmReelLayer />
       <FilmStripLayer />
-      <FloatingCircles />
       <BokehLights />
       <GoldDust />
     </>

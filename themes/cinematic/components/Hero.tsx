@@ -16,7 +16,7 @@ export default function Hero() {
     <section
       style={{
         minHeight: "100svh",
-        background: "var(--cine-bg)",
+        background: "var(--cine-bg-t)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

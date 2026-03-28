@@ -17,7 +17,7 @@ function PersonHalf({
       style={{
         width: "100%",
         maxWidth: "500px",
-        background: side === "left" ? "var(--cine-bg)" : "var(--cine-bg-mid)",
+        background: side === "left" ? "var(--cine-bg-t)" : "var(--cine-bg-mid-t)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -120,7 +120,7 @@ export default function Couple() {
   return (
     <section
       style={{
-        background: "var(--cine-bg)",
+        background: "var(--cine-bg-t)",
         position: "relative",
         overflow: "hidden",
       }}
@@ -131,7 +131,7 @@ export default function Couple() {
         style={{
           textAlign: "center",
           padding: "100px 32px 64px",
-          background: "var(--cine-bg)",
+          background: "var(--cine-bg-t)",
         }}
       >
         <p
@@ -187,7 +187,7 @@ export default function Couple() {
         <PersonHalf person={bride} side="right" />
       </div>
 
-      <div style={{ height: "80px", background: "var(--cine-bg)" }} />
+      <div style={{ height: "80px", background: "var(--cine-bg-t)" }} />
     </section>
   );
 }

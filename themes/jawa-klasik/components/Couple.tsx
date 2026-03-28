@@ -99,7 +99,7 @@ export default function Couple({ guestName }: { guestName?: string }) {
 
   return (
     <section style={{
-      background: "var(--jawa-bg-mid)",
+      background: "var(--jawa-bg-mid-t)",
       padding: "100px 32px",
       position: "relative",
       overflow: "hidden",

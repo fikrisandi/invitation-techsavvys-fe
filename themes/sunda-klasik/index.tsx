@@ -23,6 +23,8 @@ const cssVars = `
   .theme-sunda-klasik {
     --sunda-bg: #0A0500;
     --sunda-bg-mid: #150A00;
+    --sunda-bg-t: rgba(10,5,0,0.82);
+    --sunda-bg-mid-t: rgba(21,10,0,0.78);
     --sunda-bg-alt: #1E0F00;
     --sunda-text: #F5E8D0;
     --sunda-text-soft: #A08060;

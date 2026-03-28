@@ -37,7 +37,7 @@ function DeepSpaceBg() {
         style={{
           position: "absolute",
           inset: 0,
-          opacity: 0.25,
+          opacity: 0.4,
         }}
       >
         <Image
@@ -84,7 +84,7 @@ function DeepSpaceBg() {
 /* Layer 1 - Slow drifting star clusters */
 function StarClusterLayer() {
   const ref = useScrollParallax(0.08);
-  const stars = Array.from({ length: 40 }, (_, i) => ({
+  const stars = Array.from({ length: 15 }, (_, i) => ({
     top: `${(i * 17 + 7) % 95}%`,
     left: `${(i * 23 + 5) % 93}%`,
     size: 1 + (i % 3),
@@ -167,7 +167,7 @@ function FloatingOrbs() {
 /* Layer 3 - Silver dust particles */
 function SilverDust() {
   const ref = useScrollParallax(0.25);
-  const particles = Array.from({ length: 20 }, (_, i) => ({
+  const particles = Array.from({ length: 6 }, (_, i) => ({
     top: `${(i * 19 + 3) % 90}%`,
     left: `${(i * 29 + 8) % 88}%`,
     size: 1 + (i % 2) * 0.5,

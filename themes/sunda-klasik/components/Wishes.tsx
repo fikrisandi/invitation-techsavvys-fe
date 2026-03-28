@@ -65,7 +65,7 @@ export default function Wishes() {
   });
 
   return (
-    <section style={{ background: "var(--sunda-bg-mid)", position: "relative", overflow: "hidden" }}>
+    <section style={{ background: "var(--sunda-bg-mid-t)", position: "relative", overflow: "hidden" }}>
       {/* Top mega mendung */}
       <div style={{ display: "flex", justifyContent: "center", opacity: 0.3 }}>
         <MegaMendung />

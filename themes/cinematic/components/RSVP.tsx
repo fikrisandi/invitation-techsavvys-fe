@@ -59,7 +59,7 @@ export default function RSVP({ guestName }: { guestName?: string }) {
   return (
     <section
       style={{
-        background: "var(--cine-bg-mid)",
+        background: "var(--cine-bg-mid-t)",
         padding: "120px 32px",
         position: "relative",
         overflow: "hidden",
@@ -227,7 +227,7 @@ export default function RSVP({ guestName }: { guestName?: string }) {
                   fontSize: "8px",
                   letterSpacing: "0.4em",
                   textTransform: "uppercase",
-                  color: "var(--cine-bg)",
+                  color: "var(--cine-bg-t)",
                   background: "var(--cine-gold)",
                   border: "none",
                   padding: "18px",

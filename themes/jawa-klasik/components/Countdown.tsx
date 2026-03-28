@@ -51,7 +51,7 @@ export default function Countdown() {
 
   return (
     <section style={{
-      background: "var(--jawa-bg)",
+      background: "var(--jawa-bg-t)",
       position: "relative",
       overflow: "hidden",
     }}>

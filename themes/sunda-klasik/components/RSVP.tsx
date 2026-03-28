@@ -57,7 +57,7 @@ export default function RSVP({ guestName }: { guestName?: string }) {
   };
 
   return (
-    <section style={{ background: "var(--sunda-bg)", position: "relative", overflow: "hidden" }}>
+    <section style={{ background: "var(--sunda-bg-t)", position: "relative", overflow: "hidden" }}>
       {/* Top mega mendung */}
       <div style={{ display: "flex", justifyContent: "center", opacity: 0.3 }}>
         <MegaMendung />

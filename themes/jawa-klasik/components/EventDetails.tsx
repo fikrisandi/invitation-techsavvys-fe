@@ -145,7 +145,7 @@ export default function EventDetails() {
 
   return (
     <section style={{
-      background: "var(--jawa-bg-mid)",
+      background: "var(--jawa-bg-mid-t)",
       position: "relative",
       overflow: "hidden",
     }}>

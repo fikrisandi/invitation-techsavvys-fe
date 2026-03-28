@@ -63,7 +63,7 @@ export default function Wishes() {
   });
 
   return (
-    <section style={{ background: "var(--jawa-bg-mid)", position: "relative", overflow: "hidden" }}>
+    <section style={{ background: "var(--jawa-bg-mid-t)", position: "relative", overflow: "hidden" }}>
       <BatikBorder />
 
       <div style={{ maxWidth: "640px", margin: "0 auto", padding: "100px 32px", position: "relative", zIndex: 2 }}>

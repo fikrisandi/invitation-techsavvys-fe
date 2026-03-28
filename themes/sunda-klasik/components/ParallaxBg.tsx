@@ -39,7 +39,7 @@ function BatikBackground() {
           left: "0",
           width: "100%",
           height: "35%",
-          opacity: 0.25,
+          opacity: 0.5,
         }}
       >
         <Image
@@ -65,7 +65,7 @@ function BatikBackground() {
           left: "0",
           width: "100%",
           height: "30%",
-          opacity: 0.2,
+          opacity: 0.45,
           transform: "rotate(180deg)",
         }}
       >
@@ -344,7 +344,6 @@ export default function ParallaxBg() {
       <BatikBackground />
       <RumahAdatLayer />
       <AngklungLayer />
-      <FloatingBatikImages />
       <MegaMendungLayer />
     </>
   );

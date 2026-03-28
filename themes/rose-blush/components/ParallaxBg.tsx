@@ -39,7 +39,7 @@ function RoseBackground() {
           left: "-10%",
           width: "50%",
           height: "45%",
-          opacity: 0.5,
+          opacity: 0.7,
         }}
       >
         <Image
@@ -65,7 +65,7 @@ function RoseBackground() {
           right: "-10%",
           width: "50%",
           height: "45%",
-          opacity: 0.45,
+          opacity: 0.65,
         }}
       >
         <Image
@@ -90,14 +90,9 @@ function SvgPetals() {
   const ref = useScrollParallax(0.22);
 
   const petals = [
-    { left: "8%", top: "20%", rotate: 0, size: 28, opacity: 0.35 },
-    { left: "65%", top: "8%", rotate: 45, size: 24, opacity: 0.30 },
-    { left: "85%", top: "35%", rotate: 90, size: 32, opacity: 0.28 },
-    { left: "15%", top: "50%", rotate: 120, size: 26, opacity: 0.35 },
-    { left: "75%", top: "55%", rotate: 200, size: 30, opacity: 0.30 },
-    { left: "40%", top: "70%", rotate: 270, size: 22, opacity: 0.28 },
-    { left: "90%", top: "75%", rotate: 315, size: 28, opacity: 0.32 },
-    { left: "25%", top: "85%", rotate: 160, size: 26, opacity: 0.25 },
+    { left: "8%", top: "20%", rotate: 0, size: 28, opacity: 0.25 },
+    { left: "85%", top: "35%", rotate: 90, size: 32, opacity: 0.22 },
+    { left: "40%", top: "70%", rotate: 270, size: 22, opacity: 0.22 },
   ];
 
   return (
@@ -145,10 +140,8 @@ function RoseBuds() {
   const ref = useScrollParallax(0.32);
 
   const buds = [
-    { left: "22%", top: "38%", rotate: 15 },
     { left: "48%", top: "45%", rotate: -20 },
     { left: "72%", top: "40%", rotate: 40 },
-    { left: "30%", top: "78%", rotate: -10 },
   ];
 
   return (

@@ -25,7 +25,7 @@ export default function Gallery() {
   const isPlaceholder = photos.length === 0;
 
   return (
-    <section style={{ background: "var(--sunda-bg-mid)", position: "relative", overflow: "hidden" }}>
+    <section style={{ background: "var(--sunda-bg-mid-t)", position: "relative", overflow: "hidden" }}>
       {/* Top mega mendung */}
       <div style={{ display: "flex", justifyContent: "center", opacity: 0.35 }}>
         <MegaMendung />
@@ -162,7 +162,7 @@ export default function Gallery() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              background: "var(--sunda-bg-mid)",
+              background: "var(--sunda-bg-mid-t)",
               position: "relative",
             }}
             onClick={(e) => e.stopPropagation()}
@@ -189,7 +189,7 @@ export default function Gallery() {
               height: "40px",
               borderRadius: "4px",
               border: "1px solid var(--sunda-border)",
-              background: "var(--sunda-bg-mid)",
+              background: "var(--sunda-bg-mid-t)",
               color: "var(--sunda-gold)",
               fontSize: "20px",
               cursor: "pointer",

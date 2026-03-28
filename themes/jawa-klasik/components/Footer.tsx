@@ -8,7 +8,7 @@ export default function Footer() {
 
   return (
     <footer style={{
-      background: "var(--jawa-bg)",
+      background: "var(--jawa-bg-t)",
       position: "relative",
       overflow: "hidden",
       textAlign: "center",

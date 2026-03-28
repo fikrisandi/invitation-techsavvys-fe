@@ -99,6 +99,8 @@ export default function CinematicTheme({
         .theme-cinematic {
           --cine-bg: #080808;
           --cine-bg-mid: #111111;
+          --cine-bg-t: rgba(8,8,8,0.82);
+          --cine-bg-mid-t: rgba(17,17,17,0.78);
           --cine-border: rgba(240,234,224,0.1);
           --cine-card: rgba(240,234,224,0.04);
           --cine-gold: #C8A878;

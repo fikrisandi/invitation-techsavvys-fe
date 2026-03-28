@@ -32,7 +32,7 @@ export default function Gallery() {
   };
 
   return (
-    <section style={{ background: "var(--jawa-bg)", position: "relative", overflow: "hidden" }}>
+    <section style={{ background: "var(--jawa-bg-t)", position: "relative", overflow: "hidden" }}>
       <BatikBorder />
 
       <div style={{
@@ -155,7 +155,7 @@ export default function Gallery() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              background: "var(--jawa-bg-mid)",
+              background: "var(--jawa-bg-mid-t)",
               position: "relative",
             }}
             onClick={(e) => e.stopPropagation()}
@@ -182,7 +182,7 @@ export default function Gallery() {
               height: "40px",
               borderRadius: "2px",
               border: "1px solid var(--jawa-border)",
-              background: "var(--jawa-bg-mid)",
+              background: "var(--jawa-bg-mid-t)",
               color: "var(--jawa-gold)",
               fontSize: "20px",
               cursor: "pointer",

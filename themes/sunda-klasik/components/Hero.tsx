@@ -19,7 +19,7 @@ export default function Hero() {
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      background: "var(--sunda-bg)",
+      background: "var(--sunda-bg-t)",
       position: "relative",
       overflow: "hidden",
     }}>

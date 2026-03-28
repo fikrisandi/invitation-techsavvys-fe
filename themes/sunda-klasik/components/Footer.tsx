@@ -8,7 +8,7 @@ export default function Footer() {
 
   return (
     <footer style={{
-      background: "var(--sunda-bg)",
+      background: "var(--sunda-bg-t)",
       position: "relative",
       overflow: "hidden",
       textAlign: "center",

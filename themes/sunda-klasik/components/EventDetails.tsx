@@ -152,7 +152,7 @@ export default function EventDetails() {
 
   return (
     <section style={{
-      background: "var(--sunda-bg)",
+      background: "var(--sunda-bg-t)",
       position: "relative",
       overflow: "hidden",
     }}>

@@ -24,6 +24,8 @@ const cssVars = `
     --jawa-bg: #0E0600;
     --jawa-bg-mid: #1A0A00;
     --jawa-bg-card: rgba(255,220,150,0.04);
+    --jawa-bg-t: rgba(14,6,0,0.82);
+    --jawa-bg-mid-t: rgba(26,10,0,0.78);
     --jawa-text: #F0E0C0;
     --jawa-text-soft: #9A7A50;
     --jawa-text-muted: #5A3A20;

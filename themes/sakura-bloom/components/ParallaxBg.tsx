@@ -37,9 +37,9 @@ function SakuraBackground() {
           position: "absolute",
           top: "-5%",
           left: "-5%",
-          width: "45%",
-          height: "40%",
-          opacity: 0.6,
+          width: "55%",
+          height: "45%",
+          opacity: 0.75,
         }}
       >
         <Image
@@ -50,8 +50,8 @@ function SakuraBackground() {
             objectFit: "cover",
             objectPosition: "center",
             filter: "saturate(1.2)",
-            maskImage: "linear-gradient(to bottom right, black 40%, transparent 90%)",
-            WebkitMaskImage: "linear-gradient(to bottom right, black 40%, transparent 90%)",
+            maskImage: "radial-gradient(ellipse at 0% 0%, black 20%, transparent 65%)",
+            WebkitMaskImage: "radial-gradient(ellipse at 0% 0%, black 20%, transparent 65%)",
           }}
           priority
         />
@@ -63,9 +63,9 @@ function SakuraBackground() {
           position: "absolute",
           bottom: "-5%",
           right: "-5%",
-          width: "45%",
-          height: "40%",
-          opacity: 0.5,
+          width: "55%",
+          height: "45%",
+          opacity: 0.7,
           transform: "rotate(180deg)",
         }}
       >
@@ -77,8 +77,8 @@ function SakuraBackground() {
             objectFit: "cover",
             objectPosition: "center",
             filter: "saturate(1.2)",
-            maskImage: "linear-gradient(to bottom right, black 40%, transparent 90%)",
-            WebkitMaskImage: "linear-gradient(to bottom right, black 40%, transparent 90%)",
+            maskImage: "radial-gradient(ellipse at 0% 0%, black 20%, transparent 65%)",
+            WebkitMaskImage: "radial-gradient(ellipse at 0% 0%, black 20%, transparent 65%)",
           }}
         />
       </div>
@@ -212,12 +212,9 @@ function SvgPetals() {
     >
       {/* Falling petal SVGs */}
       {[
-        { x: "20%", y: "30%", rot: 25, scale: 1, op: 0.3 },
-        { x: "70%", y: "20%", rot: -15, scale: 0.8, op: 0.25 },
-        { x: "40%", y: "60%", rot: 45, scale: 1.2, op: 0.35 },
-        { x: "85%", y: "45%", rot: -30, scale: 0.9, op: 0.28 },
-        { x: "15%", y: "75%", rot: 60, scale: 1.1, op: 0.32 },
-        { x: "55%", y: "85%", rot: -45, scale: 0.7, op: 0.22 },
+        { x: "20%", y: "30%", rot: 25, scale: 1, op: 0.25 },
+        { x: "70%", y: "20%", rot: -15, scale: 0.8, op: 0.2 },
+        { x: "40%", y: "60%", rot: 45, scale: 1.2, op: 0.28 },
       ].map((p, i) => (
         <svg
           key={i}
@@ -244,9 +241,7 @@ export default function ParallaxBg() {
   return (
     <>
       <SakuraBackground />
-      <FloatingPetals />
       <SvgPetals />
-      <SmallElements />
     </>
   );
 }
