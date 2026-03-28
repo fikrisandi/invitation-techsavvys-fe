@@ -2,13 +2,24 @@
 import { useState } from "react";
 import { RoseDivider } from "./FloralOrnament";
 import { useInvitation } from "../context";
+import { getBankInfo } from "@/lib/bank-logos";
 
 function BankCard({ bank, number, accountName }: { bank: string; number: string; accountName: string }) {
   const [copied, setCopied] = useState(false);
   const copy = () => { navigator.clipboard.writeText(number); setCopied(true); setTimeout(() => setCopied(false), 2500); };
   return (
     <div className="card-rb" style={{ borderRadius: "20px", padding: "32px 28px", textAlign: "center" }}>
-      <p style={{ fontFamily: "var(--font-rb-display)", fontSize: "18px", fontWeight: 400, fontStyle: "italic", marginBottom: "6px", color: "var(--color-rb-text)" }}>{bank}</p>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "6px" }}>
+        {(() => {
+          const info = getBankInfo(bank);
+          return info ? (
+            <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, borderRadius: "50%", background: info.color, color: "#fff", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.02em", marginRight: 8, flexShrink: 0 }}>
+              {info.label.slice(0, 3)}
+            </span>
+          ) : null;
+        })()}
+        <p style={{ fontFamily: "var(--font-rb-display)", fontSize: "18px", fontWeight: 400, fontStyle: "italic", color: "var(--color-rb-text)", margin: 0 }}>{bank}</p>
+      </div>
       <p style={{ fontSize: "11px", marginBottom: "20px", color: "var(--color-rb-text-soft)", fontFamily: "var(--font-rb-body)" }}>{accountName}</p>
       <div style={{ padding: "12px 20px", display: "inline-block", marginBottom: "20px", background: "var(--color-rb-blush)", borderRadius: "12px", border: "1px solid rgba(193,122,143,0.2)" }}>
         <span style={{ fontFamily: "var(--font-rb-display)", fontSize: "18px", letterSpacing: "0.1em", fontWeight: 400, color: "var(--color-rb-dusty)" }}>{number}</span>

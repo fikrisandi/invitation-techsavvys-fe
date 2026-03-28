@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useInvitation } from "../context";
+import { getBankInfo } from "@/lib/bank-logos";
 
 function BankCard({ bank, number, accountName }: { bank: string; number: string; accountName: string }) {
   const [copied, setCopied] = useState(false);
@@ -9,7 +10,17 @@ function BankCard({ bank, number, accountName }: { bank: string; number: string;
   return (
     <div className="glass-mb" style={{ borderRadius: "20px", padding: "36px 28px", textAlign: "center", position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: "linear-gradient(to right, transparent, var(--color-blue-accent), transparent)", opacity: 0.25 }} />
-      <p style={{ fontFamily: "var(--font-display-mb)", fontSize: "17px", fontWeight: 500, marginBottom: "6px", color: "var(--color-white-soft)" }}>{bank}</p>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "6px" }}>
+        {(() => {
+          const info = getBankInfo(bank);
+          return info ? (
+            <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, borderRadius: "50%", background: info.color, color: "#fff", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.02em", marginRight: 8, flexShrink: 0 }}>
+              {info.label.slice(0, 3)}
+            </span>
+          ) : null;
+        })()}
+        <p style={{ fontFamily: "var(--font-display-mb)", fontSize: "17px", fontWeight: 500, color: "var(--color-white-soft)", margin: 0 }}>{bank}</p>
+      </div>
       <p style={{ fontSize: "11px", marginBottom: "20px", color: "var(--color-text-mb-dim)", fontFamily: "var(--font-body-mb)" }}>{accountName}</p>
       <div className="glass-mb-blue" style={{ padding: "12px 20px", display: "inline-block", marginBottom: "20px" }}>
         <span className="shimmer-blue" style={{ fontFamily: "var(--font-display-mb)", fontSize: "18px", letterSpacing: "0.1em", fontWeight: 400 }}>{number}</span>

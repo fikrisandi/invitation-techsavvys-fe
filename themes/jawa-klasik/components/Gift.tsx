@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { CSSProperties } from "react";
 import { BatikBorder, GununganDivider } from "./JawaOrnament";
 import { useInvitation } from "../context";
+import { getBankInfo } from "@/lib/bank-logos";
 
 function BankCard({ bank, number, accountName }: { bank: string; number: string; accountName: string }) {
   const [copied, setCopied] = useState(false);
@@ -26,15 +27,25 @@ function BankCard({ bank, number, accountName }: { bank: string; number: string;
     <div style={cardStyle}>
       <BatikBorder />
       <div style={{ padding: "36px 28px 40px" }}>
-        <p style={{
-          fontFamily: "var(--font-jawa-display)",
-          fontSize: "16px",
-          fontWeight: 500,
-          color: "var(--jawa-text)",
-          marginBottom: "6px",
-        }}>
-          {bank}
-        </p>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "6px" }}>
+          {(() => {
+            const info = getBankInfo(bank);
+            return info ? (
+              <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, borderRadius: "50%", background: info.color, color: "#fff", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.02em", marginRight: 8, flexShrink: 0 }}>
+                {info.label.slice(0, 3)}
+              </span>
+            ) : null;
+          })()}
+          <p style={{
+            fontFamily: "var(--font-jawa-display)",
+            fontSize: "16px",
+            fontWeight: 500,
+            color: "var(--jawa-text)",
+            margin: 0,
+          }}>
+            {bank}
+          </p>
+        </div>
         <p style={{
           fontFamily: "var(--font-jawa-body)",
           fontSize: "11px",

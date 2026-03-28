@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { CSSProperties } from "react";
 import { MegaMendung, SundaDivider } from "./SundaOrnament";
 import { useInvitation } from "../context";
+import { getBankInfo } from "@/lib/bank-logos";
 
 function BankCard({ bank, number, accountName }: { bank: string; number: string; accountName: string }) {
   const [copied, setCopied] = useState(false);
@@ -32,15 +33,25 @@ function BankCard({ bank, number, accountName }: { bank: string; number: string;
         opacity: 0.6,
       }} />
       <div style={{ padding: "32px 24px 36px" }}>
-        <p style={{
-          fontFamily: "var(--font-sunda-display)",
-          fontSize: "16px",
-          fontWeight: 500,
-          color: "var(--sunda-text)",
-          marginBottom: "4px",
-        }}>
-          {bank}
-        </p>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "4px" }}>
+          {(() => {
+            const info = getBankInfo(bank);
+            return info ? (
+              <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, borderRadius: "50%", background: info.color, color: "#fff", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.02em", marginRight: 8, flexShrink: 0 }}>
+                {info.label.slice(0, 3)}
+              </span>
+            ) : null;
+          })()}
+          <p style={{
+            fontFamily: "var(--font-sunda-display)",
+            fontSize: "16px",
+            fontWeight: 500,
+            color: "var(--sunda-text)",
+            margin: 0,
+          }}>
+            {bank}
+          </p>
+        </div>
         <p style={{
           fontFamily: "var(--font-sunda-body)",
           fontSize: "11px",

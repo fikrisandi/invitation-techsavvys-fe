@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useInvitation } from "../context";
 import { CineRule } from "./CineOrnament";
+import { getBankInfo } from "@/lib/bank-logos";
 
 function BankCard({ bank, number, accountName }: { bank: string; number: string; accountName: string }) {
   const [copied, setCopied] = useState(false);
@@ -24,18 +25,28 @@ function BankCard({ bank, number, accountName }: { bank: string; number: string;
         maxWidth: "360px",
       }}
     >
-      <p
-        style={{
-          fontFamily: "var(--font-cine-body)",
-          fontSize: "8px",
-          letterSpacing: "0.5em",
-          textTransform: "uppercase",
-          color: "var(--cine-text-soft)",
-          marginBottom: "12px",
-        }}
-      >
-        {bank}
-      </p>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "12px" }}>
+        {(() => {
+          const info = getBankInfo(bank);
+          return info ? (
+            <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, borderRadius: "50%", background: info.color, color: "#fff", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.02em", marginRight: 8, flexShrink: 0 }}>
+              {info.label.slice(0, 3)}
+            </span>
+          ) : null;
+        })()}
+        <p
+          style={{
+            fontFamily: "var(--font-cine-body)",
+            fontSize: "8px",
+            letterSpacing: "0.5em",
+            textTransform: "uppercase",
+            color: "var(--cine-text-soft)",
+            margin: 0,
+          }}
+        >
+          {bank}
+        </p>
+      </div>
       <p
         style={{
           fontFamily: "var(--font-cine-body)",

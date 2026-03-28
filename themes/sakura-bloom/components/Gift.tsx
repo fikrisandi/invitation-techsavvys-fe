@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useInvitation } from "../context";
 import { SakuraDivider } from "./SakuraEffect";
 import type { BankAccount } from "@/lib/types";
+import { getBankInfo } from "@/lib/bank-logos";
 
 function BankCard({ bank }: { bank: BankAccount }) {
   const [copied, setCopied] = useState(false);
@@ -38,19 +39,29 @@ function BankCard({ bank }: { bank: BankAccount }) {
       />
 
       {/* Bank name */}
-      <p
-        style={{
-          fontSize: "9px",
-          fontWeight: 700,
-          letterSpacing: "0.4em",
-          textTransform: "uppercase",
-          color: "var(--sakura-pink)",
-          marginBottom: "12px",
-          fontFamily: "var(--font-sakura-body)",
-        }}
-      >
-        {bank.bank}
-      </p>
+      <div style={{ display: "flex", alignItems: "center", marginBottom: "12px" }}>
+        {(() => {
+          const info = getBankInfo(bank.bank);
+          return info ? (
+            <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, borderRadius: "50%", background: info.color, color: "#fff", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.02em", marginRight: 8, flexShrink: 0 }}>
+              {info.label.slice(0, 3)}
+            </span>
+          ) : null;
+        })()}
+        <p
+          style={{
+            fontSize: "9px",
+            fontWeight: 700,
+            letterSpacing: "0.4em",
+            textTransform: "uppercase",
+            color: "var(--sakura-pink)",
+            margin: 0,
+            fontFamily: "var(--font-sakura-body)",
+          }}
+        >
+          {bank.bank}
+        </p>
+      </div>
 
       {/* Account number */}
       <p

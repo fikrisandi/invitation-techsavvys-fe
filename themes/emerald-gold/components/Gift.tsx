@@ -3,13 +3,24 @@
 import { useState } from "react";
 import { GoldDivider } from "./FloralOrnament";
 import { useInvitation } from "../context";
+import { getBankInfo } from "@/lib/bank-logos";
 
 function BankCard({ bank, number, accountName }: { bank: string; number: string; accountName: string }) {
   const [copied, setCopied] = useState(false);
   const copy = () => { navigator.clipboard.writeText(number); setCopied(true); setTimeout(() => setCopied(false), 2500); };
   return (
     <div className="glass" style={{ borderRadius: "24px", padding: "40px 32px", textAlign: "center" }}>
-      <p style={{ fontFamily: "var(--font-display)", fontSize: "18px", fontWeight: 500, marginBottom: "8px", color: "var(--color-cream)" }}>{bank}</p>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "8px" }}>
+        {(() => {
+          const info = getBankInfo(bank);
+          return info ? (
+            <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, borderRadius: "50%", background: info.color, color: "#fff", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.02em", marginRight: 8, flexShrink: 0 }}>
+              {info.label.slice(0, 3)}
+            </span>
+          ) : null;
+        })()}
+        <p style={{ fontFamily: "var(--font-display)", fontSize: "18px", fontWeight: 500, color: "var(--color-cream)", margin: 0 }}>{bank}</p>
+      </div>
       <p style={{ fontSize: "11px", marginBottom: "24px", color: "var(--color-text-dim)" }}>{accountName}</p>
       <div className="glass-gold" style={{ borderRadius: "16px", padding: "14px 24px", display: "inline-block", marginBottom: "24px" }}>
         <span style={{ fontFamily: "var(--font-display)", fontSize: "20px", letterSpacing: "0.12em", fontWeight: 300, color: "var(--color-gold-light)" }}>{number}</span>

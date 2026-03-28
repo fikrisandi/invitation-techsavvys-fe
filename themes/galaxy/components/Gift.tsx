@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useInvitation } from "../context";
+import { getBankInfo } from "@/lib/bank-logos";
 
 function BankCard({ bank, number, accountName }: { bank: string; number: string; accountName: string }) {
   const [copied, setCopied] = useState(false);
@@ -27,18 +28,28 @@ function BankCard({ bank, number, accountName }: { bank: string; number: string;
         boxShadow: "0 8px 32px rgba(139,92,246,0.1)",
       }}
     >
-      <p
-        style={{
-          fontFamily: "var(--font-galaxy-body)",
-          fontSize: "8px",
-          letterSpacing: "0.5em",
-          textTransform: "uppercase",
-          color: "var(--galaxy-purple)",
-          marginBottom: "10px",
-        }}
-      >
-        {bank}
-      </p>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "10px" }}>
+        {(() => {
+          const info = getBankInfo(bank);
+          return info ? (
+            <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, borderRadius: "50%", background: info.color, color: "#fff", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.02em", marginRight: 8, flexShrink: 0 }}>
+              {info.label.slice(0, 3)}
+            </span>
+          ) : null;
+        })()}
+        <p
+          style={{
+            fontFamily: "var(--font-galaxy-body)",
+            fontSize: "8px",
+            letterSpacing: "0.5em",
+            textTransform: "uppercase",
+            color: "var(--galaxy-purple)",
+            margin: 0,
+          }}
+        >
+          {bank}
+        </p>
+      </div>
       <p
         style={{
           fontFamily: "var(--font-galaxy-body)",
