@@ -100,8 +100,8 @@ export default function GalaxyTheme({
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Raleway:wght@300;400;500;600&display=swap');
         .theme-galaxy {
-          --galaxy-bg: #04040E;
-          --galaxy-bg-mid: #080818;
+          --galaxy-bg: rgba(4,4,14,0.85);
+          --galaxy-bg-mid: rgba(8,8,24,0.82);
           --galaxy-border: rgba(139,92,246,0.2);
           --galaxy-purple: #8B5CF6;
           --galaxy-pink: #E879A0;
@@ -144,7 +144,7 @@ export default function GalaxyTheme({
       `}</style>
       <div
         className="theme-galaxy"
-        style={{ background: "var(--galaxy-bg)", color: "var(--galaxy-text)", minHeight: "100vh" }}
+        style={{ background: "#04040E", color: "var(--galaxy-text)", minHeight: "100vh" }}
       >
         <InvitationContent guestName={guestName} />
       </div>
