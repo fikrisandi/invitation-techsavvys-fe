@@ -67,7 +67,7 @@ const PRICING = [
       "Google Maps & rekening",
       "Masa aktif 3 bulan",
     ],
-    themes: ["Jawa Klasik", "Sunda Klasik", "Cinematic", "Emerald Gold"],
+    themes: ["Tradisional Klasik 1", "Tradisional Klasik 2", "Cinematic", "Emerald Gold"],
     highlight: false,
     waMsg: "Halo min, saya tertarik paket *Premium* (Rp 130.000) untuk undangan digital. Bisa info lebih lanjut?",
   },
