@@ -31,24 +31,53 @@ function NebulaBackground() {
         overflow: "hidden",
       }}
     >
-      {/* Full background nebula */}
+      {/* Top-right nebula */}
       <div
         style={{
           position: "absolute",
-          inset: 0,
-          opacity: 0.55,
+          top: "-10%",
+          right: "-10%",
+          width: "65%",
+          height: "55%",
+          opacity: 0.6,
         }}
       >
         <Image
-          src="/parallax/galaxy-1.jpg"
-          alt="Nebula background"
+          src="/parallax/galaxy-2.jpg"
+          alt="Nebula top-right"
           fill
           style={{
             objectFit: "cover",
             objectPosition: "center",
-            filter: "saturate(1.3) brightness(0.8)",
+            filter: "saturate(1.4) brightness(0.7)",
+            maskImage: "radial-gradient(ellipse at 100% 0%, black 25%, transparent 70%)",
+            WebkitMaskImage: "radial-gradient(ellipse at 100% 0%, black 25%, transparent 70%)",
           }}
           priority
+        />
+      </div>
+      {/* Bottom-left nebula */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "-10%",
+          left: "-10%",
+          width: "65%",
+          height: "55%",
+          opacity: 0.55,
+        }}
+      >
+        <Image
+          src="/parallax/galaxy-3.jpg"
+          alt="Nebula bottom-left"
+          fill
+          style={{
+            objectFit: "cover",
+            objectPosition: "center",
+            filter: "saturate(1.4) brightness(0.7)",
+            maskImage: "radial-gradient(ellipse at 0% 100%, black 25%, transparent 70%)",
+            WebkitMaskImage: "radial-gradient(ellipse at 0% 100%, black 25%, transparent 70%)",
+          }}
         />
       </div>
     </div>
