@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     images: ["/opengraph-image"],
   },
   verification: {
-    google: "OmWMB3ZkNgL4xMVg3T7m_e7k5kQOr95XJdJqI7RrdSg",
+    google: "BeWnegs_ayyt_LY1v7Wipreuuq8U57Np8pE0c9k74f0",
   },
   alternates: {
     canonical: BASE_URL,
