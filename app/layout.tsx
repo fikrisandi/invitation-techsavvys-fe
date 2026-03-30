@@ -66,6 +66,9 @@ export const metadata: Metadata = {
       "Buat undangan digital pernikahan, ulang tahun, dan acara spesial yang elegan dan modern. Melayani Gresik, Surabaya, dan seluruh Indonesia.",
     images: ["/opengraph-image"],
   },
+  verification: {
+    google: "OmWMB3ZkNgL4xMVg3T7m_e7k5kQOr95XJdJqI7RrdSg",
+  },
   alternates: {
     canonical: BASE_URL,
   },
