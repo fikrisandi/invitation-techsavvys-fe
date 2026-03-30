@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- Background -->
+  <rect width="48" height="48" rx="10" fill="#C4975A"/>
+
+  <!-- Envelope body -->
+  <rect x="6" y="12" width="36" height="26" rx="3" fill="white" opacity="0.95"/>
+
+  <!-- Envelope flap -->
+  <path d="M6 12 L24 27 L42 12" stroke="#C4975A" stroke-width="2" fill="none" stroke-linejoin="round"/>
+
+  <!-- Heart -->
+  <path d="M21 32 C21 29.8 22.3 28.8 24 30 C25.7 28.8 27 29.8 27 32 C27 34.2 24 37 24 37 C24 37 21 34.2 21 32Z" fill="#C4975A"/>
+</svg>

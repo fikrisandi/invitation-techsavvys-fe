@@ -180,11 +180,7 @@ export default function CatalogPage() {
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px", display: "flex", alignItems: "center", justifyContent: "space-between", height: "64px" }}>
           {/* Brand */}
           <a href="/" style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}>
-            <Image src="/logo-savvys.png" alt="Techsavvys" width={30} height={37} style={{ objectFit: "contain", filter: "brightness(0) sepia(1) saturate(4) brightness(0.72)" }} />
-            <div>
-              <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 700, fontSize: "16px", color: "#2C1F14", lineHeight: 1.1 }}>Invitation Savvys</div>
-              <div style={{ fontSize: "9px", color: "#9A7A5A" }}>by <span style={{ color: "#C4975A", fontWeight: 600 }}>Techsavvys</span></div>
-            </div>
+            <Image src="/logo-invitation.svg" alt="Invitation Savvys" width={180} height={46} style={{ objectFit: "contain" }} />
           </a>
 
           {/* Desktop links */}
