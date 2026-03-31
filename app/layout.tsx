@@ -6,8 +6,8 @@ const BASE_URL = "https://invitation.techsavvys-official.com";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Invitation Savvys — Undangan Digital Elegan & Modern",
-    template: "%s | Invitation Savvys",
+    default: "Invitation Savvys",
+    template: "%s · Invitation Savvys",
   },
   description:
     "Buat undangan digital pernikahan, ulang tahun, dan acara spesial yang elegan dan modern. Pilih tema, isi data, dan bagikan dalam hitungan menit. Melayani Gresik, Surabaya, dan seluruh Indonesia.",
