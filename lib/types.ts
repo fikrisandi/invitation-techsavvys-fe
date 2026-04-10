@@ -29,7 +29,20 @@ export type CustomColors = {
   accent?: string;
   text?: string;
   secondary?: string;
+  background?: string;
+  backgroundAlt?: string;
+  border?: string;
 };
+
+export type EffectName =
+  | "stars"
+  | "shooting-stars"
+  | "glow-orbs"
+  | "drift-particles"
+  | "clouds"
+  | "gold-particles"
+  | "sakura-petals"
+  | "nebula";
 
 export type InvitationData = {
   slug: string;
@@ -41,6 +54,13 @@ export type InvitationData = {
 
   // Custom colors (override theme defaults)
   customColors?: CustomColors;
+
+  // Effect layer system — mix-and-match effects independent of theme
+  effects?: EffectName[];
+  effectConfig?: Record<string, Record<string, unknown>>;
+
+  // Font override
+  font?: string;
 
   // Couple
   groom: Person;

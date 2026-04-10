@@ -13,6 +13,8 @@ import SundaKlasikTheme from "@/themes/sunda-klasik";
 import CinematicTheme from "@/themes/cinematic";
 import GalaxyTheme from "@/themes/galaxy";
 import SakuraBloomTheme from "@/themes/sakura-bloom";
+import EffectLayer from "@/effects/EffectLayer";
+import type { EffectName } from "@/effects/index";
 import type { InvitationData } from "@/lib/types";
 import type { Metadata } from "next";
 
@@ -90,9 +92,19 @@ export default async function InvitationPage({ params, searchParams }: Props) {
   const ThemeComponent = THEMES[data.theme] ?? EmeraldGoldTheme;
   const colorCSS = data.customColors ? generateColorOverrideCSS(data.theme, data.customColors) : "";
 
+  // When effects are explicitly set, render EffectLayer (overrides theme defaults)
+  const hasCustomEffects = data.effects && data.effects.length > 0;
+
   return (
     <>
       {colorCSS && <style dangerouslySetInnerHTML={{ __html: colorCSS }} />}
+      {hasCustomEffects && (
+        <EffectLayer
+          effects={data.effects as EffectName[]}
+          effectConfig={data.effectConfig}
+          theme={data.theme}
+        />
+      )}
       <ThemeComponent data={data} guestName={guestName} />
     </>
   );
