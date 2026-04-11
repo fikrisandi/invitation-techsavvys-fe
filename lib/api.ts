@@ -1,12 +1,18 @@
 import type { InvitationData } from "./types";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "";
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY ?? "";
+
+const apiHeaders: Record<string, string> = {
+  ...(API_KEY ? { "X-API-Key": API_KEY } : {}),
+};
 
 export async function getInvitation(slug: string, guestName?: string): Promise<InvitationData | null> {
   if (!BASE_URL) return null;
   try {
     const query = guestName ? `?to=${encodeURIComponent(guestName)}` : "";
     const res = await fetch(`${BASE_URL}/api/invitations/${slug}${query}`, {
+      headers: apiHeaders,
       next: { revalidate: 60 },
     });
     if (!res.ok) return null;
@@ -22,7 +28,7 @@ export async function submitRsvp(
 ) {
   const res = await fetch(`${BASE_URL}/api/invitations/${slug}/rsvp`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...apiHeaders },
     body: JSON.stringify(payload),
   });
   if (!res.ok) throw new Error("RSVP gagal");
@@ -32,6 +38,7 @@ export async function getWishes(slug: string) {
   if (!BASE_URL) return [];
   try {
     const res = await fetch(`${BASE_URL}/api/invitations/${slug}/wishes`, {
+      headers: apiHeaders,
       next: { revalidate: 30 },
     });
     if (!res.ok) return [];
