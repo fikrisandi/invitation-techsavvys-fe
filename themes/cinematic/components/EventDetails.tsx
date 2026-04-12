@@ -87,10 +87,38 @@ function EventCard({ event, delay }: { event: EventItem; delay: string }) {
           fontSize: "11px",
           color: "var(--cine-text-soft)",
           lineHeight: 1.7,
+          marginBottom: event.mapsUrl ? "24px" : "0",
         }}
       >
         {event.address}
       </p>
+      {event.mapsUrl && (
+        <a
+          href={event.mapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "8px",
+            fontFamily: "var(--font-cine-body)",
+            fontSize: "8px",
+            letterSpacing: "0.3em",
+            textTransform: "uppercase",
+            color: "var(--cine-gold)",
+            border: "1px solid var(--cine-border)",
+            padding: "12px 24px",
+            textDecoration: "none",
+            transition: "border-color 0.3s",
+          }}
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Buka di Maps
+        </a>
+      )}
     </div>
   );
 }
@@ -104,20 +132,9 @@ function groupByDate(events: EventItem[]) {
   return groups;
 }
 
-function getUniqueMapGroups(events: EventItem[]) {
-  const seen = new Set<string>();
-  return events.filter((e) => {
-    const key = `${e.date}-${e.location}`;
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return e.mapsEmbedSrc || e.mapsUrl;
-  });
-}
-
 export default function EventDetails() {
   const { events } = useInvitation();
   const grouped = groupByDate(events);
-  const mapGroups = getUniqueMapGroups(events);
   let delayIndex = 1;
 
   return (
@@ -200,62 +217,7 @@ export default function EventDetails() {
           </div>
         ))}
 
-        {mapGroups.map((event, i) => (
-          <div
-            key={`map-${i}`}
-            className={`reveal-up delay-${Math.min(i + 3, 8)}`}
-            style={{ marginBottom: "40px" }}
-          >
-            {event.mapsEmbedSrc && (
-              <div
-                style={{
-                  border: "1px solid var(--cine-border)",
-                  overflow: "hidden",
-                  marginBottom: "20px",
-                }}
-              >
-                <iframe
-                  src={event.mapsEmbedSrc}
-                  width="100%"
-                  height="220"
-                  style={{ border: 0, display: "block" }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
-            )}
-            {event.mapsUrl && (
-              <div style={{ textAlign: "center" }}>
-                <a
-                  href={event.mapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    fontFamily: "var(--font-cine-body)",
-                    fontSize: "8px",
-                    letterSpacing: "0.3em",
-                    textTransform: "uppercase",
-                    color: "var(--cine-gold)",
-                    border: "1px solid var(--cine-border)",
-                    padding: "14px 28px",
-                    textDecoration: "none",
-                    transition: "border-color 0.3s",
-                  }}
-                >
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                  Buka di Maps — {event.location}
-                </a>
-              </div>
-            )}
-          </div>
-        ))}
+        {/* Maps now inline per event card */}
       </div>
     </section>
   );
