@@ -13,6 +13,16 @@ function EventCard({ event, delay }: { event: EventItem; delay: string }) {
       <div style={{ width: "40px", height: "1px", background: "var(--color-yy-gold)", opacity: 0.4, marginBottom: "12px" }} />
       <p style={{ fontSize: "13px", fontWeight: 700, color: "var(--color-yy-text)", fontFamily: "var(--font-yy-body)", marginBottom: "4px" }}>{event.location}</p>
       <p style={{ fontSize: "11px", color: "var(--color-yy-text-soft)", fontFamily: "var(--font-yy-body)" }}>{event.address}</p>
+      {event.mapsUrl && (
+        <a href={event.mapsUrl} target="_blank" rel="noopener noreferrer"
+          style={{ display: "inline-flex", alignItems: "center", gap: "6px", marginTop: "16px", padding: "10px 20px", border: "1px solid rgba(var(--color-yy-gold-rgb, 180,144,60), 0.3)", borderRadius: "100px", color: "var(--color-yy-forest)", fontSize: "11px", letterSpacing: "0.15em", textDecoration: "none", background: "rgba(var(--color-yy-gold-rgb, 180,144,60), 0.08)", fontFamily: "var(--font-yy-body)", transition: "background 0.3s" }}>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Buka di Maps
+        </a>
+      )}
     </div>
   );
 }
@@ -22,15 +32,10 @@ function groupByDate(events: EventItem[]) {
   events.forEach((e) => { if (!g[e.date]) g[e.date] = []; g[e.date].push(e); });
   return g;
 }
-function getMapGroups(events: EventItem[]) {
-  const seen = new Set<string>();
-  return events.filter((e) => { const k = `${e.date}-${e.location}`; if (seen.has(k)) return false; seen.add(k); return e.mapsEmbedSrc || e.mapsUrl; });
-}
 
 export default function EventDetails() {
   const { events } = useInvitation();
   const grouped = groupByDate(events);
-  const mapGroups = getMapGroups(events);
   let di = 1;
 
   return (
@@ -56,23 +61,6 @@ export default function EventDetails() {
           </div>
         ))}
 
-        {mapGroups.map((event, i) => (
-          <div key={`map-${i}`} className={`reveal-up delay-${Math.min(i+3,8)}`} style={{ marginBottom: "32px" }}>
-            {event.mapsEmbedSrc && (
-              <div className="card-yy" style={{ padding: "8px", marginBottom: "16px" }}>
-                <iframe src={event.mapsEmbedSrc} width="100%" height="220" style={{ border: 0, borderRadius: "12px" }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
-              </div>
-            )}
-            {event.mapsUrl && (
-              <div style={{ textAlign: "center" }}>
-                <a href={event.mapsUrl} target="_blank" rel="noopener noreferrer" className="btn-yy-outline">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  {event.location}
-                </a>
-              </div>
-            )}
-          </div>
-        ))}
       </div>
     </section>
   );

@@ -134,20 +134,10 @@ function groupByDate(events: EventItem[]) {
   return groups;
 }
 
-function getUniqueMapGroups(events: EventItem[]) {
-  const seen = new Set<string>();
-  return events.filter((e) => {
-    const key = `${e.date}-${e.location}`;
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return e.mapsEmbedSrc || e.mapsUrl;
-  });
-}
 
 export default function EventDetails() {
   const { events } = useInvitation();
   const grouped = groupByDate(events);
-  const mapGroups = getUniqueMapGroups(events);
   let delayIndex = 1;
 
   return (
@@ -225,32 +215,6 @@ export default function EventDetails() {
           </div>
         ))}
 
-        {/* Map embeds */}
-        {mapGroups.map((event, i) => (
-          <div key={`map-${i}`} className={`reveal-up delay-${Math.min(i + 3, 8)}`} style={{ marginBottom: "28px" }}>
-            {event.mapsEmbedSrc && (
-              <div style={{
-                border: "1px solid var(--sunda-border)",
-                borderRadius: "4px",
-                overflow: "hidden",
-                marginBottom: "16px",
-              }}>
-                <div style={{ display: "flex", justifyContent: "center", opacity: 0.3 }}>
-                  <MegaMendung />
-                </div>
-                <iframe
-                  src={event.mapsEmbedSrc}
-                  width="100%"
-                  height="220"
-                  style={{ border: 0, display: "block" }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
-            )}
-          </div>
-        ))}
       </div>
 
       {/* MegaMendung at bottom */}

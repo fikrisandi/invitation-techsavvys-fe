@@ -88,6 +88,36 @@ function EventCard({ event, delay }: { event: EventItem; delay: string }) {
       >
         {event.address}
       </p>
+      {event.mapsUrl && (
+        <a
+          href={event.mapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "6px",
+            marginTop: "20px",
+            padding: "12px 24px",
+            border: "1px solid var(--galaxy-border)",
+            borderRadius: "100px",
+            color: "var(--galaxy-purple)",
+            fontFamily: "var(--font-galaxy-body)",
+            fontSize: "8px",
+            letterSpacing: "0.3em",
+            textTransform: "uppercase",
+            textDecoration: "none",
+            background: "rgba(139,92,246,0.08)",
+            transition: "background 0.3s",
+          }}
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Buka di Maps
+        </a>
+      )}
     </div>
   );
 }
@@ -101,20 +131,10 @@ function groupByDate(events: EventItem[]) {
   return groups;
 }
 
-function getUniqueMapGroups(events: EventItem[]) {
-  const seen = new Set<string>();
-  return events.filter((e) => {
-    const key = `${e.date}-${e.location}`;
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return e.mapsEmbedSrc || e.mapsUrl;
-  });
-}
 
 export default function EventDetails() {
   const { events } = useInvitation();
   const grouped = groupByDate(events);
-  const mapGroups = getUniqueMapGroups(events);
   let delayIndex = 1;
 
   return (
@@ -208,67 +228,6 @@ export default function EventDetails() {
           </div>
         ))}
 
-        {mapGroups.map((event, i) => (
-          <div
-            key={`map-${i}`}
-            className={`reveal-up delay-${Math.min(i + 3, 8)}`}
-            style={{ marginBottom: "40px" }}
-          >
-            {event.mapsEmbedSrc && (
-              <div
-                style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid var(--galaxy-border)",
-                  borderRadius: "20px",
-                  overflow: "hidden",
-                  marginBottom: "20px",
-                  padding: "8px",
-                }}
-              >
-                <iframe
-                  src={event.mapsEmbedSrc}
-                  width="100%"
-                  height="220"
-                  style={{ border: 0, borderRadius: "14px", display: "block" }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
-            )}
-            {event.mapsUrl && (
-              <div style={{ textAlign: "center" }}>
-                <a
-                  href={event.mapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    fontFamily: "var(--font-galaxy-body)",
-                    fontSize: "8px",
-                    letterSpacing: "0.3em",
-                    textTransform: "uppercase",
-                    color: "var(--galaxy-purple)",
-                    border: "1px solid var(--galaxy-border)",
-                    padding: "14px 28px",
-                    borderRadius: "100px",
-                    textDecoration: "none",
-                    background: "rgba(139,92,246,0.08)",
-                    transition: "background 0.3s",
-                  }}
-                >
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                  Buka di Maps — {event.location}
-                </a>
-              </div>
-            )}
-          </div>
-        ))}
       </div>
     </section>
   );
