@@ -52,7 +52,6 @@ export function JanurLeft() {
         <path d="M23 76 C12 60 7 44 8 34" stroke="var(--jawa-gold)" strokeWidth="0.6" strokeLinecap="round" />
         <path d="M23 58 C14 46 10 34 12 26" stroke="var(--jawa-gold)" strokeWidth="0.5" strokeLinecap="round" />
         <path d="M23 42 C16 34 12 24 14 18" stroke="var(--jawa-gold)" strokeWidth="0.4" strokeLinecap="round" />
-        <path d="M23 28 C18 22 14 14 16 8" stroke="var(--jawa-gold)" strokeWidth="0.4" strokeLinecap="round" />
         {/* Leaf fronds branching right */}
         <path d="M38 255 C50 245 62 234 68 222" stroke="var(--jawa-gold)" strokeWidth="0.8" strokeLinecap="round" />
         <path d="M36 235 C48 222 60 208 65 194" stroke="var(--jawa-gold)" strokeWidth="0.8" strokeLinecap="round" />
@@ -66,7 +65,6 @@ export function JanurLeft() {
         <path d="M23 72 C32 58 38 42 38 32" stroke="var(--jawa-gold)" strokeWidth="0.6" strokeLinecap="round" />
         <path d="M23 55 C30 44 35 32 36 24" stroke="var(--jawa-gold)" strokeWidth="0.5" strokeLinecap="round" />
         <path d="M23 40 C28 32 33 22 34 16" stroke="var(--jawa-gold)" strokeWidth="0.4" strokeLinecap="round" />
-        <path d="M23 26 C28 18 32 10 33 4" stroke="var(--jawa-gold)" strokeWidth="0.4" strokeLinecap="round" />
         {/* Small decorative dots along stem */}
         <circle cx="39" cy="270" r="1" fill="var(--jawa-gold)" opacity="0.5" />
         <circle cx="36" cy="248" r="1" fill="var(--jawa-gold)" opacity="0.5" />
