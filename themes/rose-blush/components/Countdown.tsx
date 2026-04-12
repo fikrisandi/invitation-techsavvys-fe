@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { RoseDivider } from "./FloralOrnament";
 import { useInvitation } from "../context";
+import { parseEventDate } from "@/lib/parse-date";
 
 function pad(n: number) { return String(n).padStart(2, "0"); }
 
@@ -12,7 +13,7 @@ export default function Countdown() {
 
   useEffect(() => {
     if (!mainEvent) return;
-    const target = new Date(mainEvent.date + " " + (mainEvent.time ?? "00:00")).getTime();
+    const target = parseEventDate(mainEvent.date)?.getTime() ?? 0;
     const calc = () => {
       const now = Date.now();
       const rem = Math.max(0, target - now);

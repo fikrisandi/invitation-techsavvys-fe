@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 import { BatikBorder, GununganDivider } from "./JawaOrnament";
 import { useInvitation } from "../context";
+import { parseEventDate } from "@/lib/parse-date";
 
 export default function Countdown() {
   const { events } = useInvitation();
@@ -11,7 +12,7 @@ export default function Countdown() {
   const [t, setT] = useState({ d: 0, h: 0, m: 0, s: 0 });
 
   useEffect(() => {
-    const target = firstEvent ? new Date(firstEvent.date + " 08:00:00").getTime() : 0;
+    const target = firstEvent ? (parseEventDate(firstEvent.date)?.getTime() ?? 0) : 0;
     const tick = () => {
       const d = Math.max(0, target - Date.now());
       setT({

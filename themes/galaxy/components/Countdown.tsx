@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useInvitation } from "../context";
+import { parseEventDate } from "@/lib/parse-date";
 
 export default function Countdown() {
   const { events } = useInvitation();
@@ -10,7 +11,7 @@ export default function Countdown() {
 
   useEffect(() => {
     const raw = firstEvent?.date ?? "";
-    const target = raw ? new Date(raw).getTime() : 0;
+    const target = raw ? (parseEventDate(raw)?.getTime() ?? 0) : 0;
     const tick = () => {
       const diff = Math.max(0, target - Date.now());
       setT({

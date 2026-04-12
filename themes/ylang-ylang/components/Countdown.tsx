@@ -2,13 +2,14 @@
 import { useEffect, useState } from "react";
 import { BotanicalDivider } from "./BotanicalOrnament";
 import { useInvitation } from "../context";
+import { parseEventDate } from "@/lib/parse-date";
 
 export default function Countdown() {
   const { events } = useInvitation();
   const firstEvent = events[0];
   const [t, setT] = useState({ d: 0, h: 0, m: 0, s: 0 });
   useEffect(() => {
-    const target = firstEvent ? new Date(firstEvent.date + " 08:00:00").getTime() : 0;
+    const target = firstEvent ? (parseEventDate(firstEvent.date)?.getTime() ?? 0) : 0;
     const tick = () => { const d = Math.max(0, target - Date.now()); setT({ d: Math.floor(d/864e5), h: Math.floor((d/36e5)%24), m: Math.floor((d/6e4)%60), s: Math.floor((d/1e3)%60) }); };
     tick(); const id = setInterval(tick, 1000); return () => clearInterval(id);
   }, [firstEvent]);
