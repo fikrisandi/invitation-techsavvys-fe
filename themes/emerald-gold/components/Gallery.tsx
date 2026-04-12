@@ -5,8 +5,6 @@ import { GoldDivider } from "./FloralOrnament";
 import Particles from "./Particles";
 import { useInvitation } from "../context";
 
-const PLACEHOLDER_LABELS = ["Prewed 1","Prewed 2","Lamaran 1","Prewed 3","Bersama 1","Bersama 2","Prewed 4","Prewed 5"];
-
 const GRID_SPANS = [
   { col: "span 7", row: "span 2", aspect: "4/5", tilt: "photo-tilt-left" },
   { col: "span 5", row: "span 1", aspect: "1/1", tilt: "photo-tilt-right" },
@@ -21,8 +19,10 @@ const GRID_SPANS = [
 export default function Gallery() {
   const { photos } = useInvitation();
   const [sel, setSel] = useState<number | null>(null);
-  const items = photos.length > 0 ? photos : PLACEHOLDER_LABELS.map((l) => l);
-  const isPlaceholder = photos.length === 0;
+
+  if (photos.length === 0) return null;
+
+  const items = photos;
 
   return (
     <section id="gallery" className="grad-gallery relative overflow-hidden">
@@ -34,17 +34,13 @@ export default function Gallery() {
           <GoldDivider />
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", gap: "12px" }}>
-          {items.slice(0, 8).map((src, i) => {
+          {items.slice(0, GRID_SPANS.length).map((src, i) => {
             const g = GRID_SPANS[i] ?? GRID_SPANS[0];
             return (
               <div key={i} className={`${g.tilt} reveal-scale delay-${Math.min(i+1,8)} group relative cursor-pointer`}
                 style={{ gridColumn: g.col, gridRow: g.row, borderRadius: "20px", overflow: "hidden", boxShadow: "0 8px 32px rgba(0,0,0,0.2)", aspectRatio: g.aspect }}
                 onClick={() => setSel(i)}>
-                {isPlaceholder
-                  ? <div className="w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-700" style={{ background: "linear-gradient(135deg, var(--color-emerald-light), var(--color-emerald))", border: "1px solid var(--color-glass-border)" }}>
-                      <span style={{ fontFamily: "var(--font-display)", color: "var(--color-text-dim)", fontSize: "12px" }}>{src}</span>
-                    </div>
-                  : <img src={src} alt={`Foto ${i+1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />}
+                <img src={src} alt={`Foto ${i+1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-500" />
               </div>
             );
@@ -59,9 +55,7 @@ export default function Gallery() {
           <div style={{ maxWidth: "400px", width: "100%", aspectRatio: "3/4", borderRadius: "24px", overflow: "hidden" }}
             className="glass-strong flex items-center justify-center shadow-2xl"
             onClick={(e) => e.stopPropagation()}>
-            {isPlaceholder
-              ? <span style={{ fontFamily: "var(--font-display)", color: "var(--color-text-dim)" }}>{items[sel]}</span>
-              : <img src={items[sel]} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />}
+            <img src={items[sel]} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
           </div>
           <button className="absolute top-5 right-5 w-10 h-10 rounded-full glass flex items-center justify-center" style={{ color: "white", fontSize: "20px", cursor: "pointer" }} onClick={() => setSel(null)}>&times;</button>
         </div>

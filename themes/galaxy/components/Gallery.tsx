@@ -3,15 +3,13 @@
 import { useState } from "react";
 import { useInvitation } from "../context";
 
-const PLACEHOLDER_LABELS = ["Moment I", "Moment II", "Moment III", "Moment IV", "Moment V", "Moment VI", "Moment VII", "Moment VIII"];
-
 export default function Gallery() {
   const { photos } = useInvitation();
   const [sel, setSel] = useState<number | null>(null);
 
-  const items = photos.length > 0 ? photos : PLACEHOLDER_LABELS;
-  const isPlaceholder = photos.length === 0;
-  const displayItems = items.slice(0, 8);
+  if (photos.length === 0) return null;
+
+  const displayItems = photos;
 
   return (
     <section
@@ -95,53 +93,26 @@ export default function Gallery() {
                 el.style.boxShadow = "none";
               }}
             >
-              {isPlaceholder ? (
-                <div
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    background: "linear-gradient(135deg, rgba(139,92,246,0.1), rgba(232,121,160,0.08))",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "var(--font-galaxy-body)",
-                      fontSize: "10px",
-                      letterSpacing: "0.2em",
-                      textTransform: "uppercase",
-                      color: "var(--galaxy-text-soft)",
-                    }}
-                  >
-                    {src as string}
-                  </span>
-                </div>
-              ) : (
-                <>
-                  <img
-                    src={src as string}
-                    alt={`Foto ${i + 1}`}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s ease" }}
-                  />
-                  {/* Purple hover overlay */}
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      background: "rgba(139,92,246,0)",
-                      transition: "background 0.4s ease",
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLDivElement).style.background = "rgba(139,92,246,0.3)";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLDivElement).style.background = "rgba(139,92,246,0)";
-                    }}
-                  />
-                </>
-              )}
+              <img
+                src={src as string}
+                alt={`Foto ${i + 1}`}
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s ease" }}
+              />
+              {/* Purple hover overlay */}
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: "rgba(139,92,246,0)",
+                  transition: "background 0.4s ease",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.background = "rgba(139,92,246,0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.background = "rgba(139,92,246,0)";
+                }}
+              />
             </div>
           ))}
         </div>
@@ -179,27 +150,11 @@ export default function Gallery() {
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            {isPlaceholder ? (
-              <div
-                style={{
-                  aspectRatio: "3/4",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  background: "rgba(139,92,246,0.1)",
-                }}
-              >
-                <span style={{ fontFamily: "var(--font-galaxy-body)", color: "var(--galaxy-text-soft)" }}>
-                  {displayItems[sel]}
-                </span>
-              </div>
-            ) : (
-              <img
-                src={displayItems[sel] as string}
-                alt=""
-                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-              />
-            )}
+            <img
+              src={displayItems[sel] as string}
+              alt=""
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </div>
           <button
             style={{

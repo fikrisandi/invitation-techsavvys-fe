@@ -1,8 +1,8 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useInvitation } from "../context";
 
-export default function MusicPlayer() {
+export default function MusicPlayer({ autoPlay = false }: { autoPlay?: boolean }) {
   const { musicUrl } = useInvitation();
   const [playing, setPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -15,12 +15,23 @@ export default function MusicPlayer() {
     return () => { audio.pause(); audio.src = ""; };
   }, [musicUrl]);
 
+  const play = useCallback(() => {
+    audioRef.current?.play().then(() => setPlaying(true)).catch(() => {});
+  }, []);
+
   const toggle = () => {
     const audio = audioRef.current;
     if (!audio) return;
     if (playing) { audio.pause(); setPlaying(false); }
-    else { audio.play().then(() => setPlaying(true)).catch(() => {}); }
+    else { play(); }
   };
+
+  useEffect(() => {
+    if (!autoPlay) return;
+    const handler = () => setTimeout(play, 600);
+    window.addEventListener("invitation-opened", handler, { once: true });
+    return () => window.removeEventListener("invitation-opened", handler);
+  }, [autoPlay, play]);
 
   if (!musicUrl) return null;
 

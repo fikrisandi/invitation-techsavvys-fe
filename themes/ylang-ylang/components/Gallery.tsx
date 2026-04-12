@@ -3,7 +3,6 @@ import { useState } from "react";
 import { BotanicalDivider } from "./BotanicalOrnament";
 import { useInvitation } from "../context";
 
-const LABELS = ["Prewed 1","Prewed 2","Lamaran 1","Prewed 3","Bersama 1","Bersama 2","Prewed 4","Prewed 5"];
 const SPANS = [
   { col: "span 7", row: "span 2", aspect: "4/5", tilt: "photo-tilt-left" },
   { col: "span 5", row: "span 1", aspect: "1/1", tilt: "photo-tilt-right" },
@@ -18,8 +17,10 @@ const SPANS = [
 export default function Gallery() {
   const { photos } = useInvitation();
   const [sel, setSel] = useState<number | null>(null);
-  const items = photos.length > 0 ? photos : LABELS;
-  const isPlaceholder = photos.length === 0;
+
+  if (photos.length === 0) return null;
+
+  const items = photos;
 
   return (
     <section id="gallery" className="grad-yy-alt relative overflow-hidden geo-yy">
@@ -30,17 +31,13 @@ export default function Gallery() {
           <BotanicalDivider />
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", gap: "10px" }}>
-          {items.slice(0, 8).map((src, i) => {
+          {items.slice(0, SPANS.length).map((src, i) => {
             const g = SPANS[i] ?? SPANS[0];
             return (
               <div key={i} className={`${g.tilt} reveal-scale delay-${Math.min(i+1,8)} group relative cursor-pointer`}
                 style={{ gridColumn: g.col, gridRow: g.row, borderRadius: "14px", overflow: "hidden", boxShadow: "0 4px 16px rgba(60,40,20,0.1)", aspectRatio: g.aspect, border: "1px solid rgba(196,151,90,0.15)" }}
                 onClick={() => setSel(i)}>
-                {isPlaceholder
-                  ? <div className="w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-700" style={{ background: "linear-gradient(135deg, #E8DFD0, #F3EDE3)" }}>
-                      <span style={{ fontFamily: "var(--font-yy-display)", color: "var(--color-yy-text-muted)", fontSize: "12px", fontStyle: "italic" }}>{src}</span>
-                    </div>
-                  : <img src={src} alt={`Foto ${i+1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />}
+                <img src={src} alt={`Foto ${i+1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-[rgba(196,151,90,0.15)] transition-all duration-500" />
               </div>
             );
@@ -53,8 +50,7 @@ export default function Gallery() {
           onClick={() => setSel(null)}>
           <div style={{ maxWidth: "400px", width: "100%", aspectRatio: "3/4", borderRadius: "20px", overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.3)", background: "white" }}
             className="flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
-            {isPlaceholder ? <span style={{ fontFamily: "var(--font-yy-display)", color: "var(--color-yy-text-muted)", fontStyle: "italic" }}>{items[sel]}</span>
-              : <img src={items[sel]} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />}
+            <img src={items[sel]} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
           </div>
           <button className="absolute top-5 right-5 w-10 h-10 rounded-full flex items-center justify-center" style={{ background: "rgba(255,255,255,0.9)", color: "var(--color-yy-text)", fontSize: "20px", cursor: "pointer", border: "none" }} onClick={() => setSel(null)}>&times;</button>
         </div>

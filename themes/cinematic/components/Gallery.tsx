@@ -5,16 +5,15 @@ import { useInvitation } from "../context";
 import { CineRule } from "./CineOrnament";
 
 const ROTATIONS = [-2.5, 1.8, -1.2, 2.1, -0.8, 1.5, -2, 0.9, -1.6, 2.3];
-const PLACEHOLDER_LABELS = ["Scene I", "Scene II", "Scene III", "Scene IV", "Scene V", "Scene VI", "Scene VII", "Scene VIII"];
 
 export default function Gallery() {
   const { photos } = useInvitation();
   const [sel, setSel] = useState<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const items = photos.length > 0 ? photos : PLACEHOLDER_LABELS;
-  const isPlaceholder = photos.length === 0;
-  const displayItems = items.slice(0, 8);
+  if (photos.length === 0) return null;
+
+  const displayItems = photos;
 
   return (
     <section
@@ -145,36 +144,11 @@ export default function Gallery() {
                   justifyContent: "center",
                 }}
               >
-                {isPlaceholder ? (
-                  <div
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      background: "linear-gradient(135deg, #141414, #0a0a0a)",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontFamily: "var(--font-cine-body)",
-                        fontSize: "10px",
-                        letterSpacing: "0.3em",
-                        textTransform: "uppercase",
-                        color: "var(--cine-text-soft)",
-                      }}
-                    >
-                      {src as string}
-                    </span>
-                  </div>
-                ) : (
-                  <img
-                    src={src as string}
-                    alt={`Foto ${i + 1}`}
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                  />
-                )}
+                <img
+                  src={src as string}
+                  alt={`Foto ${i + 1}`}
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
               </div>
 
               {/* Film frame bottom */}
@@ -237,27 +211,11 @@ export default function Gallery() {
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            {isPlaceholder ? (
-              <div
-                style={{
-                  aspectRatio: "3/4",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  background: "var(--cine-card)",
-                }}
-              >
-                <span style={{ fontFamily: "var(--font-cine-body)", color: "var(--cine-text-soft)" }}>
-                  {displayItems[sel]}
-                </span>
-              </div>
-            ) : (
-              <img
-                src={displayItems[sel] as string}
-                alt=""
-                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-              />
-            )}
+            <img
+              src={displayItems[sel] as string}
+              alt=""
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </div>
           <button
             style={{

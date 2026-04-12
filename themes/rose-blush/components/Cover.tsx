@@ -14,6 +14,7 @@ export default function Cover({ guestName }: { guestName?: string }) {
 
   const handleOpen = () => {
     document.body.classList.remove("no-scroll");
+    window.dispatchEvent(new Event("invitation-opened"));
     setOpened(true);
   };
 

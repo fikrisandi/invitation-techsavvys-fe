@@ -26,6 +26,7 @@ export default function Cover({ onOpen, guestName }: { onOpen: () => void; guest
   const handleOpen = () => {
     setExiting(true);
     document.body.classList.remove("no-scroll");
+    window.dispatchEvent(new Event("invitation-opened"));
     setTimeout(onOpen, 1000);
   };
 

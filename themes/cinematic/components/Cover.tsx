@@ -19,6 +19,7 @@ export default function Cover() {
   const handleOpen = () => {
     setExiting(true);
     document.body.classList.remove("no-scroll");
+    window.dispatchEvent(new Event("invitation-opened"));
     setTimeout(() => setOpened(true), 900);
   };
 

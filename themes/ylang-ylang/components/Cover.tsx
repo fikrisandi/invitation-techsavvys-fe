@@ -12,7 +12,7 @@ export default function Cover({ onOpen, guestName }: { onOpen: () => void; guest
     setTimeout(() => setReady(true), 250);
   }, []);
 
-  const handleOpen = () => { setExiting(true); document.body.classList.remove("no-scroll"); setTimeout(onOpen, 900); };
+  const handleOpen = () => { setExiting(true); document.body.classList.remove("no-scroll"); window.dispatchEvent(new Event("invitation-opened")); setTimeout(onOpen, 900); };
   const firstEvent = events[0];
   const lastEvent = events[events.length - 1];
   const dateLabel = firstEvent?.date === lastEvent?.date ? firstEvent?.date : `${firstEvent?.date} — ${lastEvent?.date}`;
