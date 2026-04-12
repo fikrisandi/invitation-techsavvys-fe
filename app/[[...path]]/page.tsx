@@ -18,6 +18,23 @@ import type { EffectName } from "@/effects/index";
 import type { InvitationData } from "@/lib/types";
 import type { Metadata } from "next";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "";
+
+function resolveUploadUrls(data: InvitationData): InvitationData {
+  const fix = (url?: string) => {
+    if (!url) return url;
+    if (url.startsWith("http")) return url;
+    return `${API_URL}${url}`;
+  };
+  return {
+    ...data,
+    musicUrl: fix(data.musicUrl),
+    groom: { ...data.groom, photo: fix(data.groom.photo) },
+    bride: { ...data.bride, photo: fix(data.bride.photo) },
+    photos: data.photos.map((p) => fix(p) ?? p),
+  };
+}
+
 const THEMES: Record<string, React.ComponentType<{ data: InvitationData; guestName?: string }>> = {
   "emerald-gold": EmeraldGoldTheme,
   "midnight-blue": MidnightBlueTheme,
@@ -116,21 +133,22 @@ export default async function InvitationPage({ params, searchParams }: Props) {
     return <ExpiredPage data={data} />;
   }
 
-  const ThemeComponent = THEMES[data.theme] ?? EmeraldGoldTheme;
-  const colorCSS = data.customColors ? generateColorOverrideCSS(data.theme, data.customColors) : "";
-  const hasCustomEffects = data.effects && data.effects.length > 0;
+  const resolved = resolveUploadUrls(data);
+  const ThemeComponent = THEMES[resolved.theme] ?? EmeraldGoldTheme;
+  const colorCSS = resolved.customColors ? generateColorOverrideCSS(resolved.theme, resolved.customColors) : "";
+  const hasCustomEffects = resolved.effects && resolved.effects.length > 0;
 
   return (
     <>
       {colorCSS && <style dangerouslySetInnerHTML={{ __html: colorCSS }} />}
       {hasCustomEffects && (
         <EffectLayer
-          effects={data.effects as EffectName[]}
-          effectConfig={data.effectConfig}
-          theme={data.theme}
+          effects={resolved.effects as EffectName[]}
+          effectConfig={resolved.effectConfig}
+          theme={resolved.theme}
         />
       )}
-      <ThemeComponent data={data} guestName={guestName} />
+      <ThemeComponent data={resolved} guestName={guestName} />
     </>
   );
 }
