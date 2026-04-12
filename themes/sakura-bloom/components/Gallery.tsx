@@ -64,7 +64,9 @@ export default function Gallery() {
                 overflow: "hidden",
                 aspectRatio: i % 3 === 0 ? "3/4" : "1/1",
                 cursor: "pointer",
-                background: "var(--sakura-bg-deep-t)",
+                background: "rgba(212,112,138,0.06)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
                 border: "1px solid var(--sakura-border)",
               }}
             >
@@ -74,7 +76,7 @@ export default function Gallery() {
                 style={{
                   width: "100%",
                   height: "100%",
-                  objectFit: "cover",
+                  objectFit: "contain",
                   transition: "transform 0.5s ease",
                   display: "block",
                 }}

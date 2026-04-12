@@ -38,9 +38,9 @@ export default function Gallery() {
             const g = GRID_SPANS[i] ?? GRID_SPANS[0];
             return (
               <div key={i} className={`${g.tilt} reveal-scale delay-${Math.min(i+1,8)} group relative cursor-pointer`}
-                style={{ gridColumn: g.col, gridRow: g.row, borderRadius: "20px", overflow: "hidden", boxShadow: "0 8px 32px rgba(0,0,0,0.2)", aspectRatio: g.aspect }}
+                style={{ gridColumn: g.col, gridRow: g.row, borderRadius: "20px", overflow: "hidden", boxShadow: "0 8px 32px rgba(0,0,0,0.2)", aspectRatio: g.aspect, background: "rgba(0,100,60,0.06)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}
                 onClick={() => setSel(i)}>
-                <img src={src} alt={`Foto ${i+1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <img src={src} alt={`Foto ${i+1}`} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-500" />
               </div>
             );

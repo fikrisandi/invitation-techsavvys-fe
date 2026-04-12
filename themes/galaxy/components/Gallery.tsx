@@ -81,6 +81,9 @@ export default function Gallery() {
                 position: "relative",
                 border: "1px solid var(--galaxy-border)",
                 transition: "border-color 0.3s, box-shadow 0.3s",
+                background: "rgba(80,40,120,0.06)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
               }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLDivElement;
@@ -96,7 +99,7 @@ export default function Gallery() {
               <img
                 src={src as string}
                 alt={`Foto ${i + 1}`}
-                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s ease" }}
+                style={{ width: "100%", height: "100%", objectFit: "contain", display: "block", transition: "transform 0.5s ease" }}
               />
               {/* Purple hover overlay */}
               <div

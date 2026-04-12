@@ -82,6 +82,9 @@ export default function Gallery() {
                   aspectRatio: g.aspect,
                   cursor: "pointer",
                   border: "1px solid var(--jawa-border)",
+                  background: "rgba(212,160,32,0.04)",
+                  backdropFilter: "blur(12px)",
+                  WebkitBackdropFilter: "blur(12px)",
                 }}
                 onClick={() => setSel(i)}
               >
@@ -93,32 +96,13 @@ export default function Gallery() {
                   <div style={{ position: "absolute", bottom: 6, right: 6, width: "14px", height: "14px", borderBottom: "1px solid var(--jawa-gold)", borderRight: "1px solid var(--jawa-gold)", opacity: 0.7 }} />
                 </div>
 
-                {isPlaceholder ? (
-                  <div style={{
-                    width: "100%",
-                    height: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    background: "linear-gradient(135deg, var(--jawa-bg-mid), var(--jawa-bg))",
-                  }}>
-                    <span style={{
-                      fontFamily: "var(--font-jawa-display)",
-                      color: "var(--jawa-text-muted)",
-                      fontSize: "11px",
-                    }}>
-                      {src}
-                    </span>
-                  </div>
-                ) : (
-                  <img
-                    src={src}
-                    alt={`Foto ${i + 1}`}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.7s ease" }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLImageElement).style.transform = "scale(1.08)"; }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLImageElement).style.transform = "scale(1)"; }}
-                  />
-                )}
+                <img
+                  src={src}
+                  alt={`Foto ${i + 1}`}
+                  style={{ width: "100%", height: "100%", objectFit: "contain", display: "block", transition: "transform 0.7s ease" }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLImageElement).style.transform = "scale(1.08)"; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLImageElement).style.transform = "scale(1)"; }}
+                />
               </div>
             );
           })}

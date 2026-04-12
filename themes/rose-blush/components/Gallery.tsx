@@ -35,9 +35,9 @@ export default function Gallery() {
             const g = SPANS[i] ?? SPANS[0];
             return (
               <div key={i} className="reveal-scale group relative cursor-pointer"
-                style={{ gridColumn: g.col, gridRow: g.row, borderRadius: "16px", overflow: "hidden", boxShadow: "0 4px 16px rgba(193,122,143,0.12)", aspectRatio: g.aspect, border: "1px solid rgba(220,176,186,0.3)" }}
+                style={{ gridColumn: g.col, gridRow: g.row, borderRadius: "16px", overflow: "hidden", boxShadow: "0 4px 16px rgba(193,122,143,0.12)", aspectRatio: g.aspect, border: "1px solid rgba(220,176,186,0.3)", background: "rgba(180,100,120,0.06)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}
                 onClick={() => setSel(i)}>
-                <img src={src} alt={`Foto ${i+1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <img src={src} alt={`Foto ${i+1}`} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-[rgba(193,122,143,0.1)] transition-all duration-500" />
               </div>
             );

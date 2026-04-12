@@ -74,6 +74,9 @@ export default function Gallery() {
               aspectRatio: g.aspect,
               cursor: "pointer",
               border: "1px solid var(--sunda-border)",
+              background: "rgba(200,144,32,0.04)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
             };
 
             return (
@@ -87,7 +90,7 @@ export default function Gallery() {
                 <img
                   src={src}
                   alt={`Foto ${i + 1}`}
-                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.7s ease" }}
+                  style={{ width: "100%", height: "100%", objectFit: "contain", display: "block", transition: "transform 0.7s ease" }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLImageElement).style.transform = "scale(1.08)"; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLImageElement).style.transform = "scale(1)"; }}
                 />

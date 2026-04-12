@@ -135,7 +135,9 @@ export default function Gallery() {
                 style={{
                   height: "260px",
                   overflow: "hidden",
-                  background: "var(--cine-card)",
+                  background: "rgba(212,160,32,0.04)",
+                  backdropFilter: "blur(12px)",
+                  WebkitBackdropFilter: "blur(12px)",
                   border: "1px solid #222",
                   borderTop: "none",
                   borderBottom: "none",
@@ -147,7 +149,7 @@ export default function Gallery() {
                 <img
                   src={src as string}
                   alt={`Foto ${i + 1}`}
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  style={{ width: "100%", height: "100%", objectFit: "contain" }}
                 />
               </div>
 
