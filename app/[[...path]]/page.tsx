@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
 
-import { notFound } from "next/navigation";
+import { redirect, notFound } from "next/navigation";
 import Link from "next/link";
 import { getInvitation } from "@/lib/api";
 import { generateColorOverrideCSS } from "@/lib/color-overrides";
@@ -30,14 +30,26 @@ const THEMES: Record<string, React.ComponentType<{ data: InvitationData; guestNa
   "sakura-bloom": SakuraBloomTheme,
 };
 
+const THEME_IDS = new Set(Object.keys(THEMES));
+
 type Props = {
-  params: Promise<{ theme: string; slug: string }>;
+  params: Promise<{ path?: string[] }>;
   searchParams: Promise<{ to?: string }>;
 };
 
+function parsePath(path?: string[]): { theme?: string; slug?: string } {
+  if (!path || path.length === 0) return {};
+  if (path.length === 1) return { slug: path[0] };
+  if (path.length === 2) return { theme: path[0], slug: path[1] };
+  return {};
+}
+
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
-  const { slug } = await params;
+  const { path } = await params;
   const { to } = await searchParams;
+  const { slug } = parsePath(path);
+  if (!slug) return { title: "Tech Savvys Invitation" };
+
   const guestName = to ? decodeURIComponent(to.replace(/\+/g, " ")) : undefined;
   const data = await getInvitation(slug, guestName);
   if (!data) return { title: "Undangan tidak ditemukan" };
@@ -80,13 +92,25 @@ function ExpiredPage({ data }: { data: InvitationData }) {
 }
 
 export default async function InvitationPage({ params, searchParams }: Props) {
-  const { slug } = await params;
+  const { path } = await params;
   const { to } = await searchParams;
+  const { theme, slug } = parsePath(path);
+
+  // Root page (no path) — show home/landing
+  if (!slug) {
+    // Let the main page.tsx handle this
+    return null;
+  }
 
   const guestName = to ? decodeURIComponent(to.replace(/\+/g, " ")) : undefined;
-
   const data = await getInvitation(slug, guestName);
   if (!data) notFound();
+
+  // Old format: /slug-only → redirect to /theme/slug
+  if (!theme) {
+    const query = to ? `?to=${encodeURIComponent(to)}` : "";
+    redirect(`/${data.theme}/${slug}${query}`);
+  }
 
   if (isExpired(data)) {
     return <ExpiredPage data={data} />;
@@ -94,7 +118,6 @@ export default async function InvitationPage({ params, searchParams }: Props) {
 
   const ThemeComponent = THEMES[data.theme] ?? EmeraldGoldTheme;
   const colorCSS = data.customColors ? generateColorOverrideCSS(data.theme, data.customColors) : "";
-
   const hasCustomEffects = data.effects && data.effects.length > 0;
 
   return (
