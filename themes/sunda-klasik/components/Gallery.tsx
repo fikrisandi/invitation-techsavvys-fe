@@ -1,28 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import type { CSSProperties } from "react";
 import { MegaMendung, SundaDivider } from "./SundaOrnament";
 import { useInvitation } from "../context";
-
-const GRID_SPANS = [
-  { col: "span 7", row: "span 2", aspect: "4/5" },
-  { col: "span 5", row: "span 1", aspect: "1/1" },
-  { col: "span 5", row: "span 1", aspect: "1/1" },
-  { col: "span 4", row: "span 1", aspect: "3/4" },
-  { col: "span 4", row: "span 1", aspect: "3/4" },
-  { col: "span 4", row: "span 1", aspect: "3/4" },
-  { col: "span 5", row: "span 1", aspect: "1/1" },
-  { col: "span 7", row: "span 1", aspect: "16/10" },
-];
 
 export default function Gallery() {
   const { photos } = useInvitation();
   const [sel, setSel] = useState<number | null>(null);
 
   if (photos.length === 0) return null;
-
-  const items = photos;
 
   return (
     <section style={{ background: "var(--sunda-bg-mid-t)", position: "relative", overflow: "hidden" }}>
@@ -62,52 +48,13 @@ export default function Gallery() {
         </div>
 
         {/* Photo grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", gap: "10px" }}>
-          {items.slice(0, GRID_SPANS.length).map((src, i) => {
-            const g = GRID_SPANS[i] ?? GRID_SPANS[0];
-            const itemStyle: CSSProperties = {
-              gridColumn: g.col,
-              gridRow: g.row,
-              position: "relative",
-              borderRadius: "4px",
-              overflow: "hidden",
-              aspectRatio: g.aspect,
-              cursor: "pointer",
-              border: "1px solid var(--sunda-border)",
-              background: "rgba(200,144,32,0.04)",
-              backdropFilter: "blur(12px)",
-              WebkitBackdropFilter: "blur(12px)",
-            };
-
-            return (
-              <div
-                key={i}
-                className={`reveal-scale delay-${Math.min(i + 1, 8)}`}
-                style={itemStyle}
-                onClick={() => setSel(i)}
-              >
-                {/* Terracotta tint overlay on hover handled via img hover */}
-                <img
-                  src={src}
-                  alt={`Foto ${i + 1}`}
-                  style={{ width: "100%", height: "100%", objectFit: "contain", display: "block", transition: "transform 0.7s ease" }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLImageElement).style.transform = "scale(1.08)"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLImageElement).style.transform = "scale(1)"; }}
-                />
-                <div style={{
-                  position: "absolute",
-                  inset: 0,
-                  background: "rgba(176,80,32,0)",
-                  transition: "background 0.4s ease",
-                }} />
-                {/* Terracotta/gold corner accents */}
-                <div style={{ position: "absolute", top: 6, left: 6, width: "12px", height: "12px", borderTop: "1px solid var(--sunda-terra)", borderLeft: "1px solid var(--sunda-terra)", opacity: 0.6, zIndex: 2 }} />
-                <div style={{ position: "absolute", top: 6, right: 6, width: "12px", height: "12px", borderTop: "1px solid var(--sunda-terra)", borderRight: "1px solid var(--sunda-terra)", opacity: 0.6, zIndex: 2 }} />
-                <div style={{ position: "absolute", bottom: 6, left: 6, width: "12px", height: "12px", borderBottom: "1px solid var(--sunda-terra)", borderLeft: "1px solid var(--sunda-terra)", opacity: 0.6, zIndex: 2 }} />
-                <div style={{ position: "absolute", bottom: 6, right: 6, width: "12px", height: "12px", borderBottom: "1px solid var(--sunda-terra)", borderRight: "1px solid var(--sunda-terra)", opacity: 0.6, zIndex: 2 }} />
-              </div>
-            );
-          })}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "center" }}>
+          {photos.map((src, i) => (
+            <div key={i} style={{ flex: "0 0 auto", width: photos.length <= 4 ? "calc(50% - 4px)" : "calc(33.33% - 6px)", cursor: "pointer", borderRadius: "4px", overflow: "hidden" }}
+              onClick={() => setSel(i)}>
+              <img src={src} alt={`Foto ${i+1}`} style={{ width: "100%", height: "auto", display: "block" }} />
+            </div>
+          ))}
         </div>
       </div>
 
@@ -133,29 +80,12 @@ export default function Gallery() {
           }}
           onClick={() => setSel(null)}
         >
-          <div
-            style={{
-              maxWidth: "420px",
-              width: "100%",
-              aspectRatio: "3/4",
-              borderRadius: "4px",
-              overflow: "hidden",
-              border: "1px solid var(--sunda-border)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: "var(--sunda-bg-mid-t)",
-              position: "relative",
-            }}
+          <img
+            src={photos[sel]}
+            alt=""
+            style={{ maxWidth: "90vw", maxHeight: "85vh", objectFit: "contain", borderRadius: "4px" }}
             onClick={(e) => e.stopPropagation()}
-          >
-            {/* Terra corners */}
-            <div style={{ position: "absolute", top: 10, left: 10, width: "18px", height: "18px", borderTop: "1.5px solid var(--sunda-terra)", borderLeft: "1.5px solid var(--sunda-terra)", opacity: 0.7 }} />
-            <div style={{ position: "absolute", top: 10, right: 10, width: "18px", height: "18px", borderTop: "1.5px solid var(--sunda-terra)", borderRight: "1.5px solid var(--sunda-terra)", opacity: 0.7 }} />
-            <div style={{ position: "absolute", bottom: 10, left: 10, width: "18px", height: "18px", borderBottom: "1.5px solid var(--sunda-terra)", borderLeft: "1.5px solid var(--sunda-terra)", opacity: 0.7 }} />
-            <div style={{ position: "absolute", bottom: 10, right: 10, width: "18px", height: "18px", borderBottom: "1.5px solid var(--sunda-terra)", borderRight: "1.5px solid var(--sunda-terra)", opacity: 0.7 }} />
-            <img src={items[sel]} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-          </div>
+          />
           <button
             style={{
               position: "absolute",

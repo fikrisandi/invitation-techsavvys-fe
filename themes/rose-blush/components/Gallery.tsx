@@ -3,24 +3,11 @@ import { useState } from "react";
 import { RoseDivider } from "./FloralOrnament";
 import { useInvitation } from "../context";
 
-const SPANS = [
-  { col: "span 7", row: "span 2", aspect: "4/5" },
-  { col: "span 5", row: "span 1", aspect: "1/1" },
-  { col: "span 5", row: "span 1", aspect: "1/1" },
-  { col: "span 4", row: "span 1", aspect: "3/4" },
-  { col: "span 4", row: "span 1", aspect: "3/4" },
-  { col: "span 4", row: "span 1", aspect: "3/4" },
-  { col: "span 5", row: "span 1", aspect: "1/1" },
-  { col: "span 7", row: "span 1", aspect: "16/10" },
-];
-
 export default function Gallery() {
   const { photos } = useInvitation();
   const [sel, setSel] = useState<number | null>(null);
 
   if (photos.length === 0) return null;
-
-  const items = photos;
 
   return (
     <section id="gallery" style={{ background: "var(--color-rb-bg-t)", padding: "120px 32px" }}>
@@ -30,28 +17,25 @@ export default function Gallery() {
           <h2 style={{ fontFamily: "var(--font-rb-script)", fontSize: "clamp(2.2rem, 7vw, 3rem)", color: "var(--color-rb-dusty)", marginBottom: "8px" }}>Galeri Foto</h2>
           <RoseDivider />
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", gap: "10px" }}>
-          {items.slice(0, SPANS.length).map((src, i) => {
-            const g = SPANS[i] ?? SPANS[0];
-            return (
-              <div key={i} className="reveal-scale group relative cursor-pointer"
-                style={{ gridColumn: g.col, gridRow: g.row, borderRadius: "16px", overflow: "hidden", boxShadow: "0 4px 16px rgba(193,122,143,0.12)", aspectRatio: g.aspect, border: "1px solid rgba(220,176,186,0.3)", background: "rgba(180,100,120,0.06)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}
-                onClick={() => setSel(i)}>
-                <img src={src} alt={`Foto ${i+1}`} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-[rgba(193,122,143,0.1)] transition-all duration-500" />
-              </div>
-            );
-          })}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "center" }}>
+          {photos.map((src, i) => (
+            <div key={i} style={{ flex: "0 0 auto", width: photos.length <= 4 ? "calc(50% - 4px)" : "calc(33.33% - 6px)", cursor: "pointer", borderRadius: "4px", overflow: "hidden" }}
+              onClick={() => setSel(i)}>
+              <img src={src} alt={`Foto ${i+1}`} style={{ width: "100%", height: "auto", display: "block" }} />
+            </div>
+          ))}
         </div>
       </div>
       {sel !== null && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 cursor-pointer"
           style={{ background: "rgba(80,40,50,0.85)", backdropFilter: "blur(12px)", animation: "fade-in 0.3s ease" }}
           onClick={() => setSel(null)}>
-          <div style={{ maxWidth: "400px", width: "100%", aspectRatio: "3/4", borderRadius: "20px", overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.3)", background: "white" }}
-            className="flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
-            <img src={items[sel]} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-          </div>
+          <img
+            src={photos[sel]}
+            alt=""
+            style={{ maxWidth: "90vw", maxHeight: "85vh", objectFit: "contain", borderRadius: "4px" }}
+            onClick={(e) => e.stopPropagation()}
+          />
           <button className="absolute top-5 right-5 w-10 h-10 rounded-full flex items-center justify-center" style={{ background: "rgba(255,255,255,0.9)", color: "var(--color-rb-text)", fontSize: "20px", cursor: "pointer", border: "none" }} onClick={() => setSel(null)}>&times;</button>
         </div>
       )}

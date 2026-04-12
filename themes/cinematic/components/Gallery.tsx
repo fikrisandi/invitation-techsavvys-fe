@@ -202,23 +202,12 @@ export default function Gallery() {
           }}
           onClick={() => setSel(null)}
         >
-          <div
-            style={{
-              maxWidth: "480px",
-              width: "100%",
-              maxHeight: "80vh",
-              overflow: "hidden",
-              border: "1px solid var(--cine-border)",
-              cursor: "default",
-            }}
+          <img
+            src={displayItems[sel] as string}
+            alt=""
+            style={{ maxWidth: "90vw", maxHeight: "85vh", objectFit: "contain", borderRadius: "4px" }}
             onClick={(e) => e.stopPropagation()}
-          >
-            <img
-              src={displayItems[sel] as string}
-              alt=""
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </div>
+          />
           <button
             style={{
               position: "absolute",

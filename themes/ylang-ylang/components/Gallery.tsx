@@ -3,24 +3,11 @@ import { useState } from "react";
 import { BotanicalDivider } from "./BotanicalOrnament";
 import { useInvitation } from "../context";
 
-const SPANS = [
-  { col: "span 7", row: "span 2", aspect: "4/5", tilt: "photo-tilt-left" },
-  { col: "span 5", row: "span 1", aspect: "1/1", tilt: "photo-tilt-right" },
-  { col: "span 5", row: "span 1", aspect: "1/1", tilt: "photo-tilt-left" },
-  { col: "span 4", row: "span 1", aspect: "3/4", tilt: "photo-tilt-right" },
-  { col: "span 4", row: "span 1", aspect: "3/4", tilt: "photo-tilt-left" },
-  { col: "span 4", row: "span 1", aspect: "3/4", tilt: "photo-tilt-right" },
-  { col: "span 5", row: "span 1", aspect: "1/1", tilt: "photo-tilt-left" },
-  { col: "span 7", row: "span 1", aspect: "16/10", tilt: "photo-tilt-right" },
-];
-
 export default function Gallery() {
   const { photos } = useInvitation();
   const [sel, setSel] = useState<number | null>(null);
 
   if (photos.length === 0) return null;
-
-  const items = photos;
 
   return (
     <section id="gallery" className="grad-yy-alt relative overflow-hidden geo-yy">
@@ -30,28 +17,25 @@ export default function Gallery() {
           <h2 style={{ fontFamily: "var(--font-yy-script)", fontSize: "clamp(2.2rem, 7vw, 3rem)", color: "var(--color-yy-forest)", marginBottom: "8px" }}>Galeri Foto</h2>
           <BotanicalDivider />
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", gap: "10px" }}>
-          {items.slice(0, SPANS.length).map((src, i) => {
-            const g = SPANS[i] ?? SPANS[0];
-            return (
-              <div key={i} className={`${g.tilt} reveal-scale delay-${Math.min(i+1,8)} group relative cursor-pointer`}
-                style={{ gridColumn: g.col, gridRow: g.row, borderRadius: "14px", overflow: "hidden", boxShadow: "0 4px 16px rgba(60,40,20,0.1)", aspectRatio: g.aspect, border: "1px solid rgba(196,151,90,0.15)", background: "rgba(61,90,69,0.06)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}
-                onClick={() => setSel(i)}>
-                <img src={src} alt={`Foto ${i+1}`} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-[rgba(196,151,90,0.15)] transition-all duration-500" />
-              </div>
-            );
-          })}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "center" }}>
+          {photos.map((src, i) => (
+            <div key={i} style={{ flex: "0 0 auto", width: photos.length <= 4 ? "calc(50% - 4px)" : "calc(33.33% - 6px)", cursor: "pointer", borderRadius: "4px", overflow: "hidden" }}
+              onClick={() => setSel(i)}>
+              <img src={src} alt={`Foto ${i+1}`} style={{ width: "100%", height: "auto", display: "block" }} />
+            </div>
+          ))}
         </div>
       </div>
       {sel !== null && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 cursor-pointer"
           style={{ background: "rgba(44,32,22,0.85)", backdropFilter: "blur(12px)", animation: "fade-in 0.3s ease" }}
           onClick={() => setSel(null)}>
-          <div style={{ maxWidth: "400px", width: "100%", aspectRatio: "3/4", borderRadius: "20px", overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.3)", background: "white" }}
-            className="flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
-            <img src={items[sel]} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-          </div>
+          <img
+            src={photos[sel]}
+            alt=""
+            style={{ maxWidth: "90vw", maxHeight: "85vh", objectFit: "contain", borderRadius: "4px" }}
+            onClick={(e) => e.stopPropagation()}
+          />
           <button className="absolute top-5 right-5 w-10 h-10 rounded-full flex items-center justify-center" style={{ background: "rgba(255,255,255,0.9)", color: "var(--color-yy-text)", fontSize: "20px", cursor: "pointer", border: "none" }} onClick={() => setSel(null)}>&times;</button>
         </div>
       )}

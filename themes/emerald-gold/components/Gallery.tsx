@@ -5,24 +5,11 @@ import { GoldDivider } from "./FloralOrnament";
 import Particles from "./Particles";
 import { useInvitation } from "../context";
 
-const GRID_SPANS = [
-  { col: "span 7", row: "span 2", aspect: "4/5", tilt: "photo-tilt-left" },
-  { col: "span 5", row: "span 1", aspect: "1/1", tilt: "photo-tilt-right" },
-  { col: "span 5", row: "span 1", aspect: "1/1", tilt: "photo-tilt-left" },
-  { col: "span 4", row: "span 1", aspect: "3/4", tilt: "photo-tilt-right" },
-  { col: "span 4", row: "span 1", aspect: "3/4", tilt: "photo-tilt-left" },
-  { col: "span 4", row: "span 1", aspect: "3/4", tilt: "photo-tilt-right" },
-  { col: "span 5", row: "span 1", aspect: "1/1", tilt: "photo-tilt-left" },
-  { col: "span 7", row: "span 1", aspect: "16/10", tilt: "photo-tilt-right" },
-];
-
 export default function Gallery() {
   const { photos } = useInvitation();
   const [sel, setSel] = useState<number | null>(null);
 
   if (photos.length === 0) return null;
-
-  const items = photos;
 
   return (
     <section id="gallery" className="grad-gallery relative overflow-hidden">
@@ -33,18 +20,13 @@ export default function Gallery() {
           <h2 style={{ fontFamily: "var(--font-script)", fontSize: "clamp(2.2rem, 7vw, 3rem)", marginBottom: "16px", color: "var(--color-gold-light)" }}>Galeri Foto</h2>
           <GoldDivider />
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", gap: "12px" }}>
-          {items.slice(0, GRID_SPANS.length).map((src, i) => {
-            const g = GRID_SPANS[i] ?? GRID_SPANS[0];
-            return (
-              <div key={i} className={`${g.tilt} reveal-scale delay-${Math.min(i+1,8)} group relative cursor-pointer`}
-                style={{ gridColumn: g.col, gridRow: g.row, borderRadius: "20px", overflow: "hidden", boxShadow: "0 8px 32px rgba(0,0,0,0.2)", aspectRatio: g.aspect, background: "rgba(0,100,60,0.06)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}
-                onClick={() => setSel(i)}>
-                <img src={src} alt={`Foto ${i+1}`} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-500" />
-              </div>
-            );
-          })}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "center" }}>
+          {photos.map((src, i) => (
+            <div key={i} style={{ flex: "0 0 auto", width: photos.length <= 4 ? "calc(50% - 4px)" : "calc(33.33% - 6px)", cursor: "pointer", borderRadius: "4px", overflow: "hidden" }}
+              onClick={() => setSel(i)}>
+              <img src={src} alt={`Foto ${i+1}`} style={{ width: "100%", height: "auto", display: "block" }} />
+            </div>
+          ))}
         </div>
       </div>
 
@@ -52,11 +34,12 @@ export default function Gallery() {
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 cursor-pointer"
           style={{ background: "rgba(0,0,0,0.9)", backdropFilter: "blur(12px)", animation: "fade-in 0.3s ease" }}
           onClick={() => setSel(null)}>
-          <div style={{ maxWidth: "400px", width: "100%", aspectRatio: "3/4", borderRadius: "24px", overflow: "hidden" }}
-            className="glass-strong flex items-center justify-center shadow-2xl"
-            onClick={(e) => e.stopPropagation()}>
-            <img src={items[sel]} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-          </div>
+          <img
+            src={photos[sel]}
+            alt=""
+            style={{ maxWidth: "90vw", maxHeight: "85vh", objectFit: "contain", borderRadius: "4px" }}
+            onClick={(e) => e.stopPropagation()}
+          />
           <button className="absolute top-5 right-5 w-10 h-10 rounded-full glass flex items-center justify-center" style={{ color: "white", fontSize: "20px", cursor: "pointer" }} onClick={() => setSel(null)}>&times;</button>
         </div>
       )}

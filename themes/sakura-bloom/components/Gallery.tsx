@@ -154,28 +154,12 @@ export default function Gallery() {
             backdropFilter: "blur(8px)",
           }}
         >
-          <div
-            style={{
-              position: "relative",
-              maxWidth: "90vw",
-              maxHeight: "88vh",
-              borderRadius: "4px",
-              overflow: "hidden",
-              border: "1px solid var(--sakura-border)",
-              boxShadow: "0 32px 80px rgba(0,0,0,0.6)",
-            }}
-          >
-            <img
-              src={lightbox}
-              alt="Preview"
-              style={{
-                display: "block",
-                maxWidth: "90vw",
-                maxHeight: "88vh",
-                objectFit: "contain",
-              }}
-            />
-          </div>
+          <img
+            src={lightbox}
+            alt=""
+            style={{ maxWidth: "90vw", maxHeight: "85vh", objectFit: "contain", borderRadius: "4px" }}
+            onClick={(e) => e.stopPropagation()}
+          />
           <button
             onClick={() => setLightbox(null)}
             style={{
