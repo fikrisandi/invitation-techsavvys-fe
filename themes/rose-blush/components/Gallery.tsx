@@ -17,11 +17,11 @@ export default function Gallery() {
           <h2 style={{ fontFamily: "var(--font-rb-script)", fontSize: "clamp(2.2rem, 7vw, 3rem)", color: "var(--color-rb-dusty)", marginBottom: "8px" }}>Galeri Foto</h2>
           <RoseDivider />
         </div>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "center" }}>
+        <div style={{ columns: photos.length === 1 ? 1 : 2, columnGap: "8px" }}>
           {photos.map((src, i) => (
-            <div key={i} style={{ flex: "0 0 auto", width: photos.length <= 4 ? "calc(50% - 4px)" : "calc(33.33% - 6px)", cursor: "pointer", borderRadius: "4px", overflow: "hidden" }}
+            <div key={i} style={{ breakInside: "avoid", marginBottom: "8px", cursor: "pointer", borderRadius: "4px", overflow: "hidden" }}
               onClick={() => setSel(i)}>
-              <img src={src} alt={`Foto ${i+1}`} style={{ width: "100%", height: "auto", display: "block" }} />
+              <img src={src} alt={`Foto ${i+1}`} style={{ width: "100%", height: "auto", display: "block", transition: "transform 0.5s ease" }} />
             </div>
           ))}
         </div>

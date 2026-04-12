@@ -14,19 +14,19 @@ export default function Gallery() {
     <section style={{ background: "var(--jawa-bg-t)", position: "relative", overflow: "hidden" }}>
       <BatikBorder />
 
-      <div style={{ maxWidth: "800px", margin: "0 auto", padding: "100px 24px", position: "relative", zIndex: 2 }}>
+      <div style={{ maxWidth: "800px", margin: "0 auto", padding: "100px 16px", position: "relative", zIndex: 2 }}>
         <div className="reveal-up" style={{ textAlign: "center", marginBottom: "48px" }}>
           <p style={{ fontFamily: "var(--font-jawa-body)", fontSize: "9px", letterSpacing: "0.45em", textTransform: "uppercase" as const, color: "var(--jawa-gold)", marginBottom: "20px" }}>Our Moments</p>
           <h2 style={{ fontFamily: "var(--font-jawa-script)", fontSize: "clamp(2rem, 7vw, 2.8rem)", color: "var(--jawa-gold-light)", marginBottom: "20px" }}>Galeri Foto</h2>
           <GununganDivider />
         </div>
 
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "center" }}>
+        <div style={{ columns: photos.length === 1 ? 1 : 2, columnGap: "8px" }}>
           {photos.map((src, i) => (
             <div
               key={i}
               className={`reveal-scale delay-${Math.min(i + 1, 8)}`}
-              style={{ flex: "0 0 auto", width: photos.length <= 4 ? "calc(50% - 4px)" : "calc(33.33% - 6px)", cursor: "pointer", borderRadius: "4px", overflow: "hidden" }}
+              style={{ breakInside: "avoid", marginBottom: "8px", cursor: "pointer", borderRadius: "4px", overflow: "hidden" }}
               onClick={() => setSel(i)}
             >
               <img

@@ -60,62 +60,15 @@ export default function Gallery() {
           </h2>
         </div>
 
-        {/* Grid layout */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-            gap: "12px",
-          }}
-        >
+        {/* Masonry columns layout */}
+        <div style={{ columns: displayItems.length === 1 ? 1 : 2, columnGap: "8px" }}>
           {displayItems.map((src, i) => (
             <div
               key={i}
               onClick={() => setSel(i)}
-              className={`reveal-scale delay-${Math.min(i + 1, 8)}`}
-              style={{
-                aspectRatio: i === 0 || i === 5 ? "3/4" : "1/1",
-                borderRadius: "16px",
-                overflow: "hidden",
-                cursor: "pointer",
-                position: "relative",
-                border: "1px solid var(--galaxy-border)",
-                transition: "border-color 0.3s, box-shadow 0.3s",
-                background: "rgba(80,40,120,0.06)",
-                backdropFilter: "blur(12px)",
-                WebkitBackdropFilter: "blur(12px)",
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLDivElement;
-                el.style.borderColor = "var(--galaxy-purple)";
-                el.style.boxShadow = "0 0 24px rgba(139,92,246,0.25)";
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLDivElement;
-                el.style.borderColor = "var(--galaxy-border)";
-                el.style.boxShadow = "none";
-              }}
+              style={{ breakInside: "avoid", marginBottom: "8px", cursor: "pointer", borderRadius: "4px", overflow: "hidden" }}
             >
-              <img
-                src={src as string}
-                alt={`Foto ${i + 1}`}
-                style={{ width: "100%", height: "100%", objectFit: "contain", display: "block", transition: "transform 0.5s ease" }}
-              />
-              {/* Purple hover overlay */}
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  background: "rgba(139,92,246,0)",
-                  transition: "background 0.4s ease",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.background = "rgba(139,92,246,0.3)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.background = "rgba(139,92,246,0)";
-                }}
-              />
+              <img src={src as string} alt={`Foto ${i + 1}`} style={{ width: "100%", height: "auto", display: "block", transition: "transform 0.5s ease" }} />
             </div>
           ))}
         </div>

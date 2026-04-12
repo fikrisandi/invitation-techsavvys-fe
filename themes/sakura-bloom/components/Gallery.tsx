@@ -45,96 +45,18 @@ export default function Gallery() {
           <SakuraDivider />
         </div>
 
-        {/* Masonry-style grid */}
-        <div
-          className="reveal-scale"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
-            gap: "16px",
-          }}
-        >
+        {/* Masonry columns layout */}
+        <div className="reveal-scale" style={{ columns: photos.length === 1 ? 1 : 2, columnGap: "8px" }}>
           {photos.map((src, i) => (
             <div
               key={i}
               onClick={() => setLightbox(src)}
-              style={{
-                position: "relative",
-                borderRadius: "4px",
-                overflow: "hidden",
-                aspectRatio: i % 3 === 0 ? "3/4" : "1/1",
-                cursor: "pointer",
-                background: "rgba(212,112,138,0.06)",
-                backdropFilter: "blur(12px)",
-                WebkitBackdropFilter: "blur(12px)",
-                border: "1px solid var(--sakura-border)",
-              }}
+              style={{ breakInside: "avoid", marginBottom: "8px", cursor: "pointer", borderRadius: "4px", overflow: "hidden" }}
             >
-              <img
-                src={src}
-                alt={`Gallery ${i + 1}`}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "contain",
-                  transition: "transform 0.5s ease",
-                  display: "block",
-                }}
-              />
-              {/* Hover overlay */}
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  background: "linear-gradient(135deg, rgba(212,112,138,0.6) 0%, rgba(192,88,120,0.4) 100%)",
-                  opacity: 0,
-                  transition: "opacity 0.3s ease",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-                className="gallery-overlay-sakura"
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
-                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" />
-                </svg>
-              </div>
-
-              {/* Index indicator */}
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: "10px",
-                  right: "10px",
-                  width: "24px",
-                  height: "24px",
-                  borderRadius: "50%",
-                  background: "rgba(253,248,249,0.85)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "9px",
-                  color: "var(--sakura-pink)",
-                  fontFamily: "var(--font-sakura-body)",
-                  fontWeight: 700,
-                }}
-              >
-                {i + 1}
-              </div>
+              <img src={src} alt={`Foto ${i + 1}`} style={{ width: "100%", height: "auto", display: "block", transition: "transform 0.5s ease" }} />
             </div>
           ))}
         </div>
-
-        {/* CSS for hover - inline style tag */}
-        <style>{`
-          .gallery-overlay-sakura:hover,
-          div:hover > .gallery-overlay-sakura {
-            opacity: 1 !important;
-          }
-          div:hover > img {
-            transform: scale(1.06);
-          }
-        `}</style>
       </div>
 
       {/* Lightbox */}
