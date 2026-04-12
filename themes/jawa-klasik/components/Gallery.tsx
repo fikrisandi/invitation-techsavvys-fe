@@ -26,7 +26,7 @@ export default function Gallery() {
             <div
               key={i}
               className={`reveal-scale delay-${Math.min(i + 1, 8)}`}
-              style={{ breakInside: "avoid", marginBottom: "8px", cursor: "pointer", borderRadius: "4px", overflow: "hidden" }}
+              style={{ breakInside: "avoid", marginBottom: "8px", cursor: "pointer", borderRadius: "4px", overflow: "hidden", background: "rgba(212,160,32,0.06)", border: "1px solid rgba(212,160,32,0.15)", padding: "6px", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}
               onClick={() => setSel(i)}
             >
               <img

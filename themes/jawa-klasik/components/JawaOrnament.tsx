@@ -32,9 +32,9 @@ export function JanurLeft() {
         xmlns="http://www.w3.org/2000/svg"
         style={style}
       >
-        {/* Main curved stem — extended higher to y=40 */}
+        {/* Main curved stem — extended to y=25 */}
         <path
-          d="M40 290 C38 240 35 190 30 140 C26 100 24 75 23 40"
+          d="M40 290 C38 240 35 190 30 140 C26 100 24 70 23 25"
           stroke="var(--jawa-gold)"
           strokeWidth="0.8"
           strokeLinecap="round"
@@ -51,6 +51,7 @@ export function JanurLeft() {
         <path d="M24 95 C14 78 9 60 10 48" stroke="var(--jawa-gold)" strokeWidth="0.7" strokeLinecap="round" />
         <path d="M23 76 C12 60 7 44 8 34" stroke="var(--jawa-gold)" strokeWidth="0.6" strokeLinecap="round" />
         <path d="M23 58 C14 46 10 34 12 26" stroke="var(--jawa-gold)" strokeWidth="0.5" strokeLinecap="round" />
+        <path d="M23 42 C16 34 12 24 14 18" stroke="var(--jawa-gold)" strokeWidth="0.4" strokeLinecap="round" />
         {/* Leaf fronds branching right */}
         <path d="M38 255 C50 245 62 234 68 222" stroke="var(--jawa-gold)" strokeWidth="0.8" strokeLinecap="round" />
         <path d="M36 235 C48 222 60 208 65 194" stroke="var(--jawa-gold)" strokeWidth="0.8" strokeLinecap="round" />
@@ -63,6 +64,7 @@ export function JanurLeft() {
         <path d="M24 90 C34 74 40 56 40 46" stroke="var(--jawa-gold)" strokeWidth="0.7" strokeLinecap="round" />
         <path d="M23 72 C32 58 38 42 38 32" stroke="var(--jawa-gold)" strokeWidth="0.6" strokeLinecap="round" />
         <path d="M23 55 C30 44 35 32 36 24" stroke="var(--jawa-gold)" strokeWidth="0.5" strokeLinecap="round" />
+        <path d="M23 40 C28 32 33 22 34 16" stroke="var(--jawa-gold)" strokeWidth="0.4" strokeLinecap="round" />
         {/* Small decorative dots along stem */}
         <circle cx="39" cy="270" r="1" fill="var(--jawa-gold)" opacity="0.5" />
         <circle cx="36" cy="248" r="1" fill="var(--jawa-gold)" opacity="0.5" />
