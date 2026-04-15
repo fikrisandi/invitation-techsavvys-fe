@@ -28,21 +28,19 @@ function YlangYlangContent({ guestName }: { guestName?: string }) {
       <ParallaxBg />
       {!opened && <FloatingPetals />}
       <Cover onOpen={() => setOpened(true)} guestName={guestName} />
+      <MusicPlayer autoPlay />
       {opened && (
-        <>
-          <main style={{ position: "relative", zIndex: 1 }}>
-            <Hero />
-            <Couple />
-            <Countdown />
-            <EventDetails />
-            <Gallery />
-            <Gift />
-            <RSVP guestName={guestName} />
-            <Wishes />
-            <Footer />
-          </main>
-          <MusicPlayer autoPlay />
-        </>
+        <main style={{ position: "relative", zIndex: 1 }}>
+          <Hero />
+          <Couple />
+          <Countdown />
+          <EventDetails />
+          <Gallery />
+          <Gift />
+          <RSVP guestName={guestName} />
+          <Wishes />
+          <Footer />
+        </main>
       )}
     </div>
   );
