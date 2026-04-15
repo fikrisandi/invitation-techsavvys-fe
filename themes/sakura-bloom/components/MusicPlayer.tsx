@@ -6,18 +6,7 @@ import { musicRef } from "@/lib/musicRef";
 export default function MusicPlayer({ autoPlay = false }: { autoPlay?: boolean }) {
   const { musicUrl } = useInvitation();
   const [playing, setPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  useEffect(() => {
-    if (!musicUrl) return;
-    const audio = new Audio(musicUrl);
-    audio.loop = true;
-    audioRef.current = audio;
-    return () => {
-      audio.pause();
-      audio.src = "";
-    };
-  }, [musicUrl]);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const play = useCallback(() => {
     audioRef.current?.play().then(() => setPlaying(true)).catch(() => {});
@@ -49,6 +38,7 @@ export default function MusicPlayer({ autoPlay = false }: { autoPlay?: boolean }
 
   return (
     <>
+      <audio ref={audioRef} src={musicUrl} loop preload="auto" playsInline />
       <style>{`
         @keyframes sakura-pulse-ring {
           0%   { transform: scale(1);   opacity: 0.6; }
