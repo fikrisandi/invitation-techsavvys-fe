@@ -50,7 +50,7 @@ export default function RSVP({ guestName }: { guestName?: string }) {
       await submitRsvp(slug, form);
       setDone(true);
     } catch {
-      setDone(true);
+      alert("Gagal mengirim RSVP. Periksa koneksi Anda lalu coba lagi.");
     } finally {
       setLoading(false);
     }

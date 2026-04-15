@@ -40,7 +40,7 @@ function InvitationContent({ guestName }: { guestName?: string }) {
         <Wishes />
         <Footer />
       </main>
-      {isOpen && <MusicPlayer autoPlay />}
+      <MusicPlayer autoPlay />
     </>
   );
 }

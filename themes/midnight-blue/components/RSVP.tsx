@@ -14,7 +14,7 @@ export default function RSVP({ guestName }: { guestName?: string }) {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault(); setLoading(true);
-    try { await submitRsvp(slug, form); setDone(true); } catch { setDone(true); } finally { setLoading(false); }
+    try { await submitRsvp(slug, form); setDone(true); } catch { alert("Gagal mengirim RSVP. Periksa koneksi Anda lalu coba lagi."); } finally { setLoading(false); }
   };
 
   return (

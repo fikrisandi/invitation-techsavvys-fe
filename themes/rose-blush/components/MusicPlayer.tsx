@@ -28,7 +28,7 @@ export default function MusicPlayer({ autoPlay = false }: { autoPlay?: boolean }
 
   useEffect(() => {
     if (!autoPlay) return;
-    const handler = () => setTimeout(play, 600);
+    const handler = () => play();
     window.addEventListener("invitation-opened", handler, { once: true });
     return () => window.removeEventListener("invitation-opened", handler);
   }, [autoPlay, play]);
