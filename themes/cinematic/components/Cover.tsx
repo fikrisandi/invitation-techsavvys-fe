@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useInvitation } from "../context";
 import { CineRule } from "./CineOrnament";
+import { musicRef } from "@/lib/musicRef";
 
 export default function Cover() {
   const { groom, bride, events, openingText } = useInvitation();
@@ -17,6 +18,7 @@ export default function Cover() {
   }, []);
 
   const handleOpen = () => {
+    musicRef.play();
     setExiting(true);
     document.body.classList.remove("no-scroll");
     window.dispatchEvent(new Event("invitation-opened"));

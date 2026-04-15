@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import type { CSSProperties } from "react";
 import { JanurLeft, JanurRight, BatikBorder } from "./JawaOrnament";
 import { useInvitation } from "../context";
+import { musicRef } from "@/lib/musicRef";
 
 export default function Cover({ guestName }: { guestName?: string }) {
   const { groom, bride, events, openingText } = useInvitation();
@@ -17,6 +18,7 @@ export default function Cover({ guestName }: { guestName?: string }) {
   }, []);
 
   const handleOpen = () => {
+    musicRef.play();
     setExiting(true);
     document.body.classList.remove("no-scroll");
     window.dispatchEvent(new Event("invitation-opened"));

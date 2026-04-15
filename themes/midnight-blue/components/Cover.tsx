@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useInvitation } from "../context";
+import { musicRef } from "@/lib/musicRef";
 
 function StarField() {
   return (
@@ -24,6 +25,7 @@ export default function Cover({ onOpen, guestName }: { onOpen: () => void; guest
   }, []);
 
   const handleOpen = () => {
+    musicRef.play();
     setExiting(true);
     document.body.classList.remove("no-scroll");
     window.dispatchEvent(new Event("invitation-opened"));

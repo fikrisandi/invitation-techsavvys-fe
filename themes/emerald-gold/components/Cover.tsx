@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { LeafOrnamentTop, GoldDivider } from "./FloralOrnament";
 import { useInvitation } from "../context";
+import { musicRef } from "@/lib/musicRef";
 
 export default function Cover({ onOpen, guestName }: { onOpen: () => void; guestName?: string }) {
   const { groom, bride, events, openingText } = useInvitation();
@@ -15,6 +16,7 @@ export default function Cover({ onOpen, guestName }: { onOpen: () => void; guest
   }, []);
 
   const handleOpen = () => {
+    musicRef.play();
     setExiting(true);
     document.body.classList.remove("no-scroll");
     window.dispatchEvent(new Event("invitation-opened"));

@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { FloralCorner } from "./FloralOrnament";
 import { useInvitation } from "../context";
+import { musicRef } from "@/lib/musicRef";
 
 export default function Cover({ guestName }: { guestName?: string }) {
   const { groom, bride, events } = useInvitation();
@@ -13,6 +14,7 @@ export default function Cover({ guestName }: { guestName?: string }) {
   }, []);
 
   const handleOpen = () => {
+    musicRef.play();
     document.body.classList.remove("no-scroll");
     window.dispatchEvent(new Event("invitation-opened"));
     setOpened(true);

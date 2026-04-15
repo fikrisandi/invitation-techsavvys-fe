@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useInvitation } from "../context";
 import { SakuraPetals3D } from "./SakuraEffect";
+import { musicRef } from "@/lib/musicRef";
 
 function SakuraBranchSVG() {
   return (
@@ -80,6 +81,7 @@ export default function Cover({ guestName }: { guestName?: string }) {
   }, []);
 
   const handleOpen = () => {
+    musicRef.play();
     document.body.classList.remove("no-scroll");
     window.dispatchEvent(new Event("invitation-opened"));
     setOpened(true);

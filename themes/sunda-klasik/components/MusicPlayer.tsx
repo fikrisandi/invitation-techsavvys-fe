@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import type { CSSProperties } from "react";
 import { useInvitation } from "../context";
+import { musicRef } from "@/lib/musicRef";
 
 export default function MusicPlayer({ autoPlay = false }: { autoPlay?: boolean }) {
   const { musicUrl } = useInvitation();
@@ -25,9 +26,13 @@ export default function MusicPlayer({ autoPlay = false }: { autoPlay?: boolean }
 
   useEffect(() => {
     if (!autoPlay) return;
+    musicRef.play = play;
     const handler = () => play();
     window.addEventListener("invitation-opened", handler, { once: true });
-    return () => window.removeEventListener("invitation-opened", handler);
+    return () => {
+      musicRef.play = () => {};
+      window.removeEventListener("invitation-opened", handler);
+    };
   }, [autoPlay, play]);
 
   if (!musicUrl) return null;
