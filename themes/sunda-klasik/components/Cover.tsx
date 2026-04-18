@@ -133,19 +133,6 @@ export default function Cover({ guestName }: { guestName?: string }) {
           بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم
         </p>
 
-        <p style={{
-          fontFamily: "var(--font-sunda-body)",
-          fontSize: "9px",
-          letterSpacing: "0.35em",
-          textTransform: "uppercase",
-          color: "var(--sunda-text-soft)",
-          opacity: ready ? 1 : 0,
-          transition: "opacity 0.7s ease 0.45s",
-          marginBottom: "6px",
-        }}>
-          Bismillahirrahmanirrahim
-        </p>
-
         {/* Kujang divider */}
         <div style={{ opacity: ready ? 1 : 0, transition: "opacity 0.6s ease 0.55s", marginBottom: "16px" }}>
           <KujangIcon />

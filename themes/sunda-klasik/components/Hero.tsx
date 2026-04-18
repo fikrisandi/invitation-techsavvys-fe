@@ -57,18 +57,8 @@ export default function Hero() {
           <SundaDivider />
         </div>
 
-        {/* Bismillah */}
+        {/* Greeting */}
         <div className="reveal-up delay-2" style={{ marginBottom: "36px" }}>
-          <p style={{
-            fontFamily: "var(--font-sunda-display)",
-            fontSize: "22px",
-            color: "var(--sunda-gold)",
-            letterSpacing: "0.04em",
-            lineHeight: 1.6,
-            marginBottom: "12px",
-          }}>
-            بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم
-          </p>
           <p style={{
             fontFamily: "var(--font-sunda-body)",
             fontSize: "9px",

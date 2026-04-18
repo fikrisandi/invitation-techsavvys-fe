@@ -43,18 +43,8 @@ export default function Hero() {
         maxWidth: "560px",
         margin: "0 auto",
       }}>
-        {/* Bismillah */}
+        {/* Greeting */}
         <div className="reveal-up" style={{ marginBottom: "48px" }}>
-          <p style={{
-            fontFamily: "var(--font-jawa-display)",
-            fontSize: "26px",
-            color: "var(--jawa-gold)",
-            letterSpacing: "0.04em",
-            lineHeight: 1.6,
-            marginBottom: "16px",
-          }}>
-            بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم
-          </p>
           <p style={{
             fontFamily: "var(--font-jawa-body)",
             fontSize: "9px",

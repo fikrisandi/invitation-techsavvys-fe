@@ -33,9 +33,6 @@ export default function Couple({ guestName }: { guestName?: string }) {
         <div className="reveal-up" style={{ textAlign: "center", marginBottom: "80px" }}>
           <LeafOrnamentTop className="text-[var(--color-gold)]" />
           <div style={{ height: "40px" }} />
-          <p style={{ fontFamily: "var(--font-display)", fontSize: "22px", fontStyle: "italic", lineHeight: 1.6, marginBottom: "40px", color: "var(--color-gold-light)" }}>
-            بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم
-          </p>
           <GoldDivider />
           <div style={{ height: "32px" }} />
           <p style={{ fontFamily: "var(--font-display)", fontSize: "15px", fontWeight: 300, lineHeight: 2.2, maxWidth: "440px", margin: "0 auto", textAlign: "center", color: "var(--color-text-light)" }}>
