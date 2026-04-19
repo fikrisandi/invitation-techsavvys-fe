@@ -7,6 +7,23 @@ const apiHeaders: Record<string, string> = {
   ...(API_KEY ? { "X-API-Key": API_KEY } : {}),
 };
 
+export type ActiveDiscount = { id: string; label: string | null; percentage: number; startAt: string; endAt: string };
+
+export async function getActiveDiscount(): Promise<ActiveDiscount | null> {
+  if (!BASE_URL) return null;
+  try {
+    const res = await fetch(`${BASE_URL}/api/discounts/active`, {
+      headers: apiHeaders,
+      cache: "no-store",
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data?.percentage ? data : null;
+  } catch {
+    return null;
+  }
+}
+
 export async function getInvitation(slug: string, guestName?: string): Promise<InvitationData | null> {
   if (!BASE_URL) return null;
   try {

@@ -1,8 +1,36 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { themes } from "@/lib/dummy";
+import { themes, NORMAL_PRICE, CUSTOM_PRICE } from "@/lib/dummy";
+import { getActiveDiscount, type ActiveDiscount } from "@/lib/api";
+
+type Discount = ActiveDiscount;
+
+function useActiveDiscount(): Discount | null {
+  const [discount, setDiscount] = useState<Discount | null>(null);
+  useEffect(() => {
+    getActiveDiscount().then((d) => { if (d) setDiscount(d); });
+  }, []);
+  return discount;
+}
+
+function useCountdown(endAt: string | undefined) {
+  const [now, setNow] = useState(() => Date.now());
+  useEffect(() => {
+    if (!endAt) return;
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, [endAt]);
+  if (!endAt) return null;
+  const ms = new Date(endAt).getTime() - now;
+  if (ms <= 0) return null;
+  const days = Math.floor(ms / 86400000);
+  const hours = Math.floor((ms % 86400000) / 3600000);
+  const minutes = Math.floor((ms % 3600000) / 60000);
+  const seconds = Math.floor((ms % 60000) / 1000);
+  return { days, hours, minutes, seconds };
+}
 
 const MAIN_URL = process.env.NEXT_PUBLIC_MAIN_URL ?? "https://techsavvys.com";
 const CATEGORIES = ["Semua", "Natural", "Romantis", "Modern", "Tradisional"];
@@ -11,67 +39,6 @@ const WA_NUMBER = "628993781044";
 function waLink(msg: string) {
   return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
 }
-
-const PRICING = [
-  {
-    tier: "Basic",
-    price: "60.000",
-    color: "#3D5A45",
-    bg: "#F2F7F4",
-    desc: "Tema simpel & elegan dengan desain bersih dan berkesan.",
-    includes: [
-      "Unlimited tamu",
-      "Link personal per tamu",
-      "RSVP & ucapan doa",
-      "Background music",
-      "Galeri foto",
-      "Google Maps & rekening",
-      "Masa aktif 3 bulan",
-    ],
-    themes: ["Ylang Ylang", "Rose Blush"],
-    highlight: false,
-    waMsg: "Halo min, saya tertarik paket *Basic* (Rp 60.000) untuk undangan digital. Bisa info lebih lanjut?",
-  },
-  {
-    tier: "Elegant",
-    price: "95.000",
-    color: "#5B1A7A",
-    bg: "#F8F2FA",
-    desc: "Visual modern dengan efek 3D, parallax, dan animasi memukau.",
-    includes: [
-      "Unlimited tamu",
-      "Link personal per tamu",
-      "RSVP & ucapan doa",
-      "Background music",
-      "Galeri foto",
-      "Google Maps & rekening",
-      "Masa aktif 3 bulan",
-    ],
-    themes: ["Midnight Blue", "Galaxy", "Sakura Bloom"],
-    highlight: true,
-    badge: "Terpopuler",
-    waMsg: "Halo min, saya tertarik paket *Elegant* (Rp 95.000) untuk undangan digital. Bisa info lebih lanjut?",
-  },
-  {
-    tier: "Premium",
-    price: "130.000",
-    color: "#7A3A00",
-    bg: "#FAF4EE",
-    desc: "Tema adat & sinematik dengan ornamen budaya eksklusif.",
-    includes: [
-      "Unlimited tamu",
-      "Link personal per tamu",
-      "RSVP & ucapan doa",
-      "Background music",
-      "Galeri foto",
-      "Google Maps & rekening",
-      "Masa aktif 3 bulan",
-    ],
-    themes: ["Tradisional Klasik 1", "Tradisional Klasik 2", "Cinematic", "Emerald Gold"],
-    highlight: false,
-    waMsg: "Halo min, saya tertarik paket *Premium* (Rp 130.000) untuk undangan digital. Bisa info lebih lanjut?",
-  },
-];
 
 const FEATURES = [
   { icon: "👥", title: "Link Personal Tamu", desc: "Setiap tamu mendapat link dengan namanya tercantum otomatis." },
@@ -98,15 +65,12 @@ function PaletteDots({ colors }: { colors: string[] }) {
   );
 }
 
-const TIER_COLOR: Record<string, { bg: string; text: string }> = {
-  Basic:   { bg: "rgba(61,90,69,0.1)",   text: "#3D5A45" },
-  Elegant: { bg: "rgba(91,26,122,0.12)", text: "#5B1A7A" },
-  Premium: { bg: "rgba(122,58,0,0.1)",   text: "#7A3A00" },
-};
+type DiscountInfo = { percentage: number; endAt: string; label?: string | null } | null;
 
-function ThemeCard({ theme }: { theme: (typeof themes)[0] }) {
+function ThemeCard({ theme, discount }: { theme: (typeof themes)[0]; discount?: DiscountInfo }) {
   const isLight = ["Natural", "Romantis"].includes(theme.category);
-  const tc = TIER_COLOR[theme.tier ?? "Basic"];
+  const basePrice = theme.price ?? NORMAL_PRICE;
+  const discountedPrice = discount ? Math.round(basePrice * (1 - discount.percentage / 100)) : null;
   return (
     <div className="inv-card" style={{ borderRadius: "20px", overflow: "hidden", display: "flex", flexDirection: "column", background: "#fff", boxShadow: "0 2px 16px rgba(60,40,20,0.07)", border: "1px solid rgba(180,150,120,0.15)", transition: "all 0.35s ease" }}>
       {/* Thumbnail */}
@@ -117,10 +81,9 @@ function ThemeCard({ theme }: { theme: (typeof themes)[0] }) {
           <p style={{ fontFamily: "'Lato', sans-serif", fontSize: "9px", letterSpacing: "0.3em", textTransform: "uppercase" as const, color: isLight ? theme.palette[1] : theme.palette[1], opacity: 0.55 }}>12 April 2025</p>
           <div style={{ width: "32px", height: "1px", background: `linear-gradient(to right, transparent, ${theme.palette[1]}, transparent)`, opacity: 0.45, marginTop: "2px" }} />
         </div>
-        {/* Tier badge */}
-        {theme.tier && (
-          <div style={{ position: "absolute", top: "10px", right: "10px", background: tc.bg, borderRadius: "20px", padding: "3px 10px" }}>
-            <span style={{ fontSize: "9px", fontWeight: 700, color: tc.text, letterSpacing: "0.08em", fontFamily: "'Lato', sans-serif" }}>{theme.tier}</span>
+        {discount && (
+          <div style={{ position: "absolute", top: "10px", right: "10px", background: "#E63946", borderRadius: "20px", padding: "3px 10px", boxShadow: "0 2px 8px rgba(230,57,70,0.35)" }}>
+            <span style={{ fontSize: "10px", fontWeight: 700, color: "#fff", letterSpacing: "0.08em", fontFamily: "'Lato', sans-serif" }}>-{discount.percentage}%</span>
           </div>
         )}
         {!theme.available && (
@@ -142,18 +105,23 @@ function ThemeCard({ theme }: { theme: (typeof themes)[0] }) {
           ))}
         </div>
         {/* Price */}
-        {theme.price && (
-          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "17px", fontWeight: 600, color: tc.text, fontStyle: "italic" }}>
-            {fmt(theme.price)}
-          </p>
-        )}
+        <div style={{ display: "flex", alignItems: "baseline", gap: "10px", flexWrap: "wrap" as const }}>
+          {discountedPrice !== null ? (
+            <>
+              <span style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "18px", fontWeight: 700, color: "#E63946", fontStyle: "italic" }}>{fmt(discountedPrice)}</span>
+              <span style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "14px", color: "#A09080", textDecoration: "line-through", fontStyle: "italic" }}>{fmt(basePrice)}</span>
+            </>
+          ) : (
+            <span style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "17px", fontWeight: 600, color: "#C4975A", fontStyle: "italic" }}>{fmt(basePrice)}</span>
+          )}
+        </div>
         {theme.available ? (
           <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "4px" }}>
             <Link href={`/preview/${theme.id}`} className="inv-btn-preview">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
               Preview Tema
             </Link>
-            <a href={waLink(`Halo min, saya ingin pesan undangan digital tema *${theme.name}* (${fmt(theme.price ?? 0)}). Bisa diproses?`)} target="_blank" rel="noopener noreferrer" className="inv-btn-order">
+            <a href={waLink(`Halo min, saya ingin pesan undangan digital tema *${theme.name}* (${fmt(discountedPrice ?? basePrice)}${discountedPrice !== null ? ` — promo -${discount?.percentage}%` : ""}). Bisa diproses?`)} target="_blank" rel="noopener noreferrer" className="inv-btn-order">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.767-6.262-2.064l-.438-.333-3.156 1.058 1.058-3.156-.333-.438A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
               Pesan via WhatsApp
             </a>
@@ -166,9 +134,38 @@ function ThemeCard({ theme }: { theme: (typeof themes)[0] }) {
   );
 }
 
+function DiscountBanner({ discount }: { discount: Discount }) {
+  const t = useCountdown(discount.endAt);
+  if (!t) return null;
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return (
+    <div style={{ background: "linear-gradient(135deg, #E63946 0%, #C4975A 100%)", color: "#fff", padding: "12px 20px", textAlign: "center", fontSize: "13px", fontWeight: 600, fontFamily: "'Lato', sans-serif", letterSpacing: "0.02em", display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", flexWrap: "wrap" as const }}>
+      <span>🎉 <strong>Promo {discount.percentage}%</strong>{discount.label ? ` — ${discount.label}` : ""}</span>
+      <span style={{ opacity: 0.85 }}>berakhir dalam</span>
+      <span style={{ fontFamily: "'Lato', monospace", fontWeight: 800, background: "rgba(0,0,0,0.2)", padding: "4px 10px", borderRadius: "6px", letterSpacing: "0.05em" }}>
+        {t.days > 0 && `${t.days}h `}{pad(t.hours)}:{pad(t.minutes)}:{pad(t.seconds)}
+      </span>
+    </div>
+  );
+}
+
+function CustomPriceDisplay({ discount }: { discount: Discount | null }) {
+  const discounted = discount ? Math.round(CUSTOM_PRICE * (1 - discount.percentage / 100)) : null;
+  if (discounted !== null) {
+    return (
+      <div style={{ marginBottom: "4px", display: "flex", alignItems: "baseline", justifyContent: "center", gap: "12px", flexWrap: "wrap" as const }}>
+        <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "28px", fontWeight: 700, color: "#E63946", margin: 0 }}>{fmt(discounted)}</p>
+        <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "18px", color: "#A09080", textDecoration: "line-through", margin: 0 }}>{fmt(CUSTOM_PRICE)}</p>
+      </div>
+    );
+  }
+  return <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "28px", fontWeight: 600, color: "#C4975A", marginBottom: "4px" }}>{fmt(CUSTOM_PRICE)}</p>;
+}
+
 export default function CatalogPage() {
   const [activeFilter, setActiveFilter] = useState("Semua");
   const [menuOpen, setMenuOpen] = useState(false);
+  const discount = useActiveDiscount();
   const visible = themes.filter((t) => !t.hidden);
   const filtered = activeFilter === "Semua" ? visible : visible.filter((t) => t.category === activeFilter);
 
@@ -213,6 +210,8 @@ export default function CatalogPage() {
         )}
       </nav>
 
+      {discount && <div style={{ marginTop: "64px" }}><DiscountBanner discount={discount} /></div>}
+
       {/* ── Hero ── */}
       <section style={{ padding: "148px 28px 72px", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: "60px", left: "50%", transform: "translateX(-50%)", width: "700px", height: "500px", borderRadius: "50%", background: "radial-gradient(ellipse, rgba(196,151,90,0.09) 0%, transparent 70%)", pointerEvents: "none" }} />
@@ -227,7 +226,7 @@ export default function CatalogPage() {
             <div style={{ flex: 1, maxWidth: "80px", height: "1px", background: "linear-gradient(to left, transparent, rgba(196,151,90,0.5))" }} />
           </div>
           <p style={{ fontSize: "16px", color: "#7A6A5A", maxWidth: "480px", margin: "0 auto 36px", lineHeight: 1.9 }}>
-            Pilih tema, isi data, dan undangan siap dibagikan. Mulai dari <strong style={{ color: "#2C1F14" }}>Rp 60.000</strong> — tamu mendapat link personal dengan nama mereka.
+            Pilih tema, isi data, dan undangan siap dibagikan. Harga <strong style={{ color: "#2C1F14" }}>Rp 100.000</strong> flat semua tema — tamu mendapat link personal dengan nama mereka.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" as const }}>
             <a href="#themes" style={{ background: "#2C1F14", color: "#F5EDD8", padding: "14px 34px", borderRadius: "10px", fontWeight: 700, fontSize: "14px", textDecoration: "none" }}>Lihat Tema</a>
@@ -250,7 +249,7 @@ export default function CatalogPage() {
           </div>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(270px, 1fr))", gap: "22px" }}>
-          {filtered.map((theme) => <ThemeCard key={theme.id} theme={theme} />)}
+          {filtered.map((theme) => <ThemeCard key={theme.id} theme={theme} discount={discount} />)}
         </div>
       </section>
 
@@ -260,7 +259,7 @@ export default function CatalogPage() {
           <div style={{ textAlign: "center", marginBottom: "48px" }}>
             <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color: "#C4975A", marginBottom: "10px" }}>Semua Paket Dapat</p>
             <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 600, fontStyle: "italic", color: "#2C1F14", marginBottom: "12px" }}>Fitur Lengkap, Tanpa Batasan</h2>
-            <p style={{ color: "#7A6A5A", fontSize: "14px" }}>Mulai dari <strong style={{ color: "#2C1F14" }}>Rp 60.000</strong> — semua fitur sudah termasuk, yang berbeda hanya desain tema</p>
+            <p style={{ color: "#7A6A5A", fontSize: "14px" }}>Harga flat <strong style={{ color: "#2C1F14" }}>Rp 100.000</strong> untuk semua tema — semua fitur sudah termasuk</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "16px", marginBottom: "40px" }}>
             {[
@@ -286,9 +285,9 @@ export default function CatalogPage() {
           {/* Custom note */}
           <div style={{ textAlign: "center", background: "#FAF7F2", border: "1px solid rgba(180,150,120,0.2)", borderRadius: "16px", padding: "28px" }}>
             <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "20px", fontStyle: "italic", color: "#2C1F14", marginBottom: "4px" }}>Butuh tema custom sepenuhnya?</p>
-            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "28px", fontWeight: 600, color: "#C4975A", marginBottom: "4px" }}>Rp 185.000</p>
+            <CustomPriceDisplay discount={discount} />
             <p style={{ fontSize: "13px", color: "#7A6A5A", marginBottom: "20px" }}>Warna, layout, dan elemen sesuai keinginan — didesain dari nol khusus untuk Anda</p>
-            <a href={waLink("Halo min, saya tertarik paket *Custom* (Rp 185.000) untuk undangan digital dengan desain khusus. Bisa konsultasi?")} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", border: "1.5px solid rgba(60,40,20,0.25)", color: "#2C1F14", padding: "12px 32px", borderRadius: "10px", fontSize: "13px", fontWeight: 700, textDecoration: "none" }}>
+            <a href={waLink(`Halo min, saya tertarik paket *Custom* (${fmt(CUSTOM_PRICE)}) untuk undangan digital dengan desain khusus. Bisa konsultasi?`)} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", border: "1.5px solid rgba(60,40,20,0.25)", color: "#2C1F14", padding: "12px 32px", borderRadius: "10px", fontSize: "13px", fontWeight: 700, textDecoration: "none" }}>
               Konsultasi via WhatsApp →
             </a>
           </div>

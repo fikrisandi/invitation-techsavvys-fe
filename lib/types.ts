@@ -24,6 +24,13 @@ export type Person = {
   photo?: string;
 };
 
+export type LoveStoryEntry = {
+  year: string;
+  title: string;
+  description: string;
+  image?: string;
+};
+
 export type CustomColors = {
   primary?: string;
   accent?: string;
@@ -71,6 +78,9 @@ export type InvitationData = {
 
   // Gallery (photo URLs)
   photos: string[];
+
+  // Love story timeline
+  loveStory?: LoveStoryEntry[];
 
   // Gift
   banks?: BankAccount[];

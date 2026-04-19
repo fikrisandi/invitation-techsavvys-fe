@@ -7,6 +7,7 @@ import Couple from "./components/Couple";
 import Countdown from "./components/Countdown";
 import EventDetails from "./components/EventDetails";
 import Gallery from "./components/Gallery";
+import LoveStory from "./components/LoveStory";
 import Gift from "./components/Gift";
 import RSVP from "./components/RSVP";
 import Wishes from "./components/Wishes";
@@ -145,6 +146,7 @@ function SakuraBloomContent({ guestName }: { guestName?: string }) {
         <Countdown />
         <EventDetails />
         <Gallery />
+        <LoveStory />
         <Gift />
         <RSVP guestName={guestName} />
         <Wishes />
