@@ -49,6 +49,8 @@ const FEATURES = [
   { icon: "💬", title: "Ucapan & Doa", desc: "Tamu kirim ucapan langsung, tampil di undangan secara realtime." },
   { icon: "🗺️", title: "Google Maps Embed", desc: "Lokasi acara langsung tampil di undangan, bisa buka navigasi." },
   { icon: "💳", title: "Info Rekening Hadiah", desc: "Tampilkan info rekening dengan tombol salin nomor rekening." },
+  { icon: "💞", title: "Perjalanan Cinta", desc: "Timeline kisah pertemuan sampai hari bahagia dengan foto & narasi per tahun." },
+  { icon: "🎨", title: "Efek & Animasi Custom", desc: "Bintang, kelopak sakura, partikel emas, awan — sesuaikan efek per tema." },
 ];
 
 function fmt(price: number) {
@@ -274,6 +276,7 @@ export default function CatalogPage() {
               { icon: "📋", label: "Upload Daftar Tamu (Excel)" },
               { icon: "⏰", label: "Masa Aktif 3 Bulan" },
               { icon: "✨", label: "Animasi & Efek Visual" },
+              { icon: "💞", label: "Perjalanan Cinta (Timeline)" },
               { icon: "📱", label: "Responsive di Semua Device" },
             ].map((b) => (
               <div key={b.label} style={{ display: "flex", alignItems: "center", gap: "12px", background: "#FAF7F2", border: "1px solid rgba(180,150,120,0.15)", borderRadius: "12px", padding: "16px 18px" }}>
