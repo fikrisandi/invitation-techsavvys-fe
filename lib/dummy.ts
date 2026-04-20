@@ -100,7 +100,6 @@ export const themes = [
     category: "Elegan",
     palette: ["#0A3D2E", "#D4A853", "#EAD18F"],
     available: true,
-    hidden: true,
     price: NORMAL_PRICE,
   },
   {

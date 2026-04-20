@@ -33,7 +33,7 @@ function useCountdown(endAt: string | undefined) {
 }
 
 const MAIN_URL = process.env.NEXT_PUBLIC_MAIN_URL ?? "https://techsavvys.com";
-const CATEGORIES = ["Semua", "Natural", "Romantis", "Modern", "Tradisional"];
+const CATEGORIES = ["Semua", "Natural", "Romantis", "Modern", "Tradisional", "Elegan"];
 
 const WA_NUMBER = "628993781044";
 function waLink(msg: string) {

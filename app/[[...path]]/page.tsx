@@ -136,18 +136,15 @@ export default async function InvitationPage({ params, searchParams }: Props) {
   const resolved = resolveUploadUrls(data);
   const ThemeComponent = THEMES[resolved.theme] ?? EmeraldGoldTheme;
   const colorCSS = resolved.customColors ? generateColorOverrideCSS(resolved.theme, resolved.customColors) : "";
-  const hasCustomEffects = resolved.effects && resolved.effects.length > 0;
 
   return (
     <>
       {colorCSS && <style dangerouslySetInnerHTML={{ __html: colorCSS }} />}
-      {hasCustomEffects && (
-        <EffectLayer
-          effects={resolved.effects as EffectName[]}
-          effectConfig={resolved.effectConfig}
-          theme={resolved.theme}
-        />
-      )}
+      <EffectLayer
+        effects={resolved.effects as EffectName[] | undefined}
+        effectConfig={resolved.effectConfig}
+        theme={resolved.theme}
+      />
       <ThemeComponent data={resolved} guestName={guestName} />
     </>
   );

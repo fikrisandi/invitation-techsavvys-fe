@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { dummyData } from "@/lib/dummy";
+import EffectLayer from "@/effects/EffectLayer";
 import EmeraldGoldTheme from "@/themes/emerald-gold";
 import MidnightBlueTheme from "@/themes/midnight-blue";
 import YlangYlangTheme from "@/themes/ylang-ylang";
@@ -62,6 +63,8 @@ export default async function PreviewPage({ params }: Props) {
         <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#00BFA5", animation: "pulse-ring 2s infinite" }} />
         <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.7)", fontFamily: "Outfit, sans-serif", letterSpacing: "0.05em" }}>PREVIEW</span>
       </div>
+
+      <EffectLayer theme={theme} />
 
       <ThemeComponent data={previewData} guestName="Tamu Undangan" />
     </>
