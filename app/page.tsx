@@ -42,14 +42,18 @@ function waLink(msg: string) {
 
 const FEATURES = [
   { icon: "👥", title: "Link Personal Tamu", desc: "Setiap tamu mendapat link dengan namanya tercantum otomatis." },
-  { icon: "📋", title: "Upload Daftar Tamu", desc: "Import Excel/Sheet ratusan tamu sekaligus, langsung jadi link." },
-  { icon: "✅", title: "RSVP Otomatis", desc: "Tamu konfirmasi hadir langsung di undangan, data masuk admin." },
-  { icon: "⏰", title: "Masa Aktif & Expired", desc: "Atur tanggal kadaluarsa, undangan nonaktif otomatis setelah acara." },
-  { icon: "🎵", title: "Musik & Animasi", desc: "Background music dan animasi sesuai tema untuk kesan mendalam." },
+  { icon: "♾️", title: "Unlimited Tamu", desc: "Tidak ada batas jumlah tamu yang bisa Anda undang — ratusan pun aman." },
+  { icon: "📋", title: "Upload Daftar Tamu", desc: "Import Excel/Sheet ratusan tamu sekaligus, langsung jadi link personal." },
+  { icon: "📱", title: "Sync dengan WhatsApp", desc: "Tombol Kirim WA — sekali klik buka WhatsApp Web dengan pesan siap kirim." },
+  { icon: "📨", title: "Template Broadcast Siap", desc: "Template pesan undangan sudah tersedia, bisa dipakai langsung atau di-custom." },
+  { icon: "✅", title: "RSVP Otomatis", desc: "Tamu konfirmasi hadir langsung di undangan, data masuk admin secara realtime." },
   { icon: "💬", title: "Ucapan & Doa", desc: "Tamu kirim ucapan langsung, tampil di undangan secara realtime." },
+  { icon: "📸", title: "Galeri Foto Prewedding", desc: "Upload banyak foto prewedding dengan layout masonry cantik sesuai tema." },
+  { icon: "🎵", title: "Background Music", desc: "Upload musik latar untuk menambah suasana mendalam saat tamu buka undangan." },
   { icon: "🗺️", title: "Google Maps Embed", desc: "Lokasi acara langsung tampil di undangan, bisa buka navigasi." },
   { icon: "💳", title: "Info Rekening Hadiah", desc: "Tampilkan info rekening dengan tombol salin nomor rekening." },
   { icon: "💞", title: "Perjalanan Cinta", desc: "Timeline kisah pertemuan sampai hari bahagia dengan foto & narasi per tahun." },
+  { icon: "⏰", title: "Masa Aktif Fleksibel", desc: "Atur tanggal kadaluarsa, undangan nonaktif otomatis setelah acara selesai." },
   { icon: "🎨", title: "Efek & Animasi Custom", desc: "Bintang, kelopak sakura, partikel emas, awan — sesuaikan efek per tema." },
 ];
 
@@ -285,6 +289,7 @@ export default function CatalogPage() {
                   "Akun dashboard untuk kelola undangan",
                   "Upload daftar tamu via Excel/CSV",
                   "Kirim undangan via WhatsApp Web",
+                  "Revisi data undangan 2x",
                   "Support admin setiap hari kerja",
                   "Masa aktif 3 bulan",
                 ].map((item) => (
@@ -310,7 +315,7 @@ export default function CatalogPage() {
                 {[
                   "Semua benefit Paket Standard",
                   "Desain custom sesuai brief Anda",
-                  "Revisi desain 2x sebelum launch",
+                  "Revisi desain + data undangan 2x",
                   "Konsultasi langsung dengan tim desainer",
                   "Warna & elemen eksklusif",
                   "Setup 3–5 hari kerja",
