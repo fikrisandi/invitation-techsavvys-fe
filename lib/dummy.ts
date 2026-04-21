@@ -88,8 +88,8 @@ export const dummyData: InvitationData = {
   ],
 };
 
-export const NORMAL_PRICE = 100000;
-export const CUSTOM_PRICE = 150000;
+export const NORMAL_PRICE = 110000;
+export const CUSTOM_PRICE = 170000;
 
 export const themes = [
   {

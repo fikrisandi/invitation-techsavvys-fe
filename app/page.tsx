@@ -186,6 +186,7 @@ export default function CatalogPage() {
           <div className="nav-desktop">
             <a href="#themes" className="nav-link">Tema</a>
             <a href="#pricing" className="nav-link">Benefit</a>
+            <a href="#flow" className="nav-link">Cara Pesan</a>
             <a href="#features" className="nav-link">Fitur</a>
             <a href={waLink("Halo min, saya tertarik membuat undangan digital di Invitation Savvys. Bisa info lebih lanjut?")} target="_blank" rel="noopener noreferrer" className="nav-cta">Pesan Sekarang</a>
           </div>
@@ -206,6 +207,7 @@ export default function CatalogPage() {
           <div className="nav-dropdown">
             <a href="#themes"  className="nav-dd-link" onClick={() => setMenuOpen(false)}>Tema</a>
             <a href="#pricing" className="nav-dd-link" onClick={() => setMenuOpen(false)}>Benefit</a>
+            <a href="#flow" className="nav-dd-link" onClick={() => setMenuOpen(false)}>Cara Pesan</a>
             <a href="#features" className="nav-dd-link" onClick={() => setMenuOpen(false)}>Fitur</a>
             <a href={waLink("Halo min, saya tertarik membuat undangan digital di Invitation Savvys. Bisa info lebih lanjut?")} target="_blank" rel="noopener noreferrer" className="nav-dd-cta" onClick={() => setMenuOpen(false)}>Pesan Sekarang →</a>
           </div>
@@ -227,8 +229,8 @@ export default function CatalogPage() {
             <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4975A" opacity={0.6}><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
             <div style={{ flex: 1, maxWidth: "80px", height: "1px", background: "linear-gradient(to left, transparent, rgba(196,151,90,0.5))" }} />
           </div>
-          <p style={{ fontSize: "16px", color: "#7A6A5A", maxWidth: "480px", margin: "0 auto 36px", lineHeight: 1.9 }}>
-            Pilih tema, isi data, dan undangan siap dibagikan. Harga <strong style={{ color: "#2C1F14" }}>Rp 100.000</strong> flat semua tema — tamu mendapat link personal dengan nama mereka.
+          <p style={{ fontSize: "16px", color: "#7A6A5A", maxWidth: "520px", margin: "0 auto 36px", lineHeight: 1.9 }}>
+            Pilih tema, bayar, dan undangan siap dibagikan. Harga <strong style={{ color: "#2C1F14" }}>Rp 110.000</strong> flat semua tema — dan kini Anda bisa <strong style={{ color: "#2C1F14" }}>kelola daftar tamu sendiri</strong> lewat akun pribadi.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" as const }}>
             <a href="#themes" style={{ background: "#2C1F14", color: "#F5EDD8", padding: "14px 34px", borderRadius: "10px", fontWeight: 700, fontSize: "14px", textDecoration: "none" }}>Lihat Tema</a>
@@ -261,7 +263,7 @@ export default function CatalogPage() {
           <div style={{ textAlign: "center", marginBottom: "48px" }}>
             <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color: "#C4975A", marginBottom: "10px" }}>Semua Paket Dapat</p>
             <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 600, fontStyle: "italic", color: "#2C1F14", marginBottom: "12px" }}>Fitur Lengkap, Tanpa Batasan</h2>
-            <p style={{ color: "#7A6A5A", fontSize: "14px" }}>Harga flat <strong style={{ color: "#2C1F14" }}>Rp 100.000</strong> untuk semua tema — semua fitur sudah termasuk</p>
+            <p style={{ color: "#7A6A5A", fontSize: "14px" }}>Harga flat <strong style={{ color: "#2C1F14" }}>Rp 110.000</strong> untuk semua tema — semua fitur sudah termasuk</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "16px", marginBottom: "40px" }}>
             {[
@@ -297,6 +299,57 @@ export default function CatalogPage() {
         </div>
       </section>
 
+      {/* ── Cara Pemesanan ── */}
+      <section id="flow" style={{ padding: "80px 28px", background: "#FAF7F2" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "48px" }}>
+            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color: "#C4975A", marginBottom: "10px" }}>Cara Pemesanan</p>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 600, fontStyle: "italic", color: "#2C1F14", marginBottom: "12px" }}>Mudah, Cepat, & Fleksibel</h2>
+            <p style={{ color: "#7A6A5A", fontSize: "14px", maxWidth: "560px", margin: "0 auto" }}>
+              Bayar dulu, lalu pilih: undangan <strong style={{ color: "#2C1F14" }}>dibuatkan admin</strong> atau <strong style={{ color: "#2C1F14" }}>Anda buat & kelola tamu sendiri</strong> lewat akun pribadi.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "18px", marginBottom: "36px" }}>
+            {[
+              { num: "1", title: "Chat Admin via WA", desc: "Pilih tema & konsultasi dengan admin kami untuk konfirmasi detail acara." },
+              { num: "2", title: "Lakukan Pembayaran", desc: "Transfer atau QRIS sesuai paket. Harga flat Rp 110.000 semua tema." },
+              { num: "3", title: "Isi Data Undangan", desc: "Admin kirim form. Isi data pasangan, tanggal, lokasi, galeri foto, dll." },
+              { num: "4", title: "Admin Setup Undangan", desc: "Tim kami setup undangan sesuai data Anda, siap dalam 1–2 hari kerja." },
+              { num: "5", title: "Anda Dapat Akun", desc: "Email & password dikirim ke Anda — login ke dashboard untuk kelola tamu." },
+              { num: "6", title: "Kelola & Sebar Undangan", desc: "Upload daftar tamu (CSV/Excel) & kirim ke tamu langsung via WhatsApp Web." },
+            ].map((step) => (
+              <div key={step.num} style={{ background: "#FFF", border: "1px solid rgba(180,150,120,0.2)", borderRadius: "16px", padding: "22px 20px", position: "relative" }}>
+                <div style={{ width: "36px", height: "36px", borderRadius: "50%", background: "#C4975A", color: "#FFF", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px", fontWeight: 700, marginBottom: "12px" }}>{step.num}</div>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "17px", fontWeight: 600, fontStyle: "italic", color: "#2C1F14", marginBottom: "6px" }}>{step.title}</h3>
+                <p style={{ fontSize: "13px", color: "#7A6A5A", lineHeight: 1.75 }}>{step.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ background: "linear-gradient(135deg, #2C1F14, #3A2819)", borderRadius: "18px", padding: "32px 28px", textAlign: "center", color: "#F5EDD8" }}>
+            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C4975A", marginBottom: "10px" }}>✨ Paling Populer</p>
+            <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(1.5rem, 3vw, 2rem)", fontStyle: "italic", marginBottom: "10px", fontWeight: 600 }}>Kelola Tamu Sendiri Lewat Akun Pribadi</h3>
+            <p style={{ color: "#9A8A7A", fontSize: "14px", lineHeight: 1.8, maxWidth: "580px", margin: "0 auto 24px" }}>
+              Setelah admin setup undangan, Anda dapat akun sendiri untuk <strong style={{ color: "#F5EDD8" }}>upload daftar tamu, edit nama, dan kirim undangan langsung lewat WhatsApp Web</strong> — kapan saja, tanpa ribet chat admin.
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "12px", maxWidth: "620px", margin: "0 auto" }}>
+              {[
+                { icon: "📱", label: "Kirim via WA Web" },
+                { icon: "📊", label: "Upload Excel/CSV" },
+                { icon: "✏️", label: "Edit Tamu Kapan Saja" },
+                { icon: "🔗", label: "Link Personal Otomatis" },
+              ].map((b) => (
+                <div key={b.label} style={{ background: "rgba(196,151,90,0.15)", borderRadius: "10px", padding: "10px 12px", display: "flex", alignItems: "center", gap: "8px", justifyContent: "center" }}>
+                  <span style={{ fontSize: "18px" }}>{b.icon}</span>
+                  <span style={{ fontSize: "12px", fontWeight: 600 }}>{b.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Features ── */}
       <section id="features" style={{ padding: "80px 28px", background: "#FAF7F2" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
@@ -319,14 +372,21 @@ export default function CatalogPage() {
       {/* ── CTA ── */}
       <section style={{ padding: "100px 28px", textAlign: "center", background: "#2C1F14", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "500px", height: "400px", borderRadius: "50%", background: "radial-gradient(ellipse, rgba(196,151,90,0.1) 0%, transparent 70%)", pointerEvents: "none" }} />
-        <div style={{ maxWidth: "520px", margin: "0 auto", position: "relative" }}>
+        <div style={{ maxWidth: "560px", margin: "0 auto", position: "relative" }}>
           <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color: "#C4975A", marginBottom: "16px" }}>Mulai Sekarang</p>
           <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 600, fontStyle: "italic", color: "#F5EDD8", marginBottom: "16px" }}>Siap Buat Undangan?</h2>
-          <p style={{ color: "#9A8A7A", marginBottom: "36px", lineHeight: 1.8, fontSize: "15px" }}>Hubungi kami dan undangan digital Anda akan siap dalam waktu singkat.</p>
-          <a href={waLink("Halo min, saya ingin buat undangan digital. Bisa bantu?")} target="_blank" rel="noopener noreferrer"
-            style={{ display: "inline-block", background: "#C4975A", color: "#2C1F14", padding: "16px 48px", borderRadius: "10px", fontWeight: 700, fontSize: "14px", textDecoration: "none" }}>
-            Pesan via WhatsApp
-          </a>
+          <p style={{ color: "#9A8A7A", marginBottom: "32px", lineHeight: 1.8, fontSize: "15px" }}>Chat admin via WhatsApp untuk konsultasi & pembayaran. Undangan siap dalam 1–2 hari kerja, dan Anda langsung dapat akun untuk kelola tamu sendiri.</p>
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" as const, marginBottom: "16px" }}>
+            <a href={waLink("Halo min, saya ingin buat undangan digital (Rp 110.000). Bisa bantu?")} target="_blank" rel="noopener noreferrer"
+              style={{ display: "inline-block", background: "#C4975A", color: "#2C1F14", padding: "16px 36px", borderRadius: "10px", fontWeight: 700, fontSize: "14px", textDecoration: "none" }}>
+              💬 Pesan via WhatsApp
+            </a>
+            <a href="#flow"
+              style={{ display: "inline-block", background: "transparent", color: "#F5EDD8", padding: "16px 32px", borderRadius: "10px", fontWeight: 600, fontSize: "14px", textDecoration: "none", border: "1.5px solid rgba(245,237,216,0.25)" }}>
+              Lihat Cara Pemesanan
+            </a>
+          </div>
+          <p style={{ color: "#6A5A4A", fontSize: "12px", marginTop: "8px" }}>Sudah punya akun? <a href="/admin/login" style={{ color: "#C4975A", textDecoration: "underline" }}>Login di sini</a></p>
         </div>
       </section>
 
