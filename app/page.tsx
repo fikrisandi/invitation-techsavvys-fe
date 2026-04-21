@@ -257,43 +257,96 @@ export default function CatalogPage() {
         </div>
       </section>
 
-      {/* ── Benefits ── */}
+      {/* ── Paket & Value ── */}
       <section id="pricing" style={{ padding: "80px 28px", background: "#F3EDE3" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "48px" }}>
-            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color: "#C4975A", marginBottom: "10px" }}>Semua Paket Dapat</p>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 600, fontStyle: "italic", color: "#2C1F14", marginBottom: "12px" }}>Fitur Lengkap, Tanpa Batasan</h2>
-            <p style={{ color: "#7A6A5A", fontSize: "14px" }}>Harga flat <strong style={{ color: "#2C1F14" }}>Rp 110.000</strong> untuk semua tema — semua fitur sudah termasuk</p>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "40px" }}>
+            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color: "#C4975A", marginBottom: "10px" }}>Apa yang Anda Dapat</p>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 600, fontStyle: "italic", color: "#2C1F14", marginBottom: "12px" }}>Paket yang Jelas &amp; Transparan</h2>
+            <p style={{ color: "#7A6A5A", fontSize: "14px", maxWidth: "560px", margin: "0 auto" }}>
+              Semua paket sudah termasuk setup, akses dashboard, dan support admin. Bayar sekali, pakai sampai acara selesai.
+            </p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "16px", marginBottom: "40px" }}>
+
+          {/* 2-card comparison: Standard vs Custom */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "20px", marginBottom: "36px" }}>
+            {/* Paket Standard */}
+            <div style={{ background: "#FAF7F2", border: "1.5px solid rgba(180,150,120,0.25)", borderRadius: "18px", padding: "28px 26px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 14 }}>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "22px", fontWeight: 700, fontStyle: "italic", color: "#2C1F14" }}>Paket Standard</h3>
+                <span style={{ fontSize: "11px", color: "#7A6A5A", fontWeight: 600 }}>Tema Siap Pakai</span>
+              </div>
+              <p style={{ color: "#7A6A5A", fontSize: "13px", marginBottom: 18, lineHeight: 1.7 }}>
+                Pilih salah satu dari 9 tema yang tersedia. Cocok untuk Anda yang butuh undangan cantik siap launch.
+              </p>
+              <div style={{ borderTop: "1px solid rgba(180,150,120,0.2)", paddingTop: 16 }}>
+                {[
+                  "Setup undangan dalam 1–2 hari kerja",
+                  "Akun dashboard untuk kelola undangan",
+                  "Upload daftar tamu via Excel/CSV",
+                  "Kirim undangan via WhatsApp Web",
+                  "Support admin setiap hari kerja",
+                  "Masa aktif 3 bulan",
+                ].map((item) => (
+                  <div key={item} style={{ display: "flex", gap: 10, fontSize: "13px", color: "#2C1F14", padding: "6px 0", lineHeight: 1.6 }}>
+                    <span style={{ color: "#C4975A", fontWeight: 700 }}>✓</span>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Paket Custom */}
+            <div style={{ background: "linear-gradient(135deg, #FAF7F2 0%, #F0E6D6 100%)", border: "1.5px solid #C4975A", borderRadius: "18px", padding: "28px 26px", position: "relative" }}>
+              <div style={{ position: "absolute", top: -12, right: 20, background: "#C4975A", color: "#FFF", fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", padding: "4px 12px", borderRadius: "20px" }}>PREMIUM</div>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 14 }}>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "22px", fontWeight: 700, fontStyle: "italic", color: "#2C1F14" }}>Paket Custom</h3>
+                <span style={{ fontSize: "11px", color: "#7A6A5A", fontWeight: 600 }}>Desain Dari Nol</span>
+              </div>
+              <p style={{ color: "#7A6A5A", fontSize: "13px", marginBottom: 18, lineHeight: 1.7 }}>
+                Desain undangan sesuai mood & tema pernikahan Anda. Warna, layout, dan elemen custom eksklusif.
+              </p>
+              <div style={{ borderTop: "1px solid rgba(180,150,120,0.2)", paddingTop: 16 }}>
+                {[
+                  "Semua benefit Paket Standard",
+                  "Desain custom sesuai brief Anda",
+                  "Revisi desain 2x sebelum launch",
+                  "Konsultasi langsung dengan tim desainer",
+                  "Warna & elemen eksklusif",
+                  "Setup 3–5 hari kerja",
+                ].map((item) => (
+                  <div key={item} style={{ display: "flex", gap: 10, fontSize: "13px", color: "#2C1F14", padding: "6px 0", lineHeight: 1.6 }}>
+                    <span style={{ color: "#C4975A", fontWeight: 700 }}>✓</span>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Garansi strip */}
+          <div style={{ background: "#FAF7F2", border: "1px solid rgba(180,150,120,0.2)", borderRadius: "14px", padding: "20px 24px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "18px", marginBottom: "32px" }}>
             {[
-              { icon: "👥", label: "Unlimited Tamu" },
-              { icon: "🔗", label: "Link Personal per Tamu" },
-              { icon: "✅", label: "RSVP & Konfirmasi Hadir" },
-              { icon: "💬", label: "Ucapan & Doa Realtime" },
-              { icon: "🎵", label: "Background Music" },
-              { icon: "📸", label: "Galeri Foto" },
-              { icon: "🗺️", label: "Google Maps Embed" },
-              { icon: "💳", label: "Info Rekening Hadiah" },
-              { icon: "📋", label: "Upload Daftar Tamu (Excel)" },
-              { icon: "⏰", label: "Masa Aktif 3 Bulan" },
-              { icon: "✨", label: "Animasi & Efek Visual" },
-              { icon: "💞", label: "Perjalanan Cinta (Timeline)" },
-              { icon: "📱", label: "Responsive di Semua Device" },
-            ].map((b) => (
-              <div key={b.label} style={{ display: "flex", alignItems: "center", gap: "12px", background: "#FAF7F2", border: "1px solid rgba(180,150,120,0.15)", borderRadius: "12px", padding: "16px 18px" }}>
-                <span style={{ fontSize: "22px", flexShrink: 0 }}>{b.icon}</span>
-                <span style={{ fontSize: "13px", fontWeight: 600, color: "#2C1F14" }}>{b.label}</span>
+              { icon: "💰", title: "Bayar Sekali", desc: "Tidak ada biaya tersembunyi atau langganan bulanan" },
+              { icon: "🔄", title: "Admin Responsif", desc: "Chat WA di jam kerja, respon < 1 jam" },
+              { icon: "🔒", title: "Data Aman", desc: "Akun pribadi, tamu tidak bisa saling lihat" },
+            ].map((g) => (
+              <div key={g.title} style={{ display: "flex", gap: 12, alignItems: "start" }}>
+                <span style={{ fontSize: "26px", flexShrink: 0 }}>{g.icon}</span>
+                <div>
+                  <div style={{ fontSize: "14px", fontWeight: 700, color: "#2C1F14", marginBottom: 3 }}>{g.title}</div>
+                  <div style={{ fontSize: "12px", color: "#7A6A5A", lineHeight: 1.6 }}>{g.desc}</div>
+                </div>
               </div>
             ))}
           </div>
-          {/* Custom note */}
-          <div style={{ textAlign: "center", background: "#FAF7F2", border: "1px solid rgba(180,150,120,0.2)", borderRadius: "16px", padding: "28px" }}>
-            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "20px", fontStyle: "italic", color: "#2C1F14", marginBottom: "4px" }}>Butuh tema custom sepenuhnya?</p>
-            <CustomPriceDisplay discount={discount} />
-            <p style={{ fontSize: "13px", color: "#7A6A5A", marginBottom: "20px" }}>Warna, layout, dan elemen sesuai keinginan — didesain dari nol khusus untuk Anda</p>
-            <a href={waLink(`Halo min, saya tertarik paket *Custom* (${fmt(CUSTOM_PRICE)}) untuk undangan digital dengan desain khusus. Bisa konsultasi?`)} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", border: "1.5px solid rgba(60,40,20,0.25)", color: "#2C1F14", padding: "12px 32px", borderRadius: "10px", fontSize: "13px", fontWeight: 700, textDecoration: "none" }}>
-              Konsultasi via WhatsApp →
+
+          {/* CTA Custom */}
+          <div style={{ textAlign: "center", background: "#2C1F14", borderRadius: "16px", padding: "28px" }}>
+            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "20px", fontStyle: "italic", color: "#F5EDD8", marginBottom: "4px" }}>Butuh tema custom sepenuhnya?</p>
+            <p style={{ fontSize: "13px", color: "#9A8A7A", marginBottom: "20px" }}>Konsultasi gratis dengan tim desainer kami</p>
+            <a href={waLink(`Halo min, saya tertarik *Paket Custom* untuk undangan digital dengan desain khusus. Bisa konsultasi?`)} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: "#C4975A", color: "#2C1F14", padding: "12px 32px", borderRadius: "10px", fontSize: "13px", fontWeight: 700, textDecoration: "none" }}>
+              💬 Konsultasi Custom via WhatsApp
             </a>
           </div>
         </div>
@@ -313,7 +366,7 @@ export default function CatalogPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "18px", marginBottom: "36px" }}>
             {[
               { num: "1", title: "Chat Admin via WA", desc: "Pilih tema & konsultasi dengan admin kami untuk konfirmasi detail acara." },
-              { num: "2", title: "Lakukan Pembayaran", desc: "Transfer atau QRIS sesuai paket. Harga flat Rp 110.000 semua tema." },
+              { num: "2", title: "Lakukan Pembayaran", desc: "Transfer atau QRIS sesuai paket yang Anda pilih. Nominal akan dikonfirmasi oleh admin saat chat." },
               { num: "3", title: "Isi Data Undangan", desc: "Admin kirim form. Isi data pasangan, tanggal, lokasi, galeri foto, dll." },
               { num: "4", title: "Admin Setup Undangan", desc: "Tim kami setup undangan sesuai data Anda, siap dalam 1–2 hari kerja." },
               { num: "5", title: "Anda Dapat Akun", desc: "Email & password dikirim ke Anda — login ke dashboard untuk kelola tamu." },
@@ -329,15 +382,17 @@ export default function CatalogPage() {
 
           <div style={{ background: "linear-gradient(135deg, #2C1F14, #3A2819)", borderRadius: "18px", padding: "32px 28px", textAlign: "center", color: "#F5EDD8" }}>
             <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C4975A", marginBottom: "10px" }}>✨ Paling Populer</p>
-            <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(1.5rem, 3vw, 2rem)", fontStyle: "italic", marginBottom: "10px", fontWeight: 600 }}>Kelola Tamu Sendiri Lewat Akun Pribadi</h3>
-            <p style={{ color: "#9A8A7A", fontSize: "14px", lineHeight: 1.8, maxWidth: "580px", margin: "0 auto 24px" }}>
-              Setelah admin setup undangan, Anda dapat akun sendiri untuk <strong style={{ color: "#F5EDD8" }}>upload daftar tamu, edit nama, dan kirim undangan langsung lewat WhatsApp Web</strong> — kapan saja, tanpa ribet chat admin.
+            <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(1.5rem, 3vw, 2rem)", fontStyle: "italic", marginBottom: "10px", fontWeight: 600 }}>Kelola Undangan Sendiri Lewat Akun Pribadi</h3>
+            <p style={{ color: "#9A8A7A", fontSize: "14px", lineHeight: 1.8, maxWidth: "620px", margin: "0 auto 24px" }}>
+              Setelah admin setup undangan, Anda dapat akun pribadi untuk <strong style={{ color: "#F5EDD8" }}>cek informasi undangan kapan saja, upload daftar tamu, dan kirim undangan langsung via WhatsApp Web</strong>. Termasuk <strong style={{ color: "#F5EDD8" }}>revisi desain 2x</strong> & sync terus dengan admin via WA.
             </p>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "12px", maxWidth: "620px", margin: "0 auto" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "10px", maxWidth: "720px", margin: "0 auto" }}>
               {[
-                { icon: "📱", label: "Kirim via WA Web" },
+                { icon: "📋", label: "Cek Info Undangan" },
                 { icon: "📊", label: "Upload Excel/CSV" },
-                { icon: "✏️", label: "Edit Tamu Kapan Saja" },
+                { icon: "📱", label: "Kirim via WA Web" },
+                { icon: "🎨", label: "Revisi Desain 2x" },
+                { icon: "💬", label: "Sync Admin via WA" },
                 { icon: "🔗", label: "Link Personal Otomatis" },
               ].map((b) => (
                 <div key={b.label} style={{ background: "rgba(196,151,90,0.15)", borderRadius: "10px", padding: "10px 12px", display: "flex", alignItems: "center", gap: "8px", justifyContent: "center" }}>
