@@ -1,0 +1,284 @@
+/* ==================== CLIENT (INVITATION) THEME ====================
+   Mirror struktur admin.css tapi pakai palette invitation: emerald + gold.
+   Mood: elegant, warm, wedding-like.
+*/
+
+:root {
+  --client-bg: #041E16;
+  --client-surface: #062A1F;
+  --client-card: #083526;
+  --client-border: #0D4A36;
+  --client-border-hover: #145A43;
+  --client-text: #F8F4EC;
+  --client-muted: #7A9488;
+  --client-text-light: #B8C9BF;
+  --client-gold: #D4A853;
+  --client-gold-light: #EAD18F;
+  --client-gold-dark: #B08E3C;
+  --client-gold-glow: rgba(212, 168, 83, 0.15);
+  --client-mint: #A8D5BA;
+  --client-red: #ef4444;
+  --client-red-glow: rgba(239, 68, 68, 0.15);
+  --client-radius: 12px;
+  --client-sidebar-w: 260px;
+}
+
+/* ==================== LAYOUT ==================== */
+.client-layout {
+  display: flex;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at top right, rgba(212, 168, 83, 0.06) 0%, transparent 60%),
+    var(--client-bg);
+  font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+}
+
+/* ==================== SIDEBAR ==================== */
+.client-sidebar {
+  width: var(--client-sidebar-w);
+  background: var(--client-surface);
+  border-right: 1px solid var(--client-border);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+
+.client-sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  border-bottom: 1px solid var(--client-border);
+}
+
+.client-sidebar-brand img {
+  border-radius: 10px;
+  border: 1px solid var(--client-gold-dark);
+}
+
+.client-sidebar-brand h2 {
+  font-size: 1.05rem;
+  color: var(--client-text);
+  margin: 0;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.client-sidebar-brand span {
+  font-size: 0.65rem;
+  color: var(--client-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+
+.client-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 8px;
+  overflow-y: auto;
+}
+
+.client-nav-label {
+  padding: 14px 14px 6px;
+  font-size: 0.62rem;
+  color: var(--client-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  opacity: 0.7;
+}
+
+.client-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  color: var(--client-text-light);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+}
+
+.client-nav-item:hover {
+  background: var(--client-card);
+  color: var(--client-text);
+}
+
+.client-nav-item.active {
+  background: linear-gradient(135deg, var(--client-gold) 0%, var(--client-gold-dark) 100%);
+  color: var(--client-bg);
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(212, 168, 83, 0.25);
+}
+
+.client-nav-item.active svg {
+  color: var(--client-bg);
+}
+
+.client-active-card {
+  margin: 8px 14px 0;
+  padding: 12px 14px;
+  background: rgba(212, 168, 83, 0.08);
+  border: 1px solid var(--client-gold-glow);
+  border-radius: 10px;
+}
+
+.client-active-card .label {
+  margin-bottom: 6px;
+  font-size: 0.62rem;
+  color: var(--client-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+.client-active-card .name {
+  color: var(--client-text);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.client-active-card code {
+  font-size: 0.7rem;
+  color: var(--client-gold-light);
+}
+
+.client-sidebar-footer {
+  padding: 14px;
+  border-top: 1px solid var(--client-border);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.client-back-link {
+  color: var(--client-muted) !important;
+}
+
+.client-back-link:hover {
+  color: var(--client-text) !important;
+}
+
+.client-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  background: transparent;
+  color: var(--client-muted);
+  border: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  font-family: inherit;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.client-logout-btn:hover {
+  background: var(--client-red-glow);
+  color: var(--client-red);
+}
+
+/* ==================== CONTENT ==================== */
+.client-content {
+  flex: 1;
+  margin-left: var(--client-sidebar-w);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.client-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  background: rgba(6, 42, 31, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--client-border);
+}
+
+.client-menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--client-text);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.client-menu-toggle:hover {
+  background: var(--client-card);
+}
+
+.client-topbar-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.client-topbar-title .crumb {
+  color: var(--client-muted);
+}
+
+.client-topbar-title .sep {
+  color: var(--client-border-hover);
+}
+
+.client-topbar-title .leaf {
+  color: var(--client-text);
+  font-weight: 600;
+}
+
+.client-main {
+  flex: 1;
+  padding: 24px;
+}
+
+.client-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 99;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .client-sidebar {
+    transform: translateX(-100%);
+  }
+  .client-sidebar.open {
+    transform: translateX(0);
+  }
+  .client-content {
+    margin-left: 0;
+  }
+  .client-menu-toggle {
+    display: block;
+  }
+  .client-overlay {
+    display: block;
+  }
+  .client-main {
+    padding: 16px;
+  }
+}

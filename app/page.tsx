@@ -33,6 +33,7 @@ function useCountdown(endAt: string | undefined) {
 }
 
 const MAIN_URL = process.env.NEXT_PUBLIC_MAIN_URL ?? "https://techsavvys.com";
+const LOGIN_URL = "/login";
 const CATEGORIES = ["Semua", "Natural", "Romantis", "Modern", "Tradisional", "Elegan"];
 
 const WA_NUMBER = "628993781044";
@@ -192,11 +193,13 @@ export default function CatalogPage() {
             <a href="#pricing" className="nav-link">Benefit</a>
             <a href="#flow" className="nav-link">Cara Pesan</a>
             <a href="#features" className="nav-link">Fitur</a>
+            <a href={LOGIN_URL} className="nav-login">Login</a>
             <a href={waLink("Halo min, saya tertarik membuat undangan digital di Invitation Savvys. Bisa info lebih lanjut?")} target="_blank" rel="noopener noreferrer" className="nav-cta">Pesan Sekarang</a>
           </div>
 
           {/* Mobile: CTA + hamburger */}
           <div className="nav-mobile">
+            <a href={LOGIN_URL} className="nav-login-sm">Login</a>
             <a href={waLink("Halo min, saya tertarik membuat undangan digital di Invitation Savvys. Bisa info lebih lanjut?")} target="_blank" rel="noopener noreferrer" className="nav-cta-sm">Pesan</a>
             <button onClick={() => setMenuOpen(!menuOpen)} className="nav-burger" aria-label="Menu">
               <span className={`burger-line ${menuOpen ? "open-1" : ""}`} />
@@ -213,6 +216,7 @@ export default function CatalogPage() {
             <a href="#pricing" className="nav-dd-link" onClick={() => setMenuOpen(false)}>Benefit</a>
             <a href="#flow" className="nav-dd-link" onClick={() => setMenuOpen(false)}>Cara Pesan</a>
             <a href="#features" className="nav-dd-link" onClick={() => setMenuOpen(false)}>Fitur</a>
+            <a href={LOGIN_URL} className="nav-dd-link" onClick={() => setMenuOpen(false)}>Login Akun</a>
             <a href={waLink("Halo min, saya tertarik membuat undangan digital di Invitation Savvys. Bisa info lebih lanjut?")} target="_blank" rel="noopener noreferrer" className="nav-dd-cta" onClick={() => setMenuOpen(false)}>Pesan Sekarang →</a>
           </div>
         )}
@@ -446,7 +450,7 @@ export default function CatalogPage() {
               Lihat Cara Pemesanan
             </a>
           </div>
-          <p style={{ color: "#6A5A4A", fontSize: "12px", marginTop: "8px" }}>Sudah punya akun? <a href="/admin/login" style={{ color: "#C4975A", textDecoration: "underline" }}>Login di sini</a></p>
+          <p style={{ color: "#6A5A4A", fontSize: "12px", marginTop: "8px" }}>Sudah punya akun? <a href={LOGIN_URL} style={{ color: "#C4975A", textDecoration: "underline" }}>Login di sini</a></p>
         </div>
       </section>
 
@@ -467,8 +471,11 @@ export default function CatalogPage() {
         .nav-link:hover { color: #2C1F14; }
         .nav-cta { background: #2C1F14; color: #F5EDD8; padding: 10px 22px; border-radius: 10px; font-weight: 700; font-size: 13px; text-decoration: none; letter-spacing: 0.04em; white-space: nowrap; transition: background 0.2s; }
         .nav-cta:hover { background: #3D2A1A; }
-        .nav-mobile { display: none; align-items: center; gap: 10px; }
+        .nav-login { color: #2C1F14; font-size: 13px; font-weight: 700; text-decoration: none; padding: 10px 18px; border-radius: 10px; border: 1.5px solid rgba(60,40,20,0.2); letter-spacing: 0.04em; white-space: nowrap; transition: all 0.2s; }
+        .nav-login:hover { background: #2C1F14; color: #F5EDD8; border-color: #2C1F14; }
+        .nav-mobile { display: none; align-items: center; gap: 8px; }
         .nav-cta-sm { background: #2C1F14; color: #F5EDD8; padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 12px; text-decoration: none; white-space: nowrap; }
+        .nav-login-sm { color: #2C1F14; padding: 8px 14px; border-radius: 8px; font-weight: 700; font-size: 12px; text-decoration: none; white-space: nowrap; border: 1.5px solid rgba(60,40,20,0.2); }
         .nav-burger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
         .burger-line { display: block; width: 22px; height: 2px; background: #2C1F14; border-radius: 2px; transition: transform 0.25s, opacity 0.25s; }
         .open-1 { transform: translateY(7px) rotate(45deg); }
