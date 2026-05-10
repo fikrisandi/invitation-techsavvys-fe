@@ -113,11 +113,7 @@ export default async function InvitationPage({ params, searchParams }: Props) {
   const { to } = await searchParams;
   const { theme, slug } = parsePath(path);
 
-  // Root page (no path) — show home/landing
-  if (!slug) {
-    // Let the main page.tsx handle this
-    return null;
-  }
+  if (!slug) notFound();
 
   const guestName = to ? decodeURIComponent(to.replace(/\+/g, " ")) : undefined;
   const data = await getInvitation(slug, guestName);
