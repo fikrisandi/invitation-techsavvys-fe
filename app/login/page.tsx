@@ -45,11 +45,11 @@ export default function LoginPage() {
     <div className="admin-login-page">
       <div className="admin-login-bg"></div>
       <div className="admin-login-card">
-        <div style={{ display: "flex", justifyContent: "center", marginBottom: 24 }}>
-          <Image src="/logo-invitation.svg" alt="Invitation Savvys" width={220} height={48} style={{ objectFit: "contain", height: "auto" }} priority />
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}>
+          <Image src="/logo-invitation-icon.svg" alt="Invitation Savvys" width={64} height={64} priority />
         </div>
-        <h1>Selamat Datang</h1>
-        <p>Masuk ke dashboard Invitation Savvys</p>
+        <h1 style={{ textAlign: "center" }}>Selamat Datang</h1>
+        <p style={{ textAlign: "center" }}>Masuk ke dashboard Invitation Savvys</p>
 
         {error && (
           <div className="admin-error">

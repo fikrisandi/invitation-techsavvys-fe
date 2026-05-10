@@ -77,7 +77,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     ? "Kelola Tamu"
     : pathname.startsWith("/dashboard/undangan")
     ? "Info Undangan"
-    : "Daftar Undangan";
+    : "Semua Undangan";
 
   const IconList = (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -107,24 +107,26 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       <aside className={`client-sidebar${sidebarOpen ? " open" : ""}`}>
         <div className="client-sidebar-brand">
-          <Image src="/logo-invitation.svg" alt="Invitation Savvys" width={150} height={32} style={{ objectFit: "contain", height: "auto", flexShrink: 0 }} priority />
-        </div>
-        <div style={{ padding: "12px 20px", borderBottom: "1px solid var(--client-border)", fontSize: "0.78rem" }}>
-          <div style={{ color: "var(--client-gold)", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700, fontSize: "0.62rem", marginBottom: 4 }}>Akun</div>
-          <div style={{ color: "var(--client-text)", fontWeight: 600 }}>{user?.name}</div>
+          <Image src="/logo-invitation-icon.svg" alt="Invitation Savvys" width={36} height={36} priority />
+          <div>
+            <h2>Dashboard Klien</h2>
+            <span>{user?.name}</span>
+          </div>
         </div>
 
         <nav className="client-nav">
           <div className="client-nav-label">Undangan</div>
 
-          <Link
-            href="/dashboard"
-            className={`client-nav-item${pathname === "/dashboard" ? " active" : ""}`}
-            onClick={() => setSidebarOpen(false)}
-          >
-            {IconList}
-            Daftar Undangan
-          </Link>
+          {invs.length > 1 && (
+            <Link
+              href="/dashboard"
+              className={`client-nav-item${pathname === "/dashboard" ? " active" : ""}`}
+              onClick={() => setSidebarOpen(false)}
+            >
+              {IconList}
+              Semua Undangan
+            </Link>
+          )}
 
           {currentInvId && (
             <>
