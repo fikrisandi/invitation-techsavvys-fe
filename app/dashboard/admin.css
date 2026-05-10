@@ -1,17 +1,20 @@
-/* ==================== ADMIN VARIABLES ==================== */
+/* ==================== DASHBOARD VARIABLES ====================
+   Selaraskan dengan palette landing invitation (cream + gold + brown).
+   Variabel tetap dinamai admin-* supaya class lama compatible.
+*/
 :root {
-  --admin-bg: #080810;
-  --admin-surface: #0f0f1a;
-  --admin-card: #141420;
-  --admin-border: #1c1c2e;
-  --admin-border-hover: #2a2a40;
-  --admin-text: #e8e8f0;
-  --admin-muted: #7a7a90;
-  --admin-teal: #00BFA5;
-  --admin-teal-glow: rgba(0, 191, 165, 0.15);
-  --admin-red: #ef4444;
-  --admin-red-glow: rgba(239, 68, 68, 0.15);
-  --admin-gradient: linear-gradient(135deg, #00BFA5, #64FFDA);
+  --admin-bg: #FAF7F2;          /* cream landing main bg */
+  --admin-surface: #FFFFFF;      /* white card surface */
+  --admin-card: #F3EDE3;         /* lighter cream */
+  --admin-border: #E5DCC8;       /* soft cream-brown border */
+  --admin-border-hover: #D4C4A0;
+  --admin-text: #2C1F14;         /* dark brown text */
+  --admin-muted: #7A6A5A;        /* medium brown muted */
+  --admin-teal: #C4975A;         /* gold accent (replaces teal) */
+  --admin-teal-glow: rgba(196, 151, 90, 0.15);
+  --admin-red: #E63946;          /* promo red dari landing */
+  --admin-red-glow: rgba(230, 57, 70, 0.12);
+  --admin-gradient: linear-gradient(135deg, #C4975A 0%, #EAD18F 100%);
   --admin-radius: 12px;
   --admin-sidebar-w: 260px;
 }
@@ -98,7 +101,7 @@
 
 .admin-nav-group-toggle:hover {
   opacity: 1;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(196, 151, 90, 0.06);
 }
 
 .admin-nav-chevron {
@@ -163,7 +166,7 @@
 
 .admin-nav-item:hover {
   color: var(--admin-text);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(196, 151, 90, 0.08);
 }
 
 .admin-nav-item.active {
@@ -272,8 +275,8 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(ellipse at 30% 50%, rgba(0, 191, 165, 0.06) 0%, transparent 60%),
-              radial-gradient(ellipse at 70% 50%, rgba(100, 255, 218, 0.04) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 30% 50%, rgba(196, 151, 90, 0.10) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 50%, rgba(234, 209, 143, 0.08) 0%, transparent 60%);
   animation: admin-bg-shift 15s ease-in-out infinite alternate;
 }
 
@@ -379,7 +382,7 @@
 
 .admin-field input::placeholder,
 .admin-field textarea::placeholder {
-  color: #44445a;
+  color: #B0A090;
 }
 
 .admin-field textarea {
@@ -390,7 +393,7 @@
 .admin-field select {
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%237a7a90' viewBox='0 0 16 16'%3E%3Cpath d='M4.646 5.646a.5.5 0 0 1 .708 0L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%237A6A5A' viewBox='0 0 16 16'%3E%3Cpath d='M4.646 5.646a.5.5 0 0 1 .708 0L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
   padding-right: 40px;
@@ -534,7 +537,7 @@
   width: 100%;
   padding: 13px;
   background: var(--admin-gradient);
-  color: #060608;
+  color: #2C1F14;
   border: none;
   border-radius: 10px;
   font-size: 0.9rem;
@@ -549,7 +552,7 @@
 
 .admin-btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 191, 165, 0.3);
+  box-shadow: 0 8px 24px rgba(196, 151, 90, 0.35);
 }
 
 .admin-btn-primary:active {
@@ -566,8 +569,8 @@
 .admin-spinner {
   width: 20px;
   height: 20px;
-  border: 2px solid rgba(6, 6, 8, 0.3);
-  border-top-color: #060608;
+  border: 2px solid rgba(44, 31, 20, 0.25);
+  border-top-color: #2C1F14;
   border-radius: 50%;
   animation: admin-spin 0.6s linear infinite;
 }
@@ -607,8 +610,8 @@
 }
 
 .admin-btn-edit:hover {
-  background: rgba(0, 191, 165, 0.25);
-  border-color: rgba(0, 191, 165, 0.3);
+  background: rgba(196, 151, 90, 0.25);
+  border-color: rgba(196, 151, 90, 0.3);
 }
 
 .admin-btn-delete {
@@ -624,8 +627,8 @@
 }
 
 .admin-btn-delete:hover {
-  background: rgba(239, 68, 68, 0.25);
-  border-color: rgba(239, 68, 68, 0.3);
+  background: rgba(230, 57, 70, 0.20);
+  border-color: rgba(230, 57, 70, 0.3);
 }
 
 /* ==================== PAGE HEADER ==================== */
@@ -702,7 +705,7 @@
 }
 
 .admin-table tr:hover td {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(196, 151, 90, 0.05);
 }
 
 .admin-actions {
@@ -727,7 +730,7 @@
 }
 
 .admin-badge.active:hover {
-  background: rgba(0, 191, 165, 0.25);
+  background: rgba(196, 151, 90, 0.25);
 }
 
 .admin-badge.inactive {
@@ -736,7 +739,7 @@
 }
 
 .admin-badge.inactive:hover {
-  background: rgba(239, 68, 68, 0.25);
+  background: rgba(230, 57, 70, 0.20);
 }
 
 .admin-badge.scheduled {
@@ -797,7 +800,7 @@
 }
 
 .admin-cred-box {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(196, 151, 90, 0.08);
   border: 1px solid var(--admin-border);
   border-radius: 12px;
   padding: 16px;
@@ -806,7 +809,7 @@
 }
 
 .admin-cred-box code {
-  background: rgba(100, 100, 255, 0.15);
+  background: rgba(196, 151, 90, 0.18);
   padding: 2px 8px;
   border-radius: 4px;
   font-family: ui-monospace, Consolas, monospace;
@@ -831,7 +834,7 @@
 /* ==================== STATES ==================== */
 .admin-error {
   background: var(--admin-red-glow);
-  border: 1px solid rgba(239, 68, 68, 0.25);
+  border: 1px solid rgba(230, 57, 70, 0.25);
   color: var(--admin-red);
   padding: 12px 16px;
   border-radius: 10px;

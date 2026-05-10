@@ -1,24 +1,24 @@
-/* ==================== CLIENT (INVITATION) THEME ====================
-   Mirror struktur admin.css tapi pakai palette invitation: emerald + gold.
-   Mood: elegant, warm, wedding-like.
+/* ==================== CLIENT (DASHBOARD) THEME ====================
+   Selaraskan dengan landing invitation: cream + gold + brown.
+   Mood: elegant, warm, wedding-like (light theme).
 */
 
 :root {
-  --client-bg: #041E16;
-  --client-surface: #062A1F;
-  --client-card: #083526;
-  --client-border: #0D4A36;
-  --client-border-hover: #145A43;
-  --client-text: #F8F4EC;
-  --client-muted: #7A9488;
-  --client-text-light: #B8C9BF;
-  --client-gold: #D4A853;
+  --client-bg: #FAF7F2;          /* cream main bg */
+  --client-surface: #FFFFFF;      /* sidebar putih bersih */
+  --client-card: #F3EDE3;         /* lighter cream card */
+  --client-border: #E5DCC8;       /* soft cream-brown border */
+  --client-border-hover: #D4C4A0;
+  --client-text: #2C1F14;         /* dark brown */
+  --client-muted: #7A6A5A;        /* medium brown */
+  --client-text-light: #5A4A3A;
+  --client-gold: #C4975A;         /* primary gold accent */
   --client-gold-light: #EAD18F;
   --client-gold-dark: #B08E3C;
-  --client-gold-glow: rgba(212, 168, 83, 0.15);
+  --client-gold-glow: rgba(196, 151, 90, 0.15);
   --client-mint: #A8D5BA;
-  --client-red: #ef4444;
-  --client-red-glow: rgba(239, 68, 68, 0.15);
+  --client-red: #E63946;
+  --client-red-glow: rgba(230, 57, 70, 0.10);
   --client-radius: 12px;
   --client-sidebar-w: 260px;
 }
@@ -28,7 +28,7 @@
   display: flex;
   min-height: 100vh;
   background:
-    radial-gradient(ellipse at top right, rgba(212, 168, 83, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at top right, rgba(196, 151, 90, 0.06) 0%, transparent 60%),
     var(--client-bg);
   font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
 }
@@ -115,19 +115,19 @@
 
 .client-nav-item.active {
   background: linear-gradient(135deg, var(--client-gold) 0%, var(--client-gold-dark) 100%);
-  color: var(--client-bg);
+  color: #FFFFFF;
   font-weight: 600;
-  box-shadow: 0 4px 12px rgba(212, 168, 83, 0.25);
+  box-shadow: 0 4px 12px rgba(196, 151, 90, 0.30);
 }
 
 .client-nav-item.active svg {
-  color: var(--client-bg);
+  color: #FFFFFF;
 }
 
 .client-active-card {
   margin: 8px 14px 0;
   padding: 12px 14px;
-  background: rgba(212, 168, 83, 0.08);
+  background: rgba(196, 151, 90, 0.08);
   border: 1px solid var(--client-gold-glow);
   border-radius: 10px;
 }
@@ -208,7 +208,7 @@
   align-items: center;
   gap: 12px;
   padding: 14px 24px;
-  background: rgba(6, 42, 31, 0.85);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--client-border);
 }

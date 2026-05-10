@@ -65,7 +65,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   }
 
   if (!ready) {
-    return <div style={{ padding: 40, textAlign: "center", color: "#7A9488" }}>Memuat...</div>;
+    return <div style={{ padding: 40, textAlign: "center", color: "var(--client-muted)" }}>Memuat...</div>;
   }
 
   const urlIdMatch = pathname.match(/^\/dashboard\/(undangan|tamu)\/([^/]+)/);
