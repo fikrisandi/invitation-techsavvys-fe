@@ -45,8 +45,8 @@ export default function LoginPage() {
     <div className="admin-login-page">
       <div className="admin-login-bg"></div>
       <div className="admin-login-card">
-        <div className="admin-login-logo">
-          <Image src="/logo-invitation.svg" alt="Invitation Savvys" width={56} height={56} />
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: 24 }}>
+          <Image src="/logo-invitation.svg" alt="Invitation Savvys" width={220} height={48} style={{ objectFit: "contain", height: "auto" }} priority />
         </div>
         <h1>Selamat Datang</h1>
         <p>Masuk ke dashboard Invitation Savvys</p>

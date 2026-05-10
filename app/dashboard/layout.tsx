@@ -107,11 +107,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       <aside className={`client-sidebar${sidebarOpen ? " open" : ""}`}>
         <div className="client-sidebar-brand">
-          <Image src="/logo-invitation.svg" alt="Invitation Savvys" width={36} height={36} />
-          <div>
-            <h2>Dashboard Klien</h2>
-            <span>{user?.name}</span>
-          </div>
+          <Image src="/logo-invitation.svg" alt="Invitation Savvys" width={150} height={32} style={{ objectFit: "contain", height: "auto", flexShrink: 0 }} priority />
+        </div>
+        <div style={{ padding: "12px 20px", borderBottom: "1px solid var(--client-border)", fontSize: "0.78rem" }}>
+          <div style={{ color: "var(--client-gold)", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700, fontSize: "0.62rem", marginBottom: 4 }}>Akun</div>
+          <div style={{ color: "var(--client-text)", fontWeight: 600 }}>{user?.name}</div>
         </div>
 
         <nav className="client-nav">
