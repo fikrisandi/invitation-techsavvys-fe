@@ -291,8 +291,9 @@ export default function ClientInvitationManagePage({ params }: { params: Promise
     const header = "nama_tamu,resepsi,nomor";
     const rows = [
       "Contoh Nama 1,pagi,081234567890",
-      "Contoh Nama 2,malam,",
-      "Contoh Nama 3,pagi|malam,6281234567891",
+      "Contoh Nama 2,sore,",
+      "Contoh Nama 3,malam,6281234567891",
+      "Contoh Nama 4,pagi|malam,082345678902",
     ];
     if (format === "csv") {
       const csv = [header, ...rows].join("\n");
@@ -307,8 +308,9 @@ export default function ClientInvitationManagePage({ params }: { params: Promise
       const data = [
         ["nama_tamu", "resepsi", "nomor"],
         ["Contoh Nama 1", "pagi", "081234567890"],
-        ["Contoh Nama 2", "malam", ""],
-        ["Contoh Nama 3", "pagi|malam", "6281234567891"],
+        ["Contoh Nama 2", "sore", ""],
+        ["Contoh Nama 3", "malam", "6281234567891"],
+        ["Contoh Nama 4", "pagi|malam", "082345678902"],
       ];
       const ws = XLSX.utils.aoa_to_sheet(data);
       const range = XLSX.utils.decode_range(ws["!ref"] || "A1");
@@ -374,7 +376,7 @@ export default function ClientInvitationManagePage({ params }: { params: Promise
           </div>
           <div className="admin-field" style={{ flex: 1 }}>
             <label>Resepsi</label>
-            <input value={manualReception} onChange={(e) => setManualReception(e.target.value)} placeholder="pagi / malam / pagi|malam" />
+            <input value={manualReception} onChange={(e) => setManualReception(e.target.value)} placeholder="pagi / siang / sore / malam / pagi|malam" />
           </div>
           <div className="admin-field" style={{ flex: 1 }}>
             <label>Nomor WA <span style={{ color: "var(--admin-muted)", fontWeight: 400 }}>(opsional)</span></label>
@@ -413,7 +415,7 @@ export default function ClientInvitationManagePage({ params }: { params: Promise
             value={csvText}
             onChange={(e) => setCsvText(e.target.value)}
             rows={5}
-            placeholder={"nama_tamu,resepsi,nomor\nBudi Santoso,pagi,081234567890\nAndi Pratama,pagi|malam,"}
+            placeholder={"nama_tamu,resepsi,nomor\nBudi Santoso,pagi,081234567890\nSiti Aulia,sore,\nAndi Pratama,malam,082345678902\nLisa Pradita,pagi|malam,"}
           />
         </div>
         {csvError && <div className="admin-error">{csvError}</div>}
@@ -565,7 +567,7 @@ export default function ClientInvitationManagePage({ params }: { params: Promise
               <input
                 value={guestEditForm.receptions}
                 onChange={(e) => setGuestEditForm({ ...guestEditForm, receptions: e.target.value })}
-                placeholder="pagi|malam"
+                placeholder="pagi / siang / sore / malam / pagi|malam"
               />
             </div>
             <div className="admin-form-actions">
